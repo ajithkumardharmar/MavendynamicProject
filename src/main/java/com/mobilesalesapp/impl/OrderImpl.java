@@ -13,6 +13,7 @@ public class OrderImpl implements OrderDao {
 		int i = 0;
 		Connection con = ConnectionPro.connect();
 		String query1 = "commit";
+		System.out.println("wallet decrease");
 
 		String query = "update users_table set wallet = (select wallet from users_table where pk_user_id=?)-? where pk_user_id=? and password=?";
 		try {
@@ -79,6 +80,27 @@ public class OrderImpl implements OrderDao {
 		Connection con=ConnectionPro.connect();
 		String query="commit";
 		String query2="update orders_table set status='Cancelled' where order_id=? ";
+		try {
+			System.out.println(orderPojo.getOrerId());
+			PreparedStatement pre1=con.prepareStatement(query);
+			pre1.executeUpdate();
+			PreparedStatement pre=con.prepareStatement(query2);
+			pre.setInt(1, orderPojo.getOrerId());
+			int i=pre.executeUpdate();
+			System.out.println(i);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	public void deliveredCancel(OrderPojo orderPojo) {
+		Connection con=ConnectionPro.connect();
+		String query="commit";
+		String query2="update orders_table set status='Delivered' where order_id=? ";
 		try {
 			System.out.println(orderPojo.getOrerId());
 			PreparedStatement pre1=con.prepareStatement(query);
