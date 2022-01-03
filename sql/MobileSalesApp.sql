@@ -88,7 +88,7 @@ CREATE TABLE ORDERS_TABLE
 ,price number(12,2)
 ,ORDER_DATE timestamp default current_timestamp);
 alter table orders_table add address varchar(80); 
-desc orders_table;
+
 select * from orders_table;
 
 
