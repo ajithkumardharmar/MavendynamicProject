@@ -4,6 +4,13 @@
   <artifactId>MobileSalesApp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  <dependencies>
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.3.13</version>
+</dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>

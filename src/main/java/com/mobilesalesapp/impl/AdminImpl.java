@@ -2,17 +2,17 @@ package com.mobilesalesapp.impl;
 
 import java.sql.*;
 
-import com.mobilesalesapp.connection.ConnectionPro;
 import com.mobilesalesapp.dao.AdminDao;
 import com.mobilesalesapp.model.AdminPojo;
 import com.mobilesalesapp.model.RegisterPojo;
+import com.mobilesalesapp.util.ConnectionUtil;
 
 
 
 public class AdminImpl implements AdminDao  {
 	public  boolean login(AdminPojo admin)  {
 		
-		Connection con =ConnectionPro.connect();
+		Connection con =ConnectionUtil.connect();
 		String query="select *from admins_table where email in ? and password in ?";
 		PreparedStatement pre;
 		int i=0;
@@ -38,7 +38,7 @@ public class AdminImpl implements AdminDao  {
 	}
 	
 	public int addWalletAmount(RegisterPojo wallet){
-			Connection con=ConnectionPro.connect();
+			Connection con=ConnectionUtil.connect();
 			String query="commit";
 			String query2="update users_table set wallet=(select wallet from users_table where pk_user_id= ? )+? where pk_user_id=?";
 			int j=0;

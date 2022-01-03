@@ -4,15 +4,15 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mobilesalesapp.connection.ConnectionPro;
 import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.model.ContactUsPojo;
 import com.mobilesalesapp.model.RegisterPojo;
+import com.mobilesalesapp.util.ConnectionUtil;
 
 public class UserImpl implements UserDao {
 	public void register(RegisterPojo p) {
 
-		Connection con = ConnectionPro.connect();
+		Connection con = ConnectionUtil.connect();
 
 		String query = "insert into users_table (first_name,email,phone_number,password,confirm_password) values(?,?,?,?,?)";
 		String query2 = "commit";
@@ -38,7 +38,7 @@ public class UserImpl implements UserDao {
 
 	public ResultSet fetch(RegisterPojo login) {
 		// List<LoginPojo> loginpojo = new ArrayList();
-		Connection con = ConnectionPro.connect();
+		Connection con = ConnectionUtil.connect();
 		String query = "select * from users_table  where email in ? and password in ?";
 		PreparedStatement pre;
 		ResultSet rs = null;
@@ -58,7 +58,7 @@ public class UserImpl implements UserDao {
 	}
 
 	public ResultSet userDetails() {
-		Connection con = ConnectionPro.connect();
+		Connection con = ConnectionUtil.connect();
 		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table";
 		Statement st;
 		ResultSet ns = null;
@@ -76,7 +76,7 @@ public class UserImpl implements UserDao {
 
 	}
 	public void contactUs(ContactUsPojo contactUs) {
-		Connection con = ConnectionPro.connect();
+		Connection con = ConnectionUtil.connect();
 		String query = "insert into contactus values(?,?,?,?) ";
 		try {
 			PreparedStatement pre =con.prepareStatement(query);

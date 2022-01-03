@@ -2,13 +2,13 @@ package com.mobilesalesapp.impl;
 
 import java.sql.*;
 
-import com.mobilesalesapp.connection.ConnectionPro;
 import com.mobilesalesapp.dao.ListAllProductDao;
+import com.mobilesalesapp.util.ConnectionUtil;
 
 public class ListAllProductImpl implements ListAllProductDao {
 	public  ResultSet viewProduct() {
 		
-		Connection con=ConnectionPro.connect();
+		Connection con=ConnectionUtil.connect();
 		String query="select pk_product_id,product_name,description,standard_price,list_price from products";
 		ResultSet ns=null;
 		

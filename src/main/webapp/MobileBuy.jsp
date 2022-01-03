@@ -18,31 +18,24 @@
 	text-align: center;
 	background-color: bisque;
 }
-
-
-
 .top_nav_in1 {
 	position: relative;
 	left: 500px;
 	padding: 8px;
 }
-
 .top_nav_bu1 {
 	position: relative;
 	left: 520px;
 	padding: 8px;
 	background-color: cornflowerblue;
 }
-
 .top_nav_bu1 :hover {
 	background-color: darkgreen;
 	color: darkkhaki;
 }
-
 .table1 td {
 	padding: 15px;
 }
-
 .button1 {
 	text-decoration: none;
 	position: relative;
@@ -55,21 +48,17 @@
 	border-color: black;
 	background-color: red;
 }
-
 .button1:hover {
 	background-color: blue;
 }
-
 .mar1 {
 	font-size: 30px;
 	color: crimson;
 }
-
 .body_main {
 	margin-top: 120px;
 	margin-left: 240px;
 }
-
 ul {
 	list-style-type: none;
 	margin: 0;
@@ -77,11 +66,9 @@ ul {
 	overflow: hidden;
 	background-color: brown;
 }
-
 li {
 	float: left;
 }
-
 li a {
 	display: block;
 	color: white;
@@ -89,11 +76,9 @@ li a {
 	padding: 12px 16px;
 	text-decoration: none;
 }
-
 li a:hover {
 	background-color: goldenrod;
 }
-
 .active {
 	background-color: grey;
 }
@@ -166,7 +151,6 @@ position: relative;
 	<%session.removeAttribute("buying"); %>
 	
 	<script type="text/javascript">
-
 	let th = document.getElementById("timehead");
 	let time = 120;
 	let i;
@@ -189,6 +173,5 @@ position: relative;
 		},1000);
 		
 	});
-
 	</script>
 </html>

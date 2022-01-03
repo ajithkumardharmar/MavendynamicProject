@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import ="java.sql.*" import ="com.mobilesalesapp.connection.ConnectionPro"  %>
+	pageEncoding="ISO-8859-1" import ="java.sql.*" import ="com.mobilesalesapp.util.*"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,16 +137,17 @@ margin-top:40px;
 
 
 	</div>
-	<%session.setAttribute("productId", 44);
-	 
-	  int productId=(int)session.getAttribute("productId"); 
-	  String query="select * from products where pk_product_id= ?";
-	  Connection con=ConnectionPro.connect();
-	  PreparedStatement pre=con.prepareStatement(query);
-	  pre.setInt(1, productId);
-	  ResultSet rs=pre.executeQuery();
-	  if(rs.next()){
-	  %>
+	<%
+	session.setAttribute("productId", 44);
+		 
+		  int productId=(int)session.getAttribute("productId"); 
+		  String query="select * from products where pk_product_id= ?";
+		  Connection con=ConnectionUtil.connect();
+		  PreparedStatement pre=con.prepareStatement(query);
+		  pre.setInt(1, productId);
+		  ResultSet rs=pre.executeQuery();
+		  if(rs.next()){
+	%>
 	<div class="body_main">
 	
 		<a><img id="41"

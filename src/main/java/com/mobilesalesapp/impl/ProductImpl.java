@@ -2,15 +2,15 @@ package com.mobilesalesapp.impl;
 
 import java.sql.*;
 
-import com.mobilesalesapp.connection.ConnectionPro;
 import com.mobilesalesapp.dao.ProductDao;
 import com.mobilesalesapp.model.ProductPojo;
+import com.mobilesalesapp.util.ConnectionUtil;
 
 public class ProductImpl implements ProductDao {
 	public void add(ProductPojo obj) {
 		try {
 
-			Connection con = ConnectionPro.connect();
+			Connection con = ConnectionUtil.connect();
 
 			String query = "insert into products (product_name,description,standard_price,list_price)"
 					+ "values(?,?,?,?)";
@@ -31,7 +31,7 @@ public class ProductImpl implements ProductDao {
 	}
 
 	public int delete(ProductPojo obj1) {
-		Connection con = ConnectionPro.connect();
+		Connection con = ConnectionUtil.connect();
 		String query = "Delete from products where pk_product_id=?";
 		int i=0;
 		try {
@@ -50,7 +50,7 @@ public class ProductImpl implements ProductDao {
 
 	public void update(ProductPojo obj1) {
 		String query = "update products set standard_price=?,list_price=? where pk_product_id=?";
-		Connection con = ConnectionPro.connect();
+		Connection con = ConnectionUtil.connect();
 		try {
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setDouble(1, obj1.getStandard_cost());

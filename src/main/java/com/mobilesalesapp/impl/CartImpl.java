@@ -1,15 +1,15 @@
 package com.mobilesalesapp.impl;
 
-import com.mobilesalesapp.connection.ConnectionPro;
 import com.mobilesalesapp.dao.CartDao;
 import com.mobilesalesapp.model.CartPojo;
+import com.mobilesalesapp.util.ConnectionUtil;
 
 import java.sql.*;
 
 public class CartImpl implements CartDao {
 	public void addCart(CartPojo cartPojo) {
 		System.out.println("Dao1");
-		Connection con = ConnectionPro.connect();
+		Connection con = ConnectionUtil.connect();
 		String query = "select * from products where pk_product_id=?";
 		// String query2 = "insert into
 		// carts_table(user_id,product_id,product_name,descrption,price)"

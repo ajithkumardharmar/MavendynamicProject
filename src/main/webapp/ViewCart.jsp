@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import ="com.mobilesalesapp.connection.ConnectionPro" import ="java.sql.* "%>
+    pageEncoding="ISO-8859-1" import ="com.mobilesalesapp.util.ConnectionUtil" import ="java.sql.* "%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,7 +145,7 @@ margin-top:40px;
 <%
 String userId1=(String)session.getAttribute("userId");
 int userId=Integer.parseInt(userId1);
-Connection con=ConnectionPro.connect();
+Connection con=ConnectionUtil.connect();
 String query="select * from carts_table where user_id=?";
 String query1="select * from carts_table where user_id=?";
 String query3="select * from photo";
@@ -161,7 +161,8 @@ pre.setInt(1,userId );
 	
 	
   
-    System.out.println("rsnext");%>
+    System.out.println("rsnext");
+%>
     <%if(rs2.next()) { 
     System.out.println(rs2.getString(1));%>
    

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.sql.*"
-	import="com.mobilesalesapp.connection.ConnectionPro"%>
+	import ="com.mobilesalesapp.util.*" %>
 <%
 if (session.getAttribute("name") == (null)) {
 	response.sendRedirect("index.jsp");
@@ -26,6 +26,8 @@ System.out.println(userId);
 	text-align: center;
 	background-color: bisque;
 }
+
+
 
 .top_nav {
 	/* background-color: brown;
@@ -83,11 +85,18 @@ System.out.println(userId);
 
 .mar1 {
 	font-size: 30px;
-	color: crimson;
+	color: green	;
 }
 
-.body_main {
-	background-color: cornsilk;
+.body_main1 {
+	
+	background: linear-gradient(rgba(0, 0, 0, .3) 70%, rgba(0, 0, 0, .3)
+		-70%),
+		url(https://images.unsplash.com/photo-1506102383123-c8ef1e872756?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60);
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* background: rgba(76, 175, 80, 0.3) */
+	height: 100%;
 }
 
 ul {
@@ -138,7 +147,7 @@ li a:hover {
 }
 </style>
 
-<body>
+<body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 	<div class="top_nav">
@@ -155,7 +164,11 @@ li a:hover {
 		</ul>
 
 
-	</div>
+	</div><br>
+	<form action="">
+	<input type="text" id="myInput"  >
+	<button type="submit" onclick="myFunction()">Search</button>
+	</form>
 	<div class="body_main">
 		<br>
 		<h3 style="margin-left: 200px;"><%=name%></h3>
@@ -168,14 +181,14 @@ li a:hover {
 
 
 
-		<table style="margin-left: 222px;" class="table1">
+	<table style="margin-left: 222px;" id="table2" class="table1">
 			<%
 			String query = "select * from products ";
-			Connection con = ConnectionPro.connect();
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(query);
-			int i = 0;
-			while (i <= 1) {
+				Connection con = ConnectionUtil.connect();
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(query);
+				int i = 0;
+				while (i <= 1) {
 					if (rs.next()) {
 			%>
 			<tr>
@@ -334,18 +347,31 @@ li a:hover {
 				l++;
 				}
 				%>
-			</div>
+			
 		</table>
+</div>
+<script type="text/javascript">
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table2");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
 
-
-
-
-
-	</div>
-
-
-
-
+</div>
 </body>
 
 </html>

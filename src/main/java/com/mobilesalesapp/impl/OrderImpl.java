@@ -1,9 +1,9 @@
 package com.mobilesalesapp.impl;
 
-import com.mobilesalesapp.connection.ConnectionPro;
 import com.mobilesalesapp.dao.OrderDao;
 import com.mobilesalesapp.model.OrderPojo;
 import com.mobilesalesapp.model.UpdateWalletPojo;
+import com.mobilesalesapp.util.ConnectionUtil;
 
 import java.sql.*;
 
@@ -11,7 +11,7 @@ public class OrderImpl implements OrderDao {
 
 	public int updateWallet1(UpdateWalletPojo obj1) {
 		int i = 0;
-		Connection con = ConnectionPro.connect();
+		Connection con = ConnectionUtil.connect();
 		String query1 = "commit";
 		System.out.println("wallet decrease");
 
@@ -36,7 +36,7 @@ public class OrderImpl implements OrderDao {
 	}
 
 	public int insertOrder(OrderPojo obj2) {
-		Connection con = ConnectionPro.connect();
+		Connection con = ConnectionUtil.connect();
 		String query2 = "insert into orders_table (fk_user_id,fk_product_id,price,address) values (?,?,?,?)";
 		String query3 = "commit";
 		int i = 0;
@@ -61,7 +61,7 @@ public class OrderImpl implements OrderDao {
 
 	public ResultSet viewAllOrders(OrderPojo orderPojo) {
 
-		Connection con = ConnectionPro.connect();
+		Connection con = ConnectionUtil.connect();
 		String query = "select order_id,status,price,order_date,address " + "from orders_table where fk_user_id=?";
 		ResultSet rs = null;
 		try {
@@ -77,7 +77,7 @@ public class OrderImpl implements OrderDao {
 		return rs;
 	}
 	public void orderCancel(OrderPojo orderPojo) {
-		Connection con=ConnectionPro.connect();
+		Connection con=ConnectionUtil.connect();
 		String query="commit";
 		String query2="update orders_table set status='Cancelled' where order_id=? ";
 		try {
@@ -98,7 +98,7 @@ public class OrderImpl implements OrderDao {
 		
 	}
 	public void deliveredCancel(OrderPojo orderPojo) {
-		Connection con=ConnectionPro.connect();
+		Connection con=ConnectionUtil.connect();
 		String query="commit";
 		String query2="update orders_table set status='Delivered' where order_id=? ";
 		try {
