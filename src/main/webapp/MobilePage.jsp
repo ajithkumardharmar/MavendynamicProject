@@ -150,6 +150,7 @@ li a:hover {
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
+
 	<div class="top_nav">
 
 		<ul>
@@ -165,10 +166,7 @@ li a:hover {
 
 
 	</div><br>
-	<form action="">
-	<input type="text" id="myInput"  >
-	<button type="submit" onclick="myFunction()">Search</button>
-	</form>
+
 	<div class="body_main">
 		<br>
 		<h3 style="margin-left: 200px;"><%=name%></h3>
@@ -190,12 +188,13 @@ li a:hover {
 				int i = 0;
 				while (i <= 1) {
 					if (rs.next()) {
+						System.out.println("proId"+rs.getInt(1));
 			%>
 			<tr>
 
 
 
-				<th><a href="<%=rs.getString(7)%>"> <img
+				<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 						src="<%=rs.getString(6)%>" alt=""></a></th>
 			</tr>
 
@@ -211,7 +210,7 @@ li a:hover {
 			</tr>
 			<tr>
 
-				<td><a id="but_id" class="button1" href="<%=rs.getString(7)%>">Buy</a>
+				<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
 				</td>
 
 			</tr>
@@ -234,7 +233,7 @@ li a:hover {
 				<tr>
 
 
-					<th><a href="<%=rs.getString(7)%>"> <img
+					<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 							src="<%=rs.getString(6)%>" alt=""></a></th>
 				</tr>
 
@@ -250,8 +249,8 @@ li a:hover {
 				</tr>
 				<tr>
 
-					<td><a id="but_id1" class="button1"
-						href="<%=rs.getString(7)%>">Buy</a></td>
+					<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
+				</td>
 
 				</tr>
 				<br>
@@ -277,7 +276,7 @@ li a:hover {
 				<tr>
 
 
-					<th><a href="<%=rs.getString(7)%>"> <img
+					<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 							src="<%=rs.getString(6)%>" alt=""></a></th>
 				</tr>
 
@@ -293,8 +292,8 @@ li a:hover {
 				</tr>
 				<tr>
 
-					<td><a id="but_id1" class="button1"
-						href="<%=rs.getString(7)%>">Buy</a></td>
+					<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
+				</td>
 
 				</tr>
 				<br>
@@ -319,7 +318,7 @@ li a:hover {
 				<tr>
 
 
-					<th><a href="<%=rs.getString(7)%>"> <img
+					<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 							src="<%=rs.getString(6)%>" alt=""></a></th>
 				</tr>
 
@@ -335,8 +334,8 @@ li a:hover {
 				</tr>
 				<tr>
 
-					<td><a id="but_id1" class="button1"
-						href="<%=rs.getString(7)%>">Buy</a></td>
+					<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
+				</td>
 
 				</tr>
 				<br>
@@ -350,26 +349,7 @@ li a:hover {
 			
 		</table>
 </div>
-<script type="text/javascript">
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("table2");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
+
 
 </div>
 </body>

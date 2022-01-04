@@ -137,15 +137,16 @@ margin-top:40px;
 
 
 	</div>
-	<%
-	session.setAttribute("productId", 41);
+	<%int ProductId=Integer.parseInt( request.getParameter("product_id"));
+	
+	//session.setAttribute("productId", 41);
 		 
-		  int productId=(int)session.getAttribute("productId");
+		 // int productId=(int)session.getAttribute("productId");
 		  
 		  String query="select * from products where pk_product_id= ?";
 		  Connection con=ConnectionUtil.connect();
 		  PreparedStatement pre=con.prepareStatement(query);
-		  pre.setInt(1, productId);
+		  pre.setInt(1, ProductId);
 		  ResultSet rs=pre.executeQuery();
 		  if(rs.next()){
 	%>
