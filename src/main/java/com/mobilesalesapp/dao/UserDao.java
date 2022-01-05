@@ -6,7 +6,7 @@ import com.mobilesalesapp.model.ContactUsPojo;
 import com.mobilesalesapp.model.RegisterPojo;
 
 public interface UserDao {
-	public void register(RegisterPojo p);
+	public int register(RegisterPojo p);
 
 	public ResultSet fetch(RegisterPojo Login);
 

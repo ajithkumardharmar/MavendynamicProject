@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import ="java.sql.*" import ="com.mobilesalesapp.util.*" %>
+    pageEncoding="ISO-8859-1" import ="com.mobilesalesapp.util.*" import ="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Mobile Info Page</title>
+<title>ViewContactUs</title>
 </head>
 <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 20px;
+}
 .h2_1 {
 	text-align: center;
 	background-color: bisque;
@@ -125,9 +130,9 @@ margin-top:40px;
 	<div class="top_nav">
 
 		<ul>
-			<li><a class="active" href="MobilePage.jsp">Home</a></li>
-			<li><a href="ViewOrders.jsp">My Orders</a></li>
-            <li><a href="ViewCart.jsp">Cart</a></li>
+			<li><a  href="MobilePage.jsp">Home</a></li>
+			<li><a  href="ViewOrders.jsp">My Orders</a></li>
+            <li><a class="active" href="ViewCart.jsp">Cart</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="index.jsp">Logout</a></li>
@@ -136,39 +141,37 @@ margin-top:40px;
 		</ul>
 
 
-	</div>
-	<%int ProductId=Integer.parseInt( request.getParameter("product_id"));
-	
-	session.setAttribute("productId",ProductId);
-		 
-		 // int productId=(int)session.getAttribute("productId");
-		  
-		  String query="select * from products where pk_product_id= ?";
-		  Connection con=ConnectionUtil.connect();
-		  PreparedStatement pre=con.prepareStatement(query);
-		  pre.setInt(1, ProductId);
-		  ResultSet rs=pre.executeQuery();
-		  if(rs.next()){
-	%>
-	<div class="body_main">
-	
-		<a><img id="41"
-			src="<%=rs.getString(6) %>"
-			alt=""></a>
-		<div class="phoneInfo">
-			<pre><%=rs.getString(3) %>
-</pre>
+	</div><br><br>
+	<%
+String query="select * from contactus";
+Connection con=ConnectionUtil.connect();
+Statement st=con.createStatement();
+ResultSet rs=st.executeQuery(query);
+%>
 
-			<div class="but_log">
-				<a href="addCart">Add Cart</a> 
-				<a href="MobileBuy.jsp">Buy</a>
-			</div>
-		</div>
-	</div>
 
-<% 
-double price= rs.getDouble(5);
-session.setAttribute("price",price);
-} %>
+ <table style="width: 85%;margin-left: 70px;">
+    <tr>
+     <th>Name</th>
+    <th>Email</th>
+    <th>Phone_number</th>
+    <th>Description</th>
+   
+  
+    </tr>
+   
+    <%while(rs.next()){ 
+     %>
+    
+    <tr>
+    <td><%=rs.getString(1) %></td>
+    <td><%=rs.getString(2) %></td>
+    <td><%=rs.getLong(3) %></td>
+    <td><%=rs.getString(4) %></td>
+    
+   
+    </tr>
+    <%}%>
+
 </body>
 </html>

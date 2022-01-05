@@ -8,6 +8,13 @@ import com.mobilesalesapp.util.ConnectionUtil;
 import java.sql.*;
 
 public class OrderImpl implements OrderDao {
+	public double getWallet(UpdateWalletPojo obj) {
+		double Wallet=0;
+		Connection con = ConnectionUtil.connect();
+		String query="select wallet ";
+	
+		return 1;
+	}
 
 	public int updateWallet1(UpdateWalletPojo obj1) {
 		int i = 0;

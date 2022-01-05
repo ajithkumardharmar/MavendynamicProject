@@ -131,12 +131,18 @@ position: relative;
 	Pincode : <input autocomplete="off" name="pincode" required="required" pattern="[0-9]{6}" maxlength="6" type="text"><br><br>
 	Phone Number :<input autocomplete="off" class="c_user2" name="phone_number" type="text"
                 pattern="[6789]{1}+[0-9]{9}" maxlength="10"  title="Enter only 10 digit number" required><br><br>
-	Password: <input autocomplete="off" name="password" required="required" pattern="(?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"><br><br><br>
-	<h4 style="margin-left: 20px">Mobile Price     :<%=price%></h4><br>
-	<h4 style="margin-left: 20px">Discount 15%     :<%=(price*.15)%></h4><br>
+	Password : <input autocomplete="off" name="password" required="required" pattern="(?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"><br><br>
+	Quantity : <input type="text" id="myInput1" onkeyup="myFunction()" maxlength="2" value=1 pattern="[1-9]{1+}" ><br><br>
+	Price  : <input type="text" id="myInput2" maxlength="2" value=<%=price%> pattern="[1-9]{1+}" ><br><br>
 	<%double total=(price-(price*.15));%>
-	<h4 style="margin-left: 20px;color: green">Total Price :<%=total%></h4><br>
+	Total Price :<input type="text" id="myInput3" readonly name="total" value=<%=total%>><br><br>
+
+	<h4 style="margin-left: 20px">Discount 15%     :<%=(price*.15)%></h4><br>
+	
+	
+
 	<h1 id="timehead" style="margin-left: 60px;"></h1><br>
+	
 	<%session.setAttribute("total",total); %>	
 	<%if(session.getAttribute("buying")!=null){ %>
 	<h4 style="color:red;margin-left: 50px"><%=session.getAttribute("buying") %></h3><br>
@@ -150,7 +156,20 @@ position: relative;
 	</div>
 	<%session.removeAttribute("buying"); %>
 	
+	
 	<script type="text/javascript">
+	 function myFunction() {
+         var Input1, Input2, sum,sum1;
+         Input1 = document.getElementById("myInput1").value;
+         Input2 = document.getElementById("myInput2").value;
+         sum = (Input1 * Input2)*0.85;
+         
+			console.log(sum);
+			console.log("sum");
+         document.getElementById("myInput3").value = sum;
+     }
+	
+	 console.log("sum");
 	let th = document.getElementById("timehead");
 	let time = 120;
 	let i;

@@ -28,10 +28,12 @@ public class OrderServlet extends HttpServlet {
 		String phoneNumber = req.getParameter("phone_number");
 		String fullAddress = address1+","+address2+"," +phoneNumber+","  + pincode;
 		String password = req.getParameter("password");
-		double price = (double) session.getAttribute("total");
+		
+		double price = Double.parseDouble( req.getParameter("total"));
 		System.out.println(userId + productId + fullAddress + password + price + userId);
 		UpdateWalletPojo obj1 = new UpdateWalletPojo(userId, password, price);
 		OrderImpl orderDao = new OrderImpl();
+		orderDao.getWallet(obj1);
 
 		int i = orderDao.updateWallet1(obj1);
 		try {

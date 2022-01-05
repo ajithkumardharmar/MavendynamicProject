@@ -26,7 +26,7 @@
                 <%String error=(String)session.getAttribute("admin");
                 		if(error!=null){
                 		%>
- <h3 style="margin-left:50px;color:gold;"><%=session.getAttribute("admin") %></h3>
+ <h3 style="margin-left:50px;color:red;"><%=session.getAttribute("admin") %></h3>
  
  <%} %>
 

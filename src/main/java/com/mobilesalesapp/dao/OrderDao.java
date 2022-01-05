@@ -13,5 +13,7 @@ public interface OrderDao {
 	public ResultSet viewAllOrders(OrderPojo orderPojo);
 	
 	public void orderCancel(OrderPojo orderPojo);
+	
+	public double getWallet(UpdateWalletPojo obj);
 
 }

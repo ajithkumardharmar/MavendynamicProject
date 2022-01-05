@@ -109,7 +109,8 @@ li a:hover {
 			<th>Description</th>
 			<th>Standard Price</th>
 			<th>List Price</th>
-			<th>Actions</th>
+			<th>Update</th>
+			<th>Delete</th>
 		</tr>
 		<%
 		while (rs.next()) {
@@ -123,16 +124,7 @@ li a:hover {
 			<td><%=rs.getString(4)%></td>
 			<td><%=rs.getString(5)%></td>
 			<td>
-				<form action="deleteProduct" method="post">
-					Product Id : <input type="text" value=<%=rs.getInt(1)%> readonly
-						name="deleteId" id="brand_textbox" pattern="[0-9]{1,8}"
-						maxlength="8" required class="deleteId"><br>
-					<br>
-					<button type="submit" class="btn_add">Delete</button>
-					<br>
-					<br>
-
-				</form>
+				
 				<form action="updateProduct" method="post">
 
 					Product Id : <input type="text" name="updateId"
@@ -146,6 +138,18 @@ li a:hover {
 						pattern="[0-9]{1,8}" maxlength="8" required class="add_inputs2"><br>
 					<br>
 					<button type="submit" class="btn_add">Update</button>
+					<br>
+					<br>
+
+				</form>
+			</td>
+			<td>
+			<form action="deleteProduct" method="post">
+					Product Id : <input type="text" value=<%=rs.getInt(1)%> readonly
+						name="deleteId" id="brand_textbox" pattern="[0-9]{1,8}"
+						maxlength="8" required class="deleteId"><br>
+					<br>
+					<button type="submit" class="btn_add">Delete</button>
 					<br>
 					<br>
 

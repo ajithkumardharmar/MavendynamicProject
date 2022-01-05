@@ -110,7 +110,8 @@
      	
          <br>
 			<a class="btn_add"  style="margin-left: 40px" href="ProductList.jsp">Show All Products</a><br><br><br><br>
-			<a class="btn_add"  style="margin-left: 40px" href="ViewUser.jsp">Show All Users</a><br><br>
+			<a class="btn_add"  style="margin-left: 40px" href="ViewUser.jsp">Show All Users</a><br><br><br><br>
+			<a class="btn_add"  style="margin-left: 40px" href="ContactUs.jsp">Show ContactUs</a><br><br>
 			
 </div>
   </div>

@@ -10,13 +10,14 @@ import com.mobilesalesapp.model.RegisterPojo;
 import com.mobilesalesapp.util.ConnectionUtil;
 
 public class UserImpl implements UserDao {
-	public void register(RegisterPojo p) {
+	public int register(RegisterPojo p) {
 
 		Connection con = ConnectionUtil.connect();
 
 		String query = "insert into users_table (first_name,email,phone_number,password,confirm_password) values(?,?,?,?,?)";
 		String query2 = "commit";
 		PreparedStatement pre;
+		int i=0;
 		try {
 			pre = con.prepareStatement(query);
 			pre.setString(1, p.getName());
@@ -25,13 +26,15 @@ public class UserImpl implements UserDao {
 			pre.setString(4, p.getPassword());
 			pre.setString(5, p.getConfirm_password());
 			System.out.println("print");
-			pre.executeUpdate();
+			 i=pre.executeUpdate();
+			
 			pre.executeUpdate(query2);
 			System.out.println("print1");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return i;
 
 		// System.out.println(i);
 	}

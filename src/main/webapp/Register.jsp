@@ -55,6 +55,10 @@
                 pattern="((?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                 title="Enter atleast one upper case and one lower case and one number ,and atleast 8 or more character" required><br><br>
                 <p id="pws" style="color:red;"></p><br>
+                <%String regError=(String)session.getAttribute("regError"); 
+                if(regError!=null){%>
+                <h4 style="color: red;"><%=regError %></h4>
+                <% }%>
                 <button class="b_reg">Register</button>
                 
             </form>

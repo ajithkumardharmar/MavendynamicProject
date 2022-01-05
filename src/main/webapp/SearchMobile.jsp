@@ -136,10 +136,6 @@ li a:hover {
 	position: relative;
 	top: -8px;
 }
-
-.table_right {
-	margin-right: 200px
-}
 .searchPro{
 position: absolute;
 left: 420px;
@@ -149,6 +145,7 @@ padding:10px;
 font-size: 16px;
 float:left;
 }
+
 .searchPro button{
 float: left;
 padding:10px;
@@ -157,6 +154,9 @@ padding:10px;
   border: 1px solid grey;
   border-left: none;
   cursor: pointer;
+}
+.table_right {
+	margin-right: 200px
 }
 
 * {
@@ -186,29 +186,31 @@ padding:10px;
 	</div><br>
 
 	<div class="body_main">
-		
+		<br>
 		<h3 style="margin-left: 200px;"><%=name%></h3>
 		<h3 style="margin-left: 200px;"><%="Wallet Amount: " + wallet%></h3>
 
 
 
 		<marquee class="mar1" behavior="" direction="">New
-			Smartphone Offer Available upto 15% Discount</marquee><br>
-<div class="searchPro">			
+			Smartphone Offer Available upto 15% Discount</marquee><br><br>
+	<div class="searchPro">	
 <form action="SearchMobile.jsp">
 <input type="text" name="search"  >
 <button type="submit">Search</button>
 </form>
-</div><br><br><br><br>
-
+</div>	<br><br><br>
 
 
 	<table style="margin-left: 222px;" id="table2" class="table1">
 			<%
-			String query = "select * from products ";
+			String search=( request.getParameter("search")).toLowerCase();
+			System.out.println(search+" searches ");
+			String query = "select * from products where lower(product_name) like '"+search+"%'";
 				Connection con = ConnectionUtil.connect();
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery(query);
+				ResultSet rs1 = st.executeQuery(query);
 				int i = 0;
 				while (i <= 1) {
 					if (rs.next()) {

@@ -147,11 +147,7 @@ String userId1=(String)session.getAttribute("userId");
 int userId=Integer.parseInt(userId1);
 Connection con=ConnectionUtil.connect();
 String query="select * from carts_table where user_id=?";
-String query1="select * from carts_table where user_id=?";
-String query3="select * from photo";
-PreparedStatement pre2 =con.prepareStatement(query3);
-ResultSet rs2=pre2.executeQuery();
-//Statement st=con.createStatement();
+
 PreparedStatement pre1 =con.prepareStatement(query);
 pre1.setInt(1,userId );
 ResultSet rs1=pre1.executeQuery();
@@ -163,10 +159,7 @@ pre.setInt(1,userId );
   
     System.out.println("rsnext");
 %>
-    <%if(rs2.next()) { 
-    System.out.println(rs2.getString(1));%>
    
-    <%} %>
     
     
     <%if(rs1.next()) {%>
@@ -178,7 +171,7 @@ pre.setInt(1,userId );
     <th>Product Name</th>
     <th>Description</th>
     <th>Price</th>
-    
+    <th>Action</th>
   
     </tr>
    
@@ -190,6 +183,7 @@ pre.setInt(1,userId );
     <td><%=rs.getString(4) %></td>
     <td><%=rs.getString(5) %></td>
     <td><%=rs.getDouble(6) %></td>
+    <td><a href="MobileInfo.jsp?product_id=<%=rs.getInt(3) %>">View </a></td>
    
     </tr>
     <%}}

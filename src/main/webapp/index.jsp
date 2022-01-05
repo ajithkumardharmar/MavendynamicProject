@@ -23,7 +23,7 @@
                 title="Enter atleast one upper case, one lowercase, specialcharacter and one number,and atleast 8 or more character"
                  name="password" type="password" required><br><br>
                 <button class="c_sub" type="submit">Login </button><br><br><br>
-                <a class="c_reg" href="registered.html">Register</a><br><br>
+                <a class="c_reg" href="Register.jsp">Register</a><br><br>
                 
               
               <%
