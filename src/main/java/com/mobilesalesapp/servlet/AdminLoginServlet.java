@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import com.mobilesalesapp.exception.InvalidAdminException;
 import com.mobilesalesapp.impl.AdminImpl;
 import com.mobilesalesapp.model.AdminPojo;
 
@@ -30,10 +31,20 @@ public class AdminLoginServlet extends HttpServlet {
 			res.sendRedirect("AdminMain.jsp");
 
 		} else {
+			try {
+				
+		
 			HttpSession session = req.getSession();
 			session.setAttribute("admin", "Invalid Email or Password");
-			res.sendRedirect("AdminLogin.jsp");
-			// out.println("Invalid username or Password");
+			
+			throw new InvalidAdminException();
+			//res.sendRedirect("AdminLogin.jsp");
+			
+		}
+		catch (InvalidAdminException e) {
+			String page=e.InvalidAdmin();
+			res.sendRedirect(page);
+		}
 		}
 
 	}

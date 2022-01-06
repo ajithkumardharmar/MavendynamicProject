@@ -43,7 +43,9 @@ public class RegisterServlet extends HttpServlet {
 		
 		try {
 			res.sendRedirect("index.jsp");
-		} catch (IOException e) {
+		} 
+		
+		catch (IOException e) {
 			// T Auto-generated catch block
 			e.printStackTrace();
 			//throw new EmailException();
@@ -55,10 +57,18 @@ public class RegisterServlet extends HttpServlet {
 				HttpSession session =req.getSession();
 				session.setAttribute("regError", "Email Must be Unique");
 				System.out.println("Email Must be Unique");
-				res.sendRedirect("Register.jsp");
-			} catch (IOException e) {
+				throw new EmailException();
+				//res.sendRedirect("Register.jsp");
+			} catch (EmailException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				String page=e.sameEmail();
+				try {
+					res.sendRedirect(page);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		}
 		

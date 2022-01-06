@@ -209,9 +209,11 @@ padding:10px;
 			String query = "select * from products where lower(product_name) like '"+search+"%'";
 				Connection con = ConnectionUtil.connect();
 				Statement st = con.createStatement();
+				Statement st1 = con.createStatement();
 				ResultSet rs = st.executeQuery(query);
-				ResultSet rs1 = st.executeQuery(query);
+				ResultSet rs1 = st1.executeQuery(query);
 				int i = 0;
+				if(rs1.next()){
 				while (i <= 1) {
 					if (rs.next()) {
 						System.out.println("proId"+rs.getInt(1));
@@ -370,9 +372,11 @@ padding:10px;
 				}
 
 				l++;
-				}
+				}}
+				else{
 				%>
-			
+				<h2 style="color: red; margin:100px;position:absolute; left: 350px">Product Not Found</h2>
+				<%} %>
 		</table>
 </div>
 

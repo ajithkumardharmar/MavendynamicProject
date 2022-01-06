@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.exception.EmailException;
+import com.mobilesalesapp.exception.InvalidUserException;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 
@@ -56,9 +58,15 @@ public class LoginServlet extends HttpServlet {
 					
 					session.setAttribute("LoginResult", "invalid Email or password");
 					System.out.println(session.getAttribute("LoginResult"));
-					res.sendRedirect("index.jsp");
+					//res.sendRedirect("index.jsp");
+					throw new InvalidUserException();
 				}
-			} catch (Exception e) {
+			}
+			catch (InvalidUserException e) {
+				// TODO Auto-generated catch block
+			String page=e.invalidUser();
+			res.sendRedirect(page);
+			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

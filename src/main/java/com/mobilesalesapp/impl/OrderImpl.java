@@ -1,6 +1,7 @@
 package com.mobilesalesapp.impl;
 
 import com.mobilesalesapp.dao.OrderDao;
+import com.mobilesalesapp.exception.LowBalanceException;
 import com.mobilesalesapp.model.OrderPojo;
 import com.mobilesalesapp.model.UpdateWalletPojo;
 import com.mobilesalesapp.util.ConnectionUtil;
@@ -21,11 +22,21 @@ public class OrderImpl implements OrderDao {
 		Connection con = ConnectionUtil.connect();
 		String query1 = "commit";
 		System.out.println("wallet decrease");
+		String query2="select wallet from users_table where pk_user_id='"+obj1.getUserId()+"'";
 
 		String query = "update users_table set wallet = (select wallet from users_table where pk_user_id=?)-? where pk_user_id=? and password=?";
 		try {
 			Statement st = con.createStatement();
 			st.executeUpdate(query1);
+			ResultSet rs=st.executeQuery(query1);
+			double Wallet=0;
+			if(rs.next()) {
+				Wallet=rs.getDouble(1);
+			}
+			if(Wallet>obj1.getPrice()) {
+				
+			
+			
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, obj1.getUserId());
 			pre.setDouble(2, obj1.getPrice());
@@ -34,7 +45,14 @@ public class OrderImpl implements OrderDao {
 			System.out.println("1");
 			i = pre.executeUpdate();
 			System.out.println("2");
-		} catch (Exception e) {
+			}
+			else {
+				i=5;
+			}
+		}
+		
+		
+		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

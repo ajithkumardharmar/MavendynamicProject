@@ -12,8 +12,7 @@ public class ProductImpl implements ProductDao {
 
 			Connection con = ConnectionUtil.connect();
 
-			String query = "insert into products (product_name,description,standard_price,list_price)"
-					+ "values(?,?,?,?)";
+			String query = "insert into products (product_name,description,standard_price,list_price) values(?,?,?,?)";
 
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setString(1, obj.getProduct_name());

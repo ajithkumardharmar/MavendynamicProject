@@ -2,6 +2,7 @@ package com.mobilesalesapp.servlet;
 
 import java.sql.*;
 
+import com.mobilesalesapp.exception.LowBalanceException;
 import com.mobilesalesapp.impl.OrderImpl;
 import com.mobilesalesapp.model.OrderPojo;
 import com.mobilesalesapp.model.UpdateWalletPojo;
@@ -38,7 +39,7 @@ public class OrderServlet extends HttpServlet {
 		int i = orderDao.updateWallet1(obj1);
 		try {
 
-			if (i > 0) {
+			if (i == 1) {
 				System.out.println("updatedWallet");
 				OrderPojo obj2 = new OrderPojo(userId, productId, price, fullAddress);
 				int j = orderDao.insertOrder(obj2);
@@ -49,7 +50,16 @@ public class OrderServlet extends HttpServlet {
 
 					System.out.println("invalid data");
 				}
-			} else {
+			}else if(i==5) {
+				try {
+					throw new LowBalanceException();
+				} catch (LowBalanceException low) {
+					String page=low.lowBal();
+					res.sendRedirect(page);
+				}
+				
+			}
+			else {
 				session.setAttribute("buying", "Invalid Password");
 				res.sendRedirect("MobileBuy.jsp");
 				// System.out.println("invalid password");
