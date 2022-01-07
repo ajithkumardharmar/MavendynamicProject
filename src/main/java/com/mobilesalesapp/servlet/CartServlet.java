@@ -1,6 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import com.mobilesalesapp.impl.CartImpl;
 import com.mobilesalesapp.model.CartPojo;
@@ -23,7 +24,10 @@ public class CartServlet extends HttpServlet {
 		int productId = (int) session.getAttribute("productId");
 		CartPojo cartPojo=new CartPojo(userId,productId);
 		CartImpl  cartDao=new CartImpl();
+		
 		cartDao.addCart(cartPojo);
+		
+		
 		try {
 			res.sendRedirect("CartItem.jsp");
 		} catch (IOException e) {

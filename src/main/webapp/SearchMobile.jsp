@@ -177,7 +177,7 @@ padding:10px;
 			<li><a href="ViewCart.jsp">Cart</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
-			<li style="float: right;"><a href="index.jsp">Logout</a></li>
+			<li style="float: right;"><a href="logOut">Logout</a></li>
 			<li style="float: right;"><a href="AdminLogin.jsp">Admin</a></li>
 
 		</ul>

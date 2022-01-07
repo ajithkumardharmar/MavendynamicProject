@@ -1,4 +1,6 @@
 
+<%@page import="java.time.LocalDate"
+import ="java.time.format.DateTimeFormatter" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import ="com.mobilesalesapp.impl.OrderImpl" import ="java.sql.*" import ="com.mobilesalesapp.model.OrderPojo" %>
 <!DOCTYPE html>
@@ -22,15 +24,6 @@ table, th, td {
 	/* background-color: brown;
         padding: 9px; */
 	
-}
-.btn_add {
-	padding: 12px;
-	background-color: lightbrown;
-	border-radius: 22px;
-}
-
-.btn_add:hover {
-	background-color: green;
 }
 
 .top_nav_in1 {
@@ -125,8 +118,37 @@ li a:hover {
     border-radius: 20px;
 
 }
+.searchPro{
+position: absolute;
+left: 420px;
+}
+.searchPro input[type=date]{
+padding:4px;
+font-size: 16px;
+float:left;
+}
+.searchPro button{
+float: left;
+padding:6px;
+ background: #2196F3;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
 .but_log{
 margin-top:40px;
+}
+.btn_add {
+text-decoration:none;
+	padding: 12px;
+	color:black;
+	background-color: lightblue;
+	border-radius: 22px;
+}
+
+.btn_add:hover {
+	background-color: green;
 }
 
 * {
@@ -140,31 +162,45 @@ margin-top:40px;
 	<div class="top_nav">
 
 		<ul>
-			<li><a  href="index.jsp">Home</a></li>
-			
-            
-			<li style="float: right;"><a href="AdminLogin.jsp">Logout</a></li>
-			<li style="float: right;"><a href="AdminMain.jsp">Admin</a></li>
+			<li><a  href="MobilePage.jsp">Home</a></li>
+			<li><a class="active" href="ViewOrders.jsp">My Orders</a></li>
+            <li><a href="ViewCart.jsp">Cart</a></li>
+			<li><a href="ContactUs.jsp">Contact us</a></li>
+			<li><a href="AboutUs.jsp">About us</a></li>
+			<li style="float: right;"><a href="logOut">Logout</a></li>
+			<li style="float: right;"><a href="AdminLogin.jsp">Admin</a></li>
 
 		</ul>
 
 
 	</div><br><br>
     <%
-    //String user = (String) session.getAttribute("userId");
-  //  System.out.println("my"+user);
-  
-    	int userId = Integer.parseInt(request.getParameter("userId"));
-    	System.out.println("my1	"+userId);
-    	OrderPojo orderPojo=new OrderPojo(userId);
+    String dateOrder=request.getParameter("OrderDate");
+    System.out.println(dateOrder);
+    DateTimeFormatter formater=DateTimeFormatter.ofPattern("dd-mm-yyyy");
+    String dateOrder1=dateOrder.formatted(formater);
+    LocalDate OrderDate=LocalDate.parse(dateOrder1);
+    
+    
+    
+    String user = (String) session.getAttribute("userId");
+    System.out.println("my"+user+OrderDate);
+    	int userId = Integer.parseInt(user);
+    	System.out.println("my1	"+userId+"date "+OrderDate);
+    	OrderPojo orderPojo=new OrderPojo(userId,OrderDate);
     	OrderImpl order=new OrderImpl();
-    	ResultSet rs=order.viewAllOrders(orderPojo);
-    	ResultSet rs1=order.viewAllOrders(orderPojo);
+    	ResultSet rs=order.SearchAllOrders(orderPojo);
+    	ResultSet rs1=order.SearchAllOrders(orderPojo);
     %>
     <%
     if(rs1.next() ){%>
     	
-   
+   	<div class="searchPro"">
+	<form action="ViewOrder1.jsp">
+	<input type="date" name="OrderDate" requried>
+	<button  type="submit">Search</button>
+	</form>
+	</div><br><br><br>
     	
     <table style="width: 80%;margin-left: 100px;">
     <tr>
@@ -187,10 +223,10 @@ margin-top:40px;
     <td><%=rs.getString(4) %></td>
     <td><%=rs.getString(5) %></td>
     <td>
-    <form action="deliveredOrder" method="post" >
-    Order Id :<input type="text" name="orderId" value="<%=rs.getInt(1) %>" readonly ><br><br>
+    <form action="cancelOrder" method="post" >
+    Order Id :<input type="text" name="cancelId" value="<%=rs.getInt(1) %>" readonly ><br><br>
     
-    <button type="submit" class="btn_add ">Delivered</button>
+    <button type="submit" class="btn_add">Cancel</button>
     </form>
     </td>
     </tr>

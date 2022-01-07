@@ -115,6 +115,17 @@ li a:hover {
     border-radius: 20px;
 
 }
+.btn_add {
+text-decoration:none;
+	padding: 12px;
+	color:black;
+	background-color: lightblue;
+	border-radius: 22px;
+}
+
+.btn_add:hover {
+	background-color: green;
+}
 .but_log{
 margin-top:40px;
 }
@@ -135,7 +146,7 @@ margin-top:40px;
             <li><a class="active" href="ViewCart.jsp">Cart</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
-			<li style="float: right;"><a href="index.jsp">Logout</a></li>
+			<li style="float: right;"><a href="logOut">Logout</a></li>
 			<li style="float: right;"><a href="AdminLogin.jsp">Admin</a></li>
 
 		</ul>
@@ -171,8 +182,8 @@ pre.setInt(1,userId );
     <th>Product Name</th>
     <th>Description</th>
     <th>Price</th>
-    <th>Action</th>
-  
+    <th>View</th>
+  	<th>Action</th>
     </tr>
    
     <%while(rs.next()){ 
@@ -183,7 +194,8 @@ pre.setInt(1,userId );
     <td><%=rs.getString(4) %></td>
     <td><%=rs.getString(5) %></td>
     <td><%=rs.getDouble(6) %></td>
-    <td><a href="MobileInfo.jsp?product_id=<%=rs.getInt(3) %>">View </a></td>
+    <td><a class="btn_add"  href="MobileInfo.jsp?product_id=<%=rs.getInt(3) %>">View </a></td>
+    <td><a class="btn_add" href="cartDelete?product_id=<%=rs.getInt(3) %>&userId=<%=rs.getInt(2) %>">Delete </a></td>
    
     </tr>
     <%}}

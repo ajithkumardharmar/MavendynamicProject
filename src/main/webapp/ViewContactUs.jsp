@@ -130,13 +130,10 @@ margin-top:40px;
 	<div class="top_nav">
 
 		<ul>
-			<li><a  href="MobilePage.jsp">Home</a></li>
-			<li><a  href="ViewOrders.jsp">My Orders</a></li>
-            <li><a class="active" href="ViewCart.jsp">Cart</a></li>
-			<li><a href="ContactUs.jsp">Contact us</a></li>
-			<li><a href="AboutUs.jsp">About us</a></li>
-			<li style="float: right;"><a href="index.jsp">Logout</a></li>
-			<li style="float: right;"><a href="AdminLogin.jsp">Admin</a></li>
+			<li><a  href="index.jsp">Home</a></li>
+			
+			<li style="float: right;"><a href="AdminLogin.jsp">Logout</a></li>
+			<li style="float: right;"><a href="AdminMain.jsp">Admin</a></li>
 
 		</ul>
 

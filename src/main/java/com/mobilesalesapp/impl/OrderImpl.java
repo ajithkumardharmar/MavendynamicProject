@@ -87,7 +87,24 @@ public class OrderImpl implements OrderDao {
 	public ResultSet viewAllOrders(OrderPojo orderPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,order_date,address " + "from orders_table where fk_user_id=?";
+		String query = "select order_id,status,price,order_date,address from orders_table where fk_user_id=? ";
+		ResultSet rs = null;
+		try {
+			System.out.println(orderPojo.getUserId());
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setInt(1, orderPojo.getUserId());
+			rs = pre.executeQuery();
+			System.out.println(rs);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+		}
+		return rs;
+	}
+	public ResultSet SearchAllOrders(OrderPojo orderPojo) {
+
+		Connection con = ConnectionUtil.connect();
+		String query = "select order_id,status,price,order_date,address from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')='"+orderPojo.getDate()+"'";
 		ResultSet rs = null;
 		try {
 			System.out.println(orderPojo.getUserId());

@@ -116,8 +116,37 @@ li a:hover {
     border-radius: 20px;
 
 }
+.searchPro{
+position: absolute;
+left: 420px;
+}
+.searchPro input[type=date]{
+padding:4px;
+font-size: 16px;
+float:left;
+}
+.searchPro button{
+float: left;
+padding:6px;
+ background: #2196F3;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
 .but_log{
 margin-top:40px;
+}
+.btn_add {
+text-decoration:none;
+	padding: 12px;
+	color:black;
+	background-color: lightblue;
+	border-radius: 22px;
+}
+
+.btn_add:hover {
+	background-color: green;
 }
 
 * {
@@ -136,13 +165,19 @@ margin-top:40px;
             <li><a href="ViewCart.jsp">Cart</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
-			<li style="float: right;"><a href="index.jsp">Logout</a></li>
+			<li style="float: right;"><a href="logOut">Logout</a></li>
 			<li style="float: right;"><a href="AdminLogin.jsp">Admin</a></li>
 
 		</ul>
 
 
 	</div><br><br>
+	<div class="searchPro"">
+	<form action="ViewOrder1.jsp">
+	<input type="date" name="OrderDate" requried>
+	<button  type="submit">Search</button>
+	</form>
+	</div><br><br><br>
     <%
     String user = (String) session.getAttribute("userId");
     System.out.println("my"+user);
@@ -182,7 +217,7 @@ margin-top:40px;
     <form action="cancelOrder" method="post" >
     Order Id :<input type="text" name="cancelId" value="<%=rs.getInt(1) %>" readonly ><br><br>
     
-    <button type="submit" class="but_add ">Cancel</button>
+    <button type="submit" class="btn_add">Cancel</button>
     </form>
     </td>
     </tr>

@@ -34,7 +34,7 @@
 
                 <h2 class="c_register" >Register </h2><br>
                 <label for="">Name:</label><br>
-                <input  autocomplete="off" class="c_user2"  name="name1" type="text" pattern="[A-Za-z]{3,40}" 
+                <input autofocus  autocomplete="off" class="c_user2"  name="name1" type="text" pattern="[A-Za-z]{3,40}" 
                 title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br><br>
                 
                 <label for="">Email:</label><br>

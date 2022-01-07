@@ -2,17 +2,19 @@ package com.mobilesalesapp.impl;
 
 import com.mobilesalesapp.dao.CartDao;
 import com.mobilesalesapp.model.CartPojo;
+import com.mobilesalesapp.model.ProductPojo;
 import com.mobilesalesapp.util.ConnectionUtil;
 
 import java.sql.*;
+
+import javax.servlet.http.HttpSession;
 
 public class CartImpl implements CartDao {
 	public void addCart(CartPojo cartPojo) {
 		System.out.println("Dao1");
 		Connection con = ConnectionUtil.connect();
 		String query = "select * from products where pk_product_id=?";
-		
-		
+	
 		String query4="commit";
 		String productName=null,url = null;
 		String description = null;
@@ -63,5 +65,22 @@ public class CartImpl implements CartDao {
 			e.printStackTrace();
 		}
 
+	}
+	public void deleteCart(CartPojo pro) {
+		
+		
+		Connection con=ConnectionUtil.connect();
+		String query="delete from carts_table where product_id='"+pro.getProductId()+"' and user_id='"+pro.getUserId()+"'";
+		
+		try {
+			Statement st=con.createStatement();
+			int i=st.executeUpdate(query);
+			System.out.println("deleteCart "+i);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 }

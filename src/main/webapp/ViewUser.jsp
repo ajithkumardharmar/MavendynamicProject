@@ -95,8 +95,7 @@ li a:hover {
 
 			<li style="float: right;"><a href="AdminLogin.jsp">Sign out</a></li>
 			<li style="float: right;"><a class="active" href="AdminMain.jsp">Admin</a></li>
-			<li><a href="ContactUs.jsp">Contact us</a></li>
-			<li><a href="AboutUs.jsp">About us</a></li>
+			
 
 
 		</ul>
@@ -147,7 +146,7 @@ li a:hover {
 						userId :<input name="userId" type="text"
 							value="<%=ns.getInt(1)%>"><br>
 						<br>
-						<button type="submit" class="btn_add ">Search Order</button>
+						<button type="submit" class="btn_add">Search Order</button>
 					</form>
 
 

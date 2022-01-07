@@ -1,15 +1,31 @@
 package com.mobilesalesapp.model;
 
+import java.time.LocalDate;
+
 public class OrderPojo {
 	private int userId;
 	private int productId;
 	private double price;
 	private String address;
 	private int orerId;
-	
+	private LocalDate date;	
 	
 
 	
+
+	public OrderPojo(int userId, LocalDate date) {
+		super();
+		this.userId = userId;
+		this.date = date;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 
 	public OrderPojo(int productId, int orerId) {
 		super();

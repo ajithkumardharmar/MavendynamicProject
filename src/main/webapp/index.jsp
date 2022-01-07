@@ -15,7 +15,7 @@
             <form  action="add1" method="post">
                 <h3 class="c_login">Login</h3>
                 <label  class="c_lab" for="">Email</label><br>
-                <input autocomplete="off" class="c_user" pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+" 
+                <input autocomplete="off" autofocus class="c_user" pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+" 
                 title="Enter valid email ex(example12@gmail.com)" 
                 name="username" type="email" required><br><br>
                 <label class="c_lab" for="">Password</label><br>
