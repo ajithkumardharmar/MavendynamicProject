@@ -110,6 +110,16 @@ li a:hover {
     border-radius: 20px;
 
 }
+.but_log button{
+	text-decoration:none;
+	color:white;
+ 	padding: 12px;
+ 	margin-top:20px;
+    margin-left: 100px;
+    background-color: rgb(83, 83, 204);
+    border-radius: 20px;
+
+}
 .but_log{
 margin-top:40px;
 }
@@ -160,12 +170,46 @@ margin-top:40px;
 </pre>
 
 			<div class="but_log">
-				<a href="addCart">Add Cart</a> 
+				<button type="button" onclick="addCartItem('<%=ProductId%>')">Add Cart</button>
+				
 				<a href="MobileBuy.jsp">Buy</a>
 			</div>
 		</div>
 	</div>
-
+	<script type="text/javascript">
+	function addCartItem(productId){     
+        
+        console.log("cart");
+        
+    	var url="CheckCart.jsp?productId="+productId;  
+    	
+    	if(window.XMLHttpRequest){  
+    		request=new XMLHttpRequest();  
+    		}  
+    		else if(window.ActiveXObject){  
+    		request=new ActiveXObject("Microsoft.XMLHTTP");  
+    		}  
+    	try  
+    	{  
+    	request.onreadystatechange=getInfo;  
+    	request.open("GET",url,true);  
+    	request.send();  
+    	}  
+    	catch(e)  
+    	{  
+    	alert("Unable to connect to server");  
+    	}
+        
+      
+    } 
+    
+    function getInfo(){  
+    	if(request.readyState==4){  
+    	var val=request.responseText;
+    	 alert(val);  
+    	}  
+    	}  
+    </script>
 <% 
 double price= rs.getDouble(5);
 session.setAttribute("price",price);

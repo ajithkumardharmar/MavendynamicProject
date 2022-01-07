@@ -156,6 +156,7 @@ margin-top:40px;
 <%
 String userId1=(String)session.getAttribute("userId");
 int userId=Integer.parseInt(userId1);
+
 Connection con=ConnectionUtil.connect();
 String query="select * from carts_table where user_id=?";
 

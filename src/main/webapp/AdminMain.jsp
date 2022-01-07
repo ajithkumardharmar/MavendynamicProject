@@ -103,7 +103,7 @@ li a:hover {
 			<br>
 			<br>
 			<br> <a class="btn_add" style="margin-left: 40px"
-				href="ContactUs.jsp">Show ContactUs</a><br>
+				href="ViewContactUs.jsp">Show ContactUs</a><br>
 			<br>
 
 		</div>

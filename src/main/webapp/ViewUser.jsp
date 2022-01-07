@@ -135,8 +135,8 @@ li a:hover {
 						User_id :<input type="text" name="walletUserId"
 							value="<%=ns.getInt(1)%>" readonly pattern="[0-9]{1,8}"
 							maxlength="8" required><br> <br> Wallet :<input
-							type="text" name="walletAmount" pattern="[0-9]{1,8}"
-							maxlength="8" required><br> <br>
+							type="text" name="walletAmount" pattern="[1-9][0-9]{1,8}"
+							maxlength="8" title="Only enter positive number" required><br> <br>
 						<button type="submit" class="btn_add">Add</button>
 						<br> <br>
 					</form>
