@@ -43,7 +43,7 @@
                 
               	<label for="">Phone number:</label><br>
                 <input  autocomplete="off" class="c_user2" name="phone_number" type="text"
-                pattern="[6789]{1}+[0-9]{9}" maxlength="10"  title="Enter only 10 digit number" required><br><br>
+                pattern="[6789]{1}[0-9]{9}" maxlength="10"  title="Enter only 10 digit number" required><br><br>
                 
                 <label for="">Password:</label><br>
                 <input  autocomplete="off" class="c_user2" id="pwd1" name="password" type="password"
@@ -57,7 +57,7 @@
                 <p id="pws" style="color:red;"></p><br>
                 <%String regError=(String)session.getAttribute("regError"); 
                 if(regError!=null){%>
-                <h4 style="color: red;"><%=regError %></h4>
+                <h4 style="color: red;position: absolute;left:90px;"><%=regError %></h4><br><br>
                 <% }%>
                 <button class="b_reg">Register</button>
                 

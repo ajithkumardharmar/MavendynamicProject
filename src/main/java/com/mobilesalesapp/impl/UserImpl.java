@@ -14,7 +14,7 @@ public class UserImpl implements UserDao {
 
 		Connection con = ConnectionUtil.connect();
 
-		String query = "insert into users_table (first_name,email,phone_number,password,confirm_password) values(?,?,?,?,?)";
+		String query = "insert into users_table (first_name,email,phone_number,password) values(?,?,?,?)";
 		String query2 = "commit";
 		PreparedStatement pre;
 		int i=0;
@@ -24,7 +24,6 @@ public class UserImpl implements UserDao {
 			pre.setString(2, p.getEmail());
 			pre.setLong(3, p.getPhone_number());
 			pre.setString(4, p.getPassword());
-			pre.setString(5, p.getConfirm_password());
 			System.out.println("print");
 			 i=pre.executeUpdate();
 			
@@ -95,6 +94,23 @@ public class UserImpl implements UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+	public void updateProfile(RegisterPojo reg) {
+		String query="update users_table set first_name=?,phone_number=? where email=?";
+		Connection con= ConnectionUtil.connect();
+		try {
+			PreparedStatement pre=con.prepareStatement(query);
+			pre.setString(1, reg.getName());
+			pre.setLong(2, reg.getPhone_number());
+			pre.setString(3, reg.getEmail());
+			int i=pre.executeUpdate();
+			System.out.println("updateProfile "+i);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 

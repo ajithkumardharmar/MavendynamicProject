@@ -14,8 +14,6 @@ public interface OrderDao {
 	
 	public void orderCancel(OrderPojo orderPojo);
 	
-	public double getWallet(UpdateWalletPojo obj);
-	
 	public ResultSet SearchAllOrders(OrderPojo orderPojo);
 	
 	public void deliveredCancel(OrderPojo orderPojo);

@@ -209,10 +209,10 @@ left: 250px;
 		<div class="user_det">
 		<form action="updateUser" method="post">
 		<h1 style="position: absolute;left: 80px;">My Profile</h1><br><br><br>
-		Name :<input type="text" class="c_user" name="userName" pattern="[A-Za-z]{3,40}" value="<%= rs.getString(2)%>">	<br><br>
-		Email :<input type="text" class="c_user" readonly name="userEmail" value="<%= rs.getString(3)%>">	<br><br>
-		Phone :<input class="c_user" type="text" pattern="[6789]{1}+[0-9]{9}" name="userPhone" value="<%= rs.getString(4)%>">	<br><br>
-		Wallet :<input type="text" class="c_user" name="userWallet" value="<%= rs.getString(7)%>">	<br><br>
+		Name :<input type="text"  required class="c_user" name="userName" pattern="[A-Za-z.\s]{3,40}" value="<%= rs.getString(2)%>">	<br><br>
+		Email :<input type="text" required class="c_user" readonly name="userEmail" value="<%= rs.getString(3)%>">	<br><br>
+		Phone :<input class="c_user" required type="text" pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone" value="<%= rs.getString(4)%>">	<br><br>
+		Wallet :<input type="text" required class="c_user" name="userWallet" value="<%= rs.getString(6)%>">	<br><br>
 		<button style="margin-left: 80px" class="button1" type="submit">Update</button>
 		</form>
 		</div>

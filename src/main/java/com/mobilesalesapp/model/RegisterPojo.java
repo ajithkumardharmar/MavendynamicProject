@@ -27,7 +27,7 @@ public class RegisterPojo {
 	public void setWallet(double wallet) {
 		this.wallet = wallet;
 	}
-	private String confirm_password;
+	
 	public String getName() {
 		return name;
 	}
@@ -52,24 +52,19 @@ public class RegisterPojo {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getConfirm_password() {
-		return confirm_password;
-	}
-	public void setConfirm_password(String confirm_password) {
-		this.confirm_password = confirm_password;
-	}
-	@Override
-	public String toString() {
-		return "RegisterDao [name=" + name + ", email=" + email + ", phone_number=" + phone_number + ", password="
-				+ password + ", confirm_password=" + confirm_password + "]";
-	}
-	public RegisterPojo(String name, String email, Long phone_number, String password, String confirm_password) {
+		
+	public RegisterPojo(String name, String email, Long phone_number, String password) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.phone_number = phone_number;
 		this.password = password;
-		this.confirm_password = confirm_password;
+	}
+
+	@Override
+	public String toString() {
+		return "RegisterPojo [name=" + name + ", email=" + email + ", phone_number=" + phone_number + ", password="
+				+ password + "]";
 	}
 	public RegisterPojo() {
 		super();

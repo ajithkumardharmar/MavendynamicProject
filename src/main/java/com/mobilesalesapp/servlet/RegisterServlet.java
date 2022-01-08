@@ -26,13 +26,10 @@ public class RegisterServlet extends HttpServlet {
 		String email=req.getParameter("email");
 		Long phone_number=Long.parseLong(req.getParameter("phone_number"));
 		String password=req.getParameter("password");
-		String confirm_password=req.getParameter("confirm_password");
-//		PrintWriter out=res.getWriter();
-		//out.println(name+ email+ phone_number+ password+ confirm_password);
-		 System.out.println(name+ email+ phone_number+ password+ confirm_password);
+		 System.out.println(name+ email+ phone_number+ password);
 		
 			
-		RegisterPojo p=new RegisterPojo(name, email, phone_number, password, confirm_password);
+		RegisterPojo p=new RegisterPojo(name, email, phone_number, password);
 		UserImpl userDao=new UserImpl();
 		
 		int i=userDao.register(p);

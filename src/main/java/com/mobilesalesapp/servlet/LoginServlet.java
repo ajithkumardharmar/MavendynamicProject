@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		String username=req.getParameter("username");
 		String password=req.getParameter("password");
 		
-		RegisterPojo Login=new RegisterPojo(null,username,null,password,null);
+		RegisterPojo Login=new RegisterPojo(null,username,null,password);
 		UserImpl userDao=new UserImpl();
 	
 	
@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 					String userId=ns.getString(1);
 					String email=ns.getString(3);
 					String name=ns.getString(2);
-					double wallet=ns.getDouble(7);
+					double wallet=ns.getDouble(6);
 					session.setAttribute("userId", userId);
 					session.setAttribute("email", email);
 					session.setAttribute("name", name);

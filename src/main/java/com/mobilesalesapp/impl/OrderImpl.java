@@ -9,13 +9,6 @@ import com.mobilesalesapp.util.ConnectionUtil;
 import java.sql.*;
 
 public class OrderImpl implements OrderDao {
-	public double getWallet(UpdateWalletPojo obj) {
-		double Wallet=0;
-		Connection con = ConnectionUtil.connect();
-		String query="select wallet ";
-	
-		return 1;
-	}
 
 	public int updateWallet1(UpdateWalletPojo obj1) {
 		int i = 0;
@@ -24,11 +17,13 @@ public class OrderImpl implements OrderDao {
 		System.out.println("wallet decrease");
 		String query2="select wallet from users_table where pk_user_id='"+obj1.getUserId()+"'";
 
-		String query = "update users_table set wallet = (select wallet from users_table where pk_user_id=?)-? where pk_user_id=? and password=?";
+		String query = "update users_table set wallet = wallet-? where pk_user_id=? and password=?";
 		try {
 			Statement st = con.createStatement();
 			st.executeUpdate(query1);
-			ResultSet rs=st.executeQuery(query1);
+			
+			//get Wallet code
+			ResultSet rs=st.executeQuery(query2);
 			double Wallet=0;
 			if(rs.next()) {
 				Wallet=rs.getDouble(1);
@@ -38,10 +33,10 @@ public class OrderImpl implements OrderDao {
 			
 			
 			PreparedStatement pre = con.prepareStatement(query);
-			pre.setInt(1, obj1.getUserId());
-			pre.setDouble(2, obj1.getPrice());
-			pre.setInt(3, obj1.getUserId());
-			pre.setString(4, obj1.getPassword());
+			
+			pre.setDouble(1, obj1.getPrice());
+			pre.setInt(2, obj1.getUserId());
+			pre.setString(3, obj1.getPassword());
 			System.out.println("1");
 			i = pre.executeUpdate();
 			System.out.println("2");

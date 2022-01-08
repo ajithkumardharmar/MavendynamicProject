@@ -6,10 +6,16 @@ if (session.getAttribute("name") == (null)) {
 	response.sendRedirect("index.jsp");
 }
 String name = (String) session.getAttribute("name");
-String userId1 = (String) session.getAttribute("userId");
+int userId = Integer.parseInt(session.getAttribute("userId").toString());
 
-double wallet = (double) session.getAttribute("wallet");
-int userId = Integer.parseInt(userId1);
+String query1="select * from users_table where pk_user_id='"+userId+"'";
+Connection con1 =ConnectionUtil.connect();
+Statement st1=con1.createStatement();
+ResultSet rs1= st1.executeQuery(query1);
+double wallet=0;
+if(rs1.next()){
+	wallet=rs1.getDouble(6);
+}
 System.out.println(userId);
 %>
 

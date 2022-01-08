@@ -172,12 +172,7 @@ text-decoration:none;
 
 
 	</div><br><br>
-	<div class="searchPro"">
-	<form action="ViewOrder1.jsp">
-	<input type="date" name="OrderDate" requried>
-	<button  type="submit">Search</button>
-	</form>
-	</div><br><br><br>
+	
     <%
     String user = (String) session.getAttribute("userId");
     System.out.println("my"+user);
@@ -191,7 +186,12 @@ text-decoration:none;
     <%
     if(rs1.next() ){%>
     	
-   
+   <div class="searchPro"">
+	<form action="ViewOrder1.jsp">
+	<input type="date" name="OrderDate" requried>
+	<button  type="submit">Search</button>
+	</form>
+	</div><br><br><br>
     	
     <table style="width: 80%;margin-left: 100px;">
     <tr>
