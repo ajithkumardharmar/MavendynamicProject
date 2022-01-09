@@ -3,39 +3,14 @@ package com.mobilesalesapp.impl;
 import java.sql.*;
 
 import com.mobilesalesapp.dao.AdminDao;
-import com.mobilesalesapp.model.AdminPojo;
+
 import com.mobilesalesapp.model.RegisterPojo;
 import com.mobilesalesapp.util.ConnectionUtil;
 
 
 
 public class AdminImpl implements AdminDao  {
-	public  boolean login(AdminPojo admin)  {
-		
-		Connection con =ConnectionUtil.connect();
-		String query="select *from admins_table where email in ? and password in ?";
-		PreparedStatement pre;
-		int i=0;
-		try {
-			pre = con.prepareStatement(query);
-			pre.setString(1, admin.getAdminUserName());
-			pre.setString(2, admin.getPassword());
-			//System.out.println(AdminUserName+password);
-			
-			 i=pre.executeUpdate();
-			System.out.println(i);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		if(i>0) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+
 	
 	public int addWalletAmount(RegisterPojo wallet){
 			Connection con=ConnectionUtil.connect();
@@ -56,7 +31,7 @@ public class AdminImpl implements AdminDao  {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return j; 
+			return j;
 			
 			
 		}

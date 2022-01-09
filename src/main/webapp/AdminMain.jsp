@@ -11,6 +11,9 @@
 	text-align: center;
 	background-color: bisque;
 }
+btn_add {
+padding-left: 200px;
+}
 
 ul {
 	list-style-type: none;
@@ -89,7 +92,7 @@ li a:hover {
 		<br>
 
 		<div class="add_con">
-			<br> <br> <a class="btn_add" style="margin-left: 40px"
+			<br> <br> <a  class="btn_add" style="margin-left: 40px"
 				href="AddProduct.jsp">Add Products</a><br>
 			<br>
 			<br>

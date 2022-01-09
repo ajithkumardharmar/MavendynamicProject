@@ -2,6 +2,7 @@ package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
 
+import com.mobilesalesapp.exception.ProductDeleteException;
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.model.ProductPojo;
 
@@ -27,17 +28,30 @@ public class DeleteProductServlet extends HttpServlet {
 		
 		try {
 			int i=obj2.delete(obj1);
-			HttpSession session=req.getSession();
+		
 			if(i>0) {
+				HttpSession session=req.getSession();
 				session.setAttribute("deleteInfo", "Successfully Deleted");
 				res.sendRedirect("ProductList.jsp");
 			}
 			else {
-				session.setAttribute("deleteInfo", "Product is not Deletable");
-				res.sendRedirect("ProductList.jsp");
+				throw new ProductDeleteException();
+				
 			}
 			
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ProductDeleteException e) {
+			HttpSession session=req.getSession();
+			session.setAttribute("deleteInfo", "Product not able to Delete ");
+			String page=e.deleteProduct();
+			try {
+				res.sendRedirect(page);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
