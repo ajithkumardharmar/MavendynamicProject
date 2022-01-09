@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import ="com.mobilesalesapp.impl.OrderImpl" import ="java.sql.*" import ="com.mobilesalesapp.model.OrderPojo" %>
+	pageEncoding="ISO-8859-1" import="com.mobilesalesapp.impl.OrderImpl"
+	import="java.sql.*" import="com.mobilesalesapp.model.OrderPojo"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +10,11 @@
 </head>
 <style>
 table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 20px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 20px;
 }
+
 .h2_1 {
 	text-align: center;
 	background-color: bisque;
@@ -106,47 +108,52 @@ li a:hover {
 	margin-top: -270px;
 	font-size: 20px;
 }
-.but_log a{
-	text-decoration:none;
-	color:white;
- 	padding: 12px;
- 	margin-top:20px;
-    margin-left: 100px;
-    background-color: rgb(83, 83, 204);
-    border-radius: 20px;
 
-}
-.searchPro{
-position: absolute;
-left: 420px;
-}
-.searchPro input[type=date]{
-padding:4px;
-font-size: 16px;
-float:left;
-}
-.searchPro button{
-float: left;
-padding:6px;
- background: #2196F3;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none;
-  cursor: pointer;
-}
-.but_log{
-margin-top:40px;
-}
-.btn_add {
-text-decoration:none;
+.but_log a {
+	text-decoration: none;
+	color: white;
 	padding: 12px;
-	color:black;
+	margin-top: 20px;
+	margin-left: 100px;
+	background-color: rgb(83, 83, 204);
+	border-radius: 20px;
+}
+
+.searchPro {
+	position: absolute;
+	left: 420px;
+}
+
+.searchPro input[type=date] {
+	padding: 4px;
+	font-size: 16px;
+	float: left;
+}
+
+.searchPro button {
+	float: left;
+	padding: 6px;
+	background: #2196F3;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+}
+
+.but_log {
+	margin-top: 40px;
+}
+
+.btn_add {
+	text-decoration: none;
+	padding: 12px;
+	color: black;
 	background-color: lightblue;
 	border-radius: 22px;
 }
 
 .btn_add:hover {
-	background-color: green;
+	background-color: cornflowerblue;
 }
 
 * {
@@ -160,79 +167,137 @@ text-decoration:none;
 	<div class="top_nav">
 
 		<ul>
-			<li><a  href="MobilePage.jsp">Home</a></li>
+			<li><a href="MobilePage.jsp">Home</a></li>
 			<li><a class="active" href="ViewOrders.jsp">My Orders</a></li>
-            <li><a href="ViewCart.jsp">Cart</a></li>
+			<li><a href="ViewCart.jsp">Cart</a></li>
+			<li><a href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-			<li style="float: right;"><a href="AdminLogin.jsp">Admin</a></li>
+
 
 		</ul>
 
 
-	</div><br><br>
-	
-    <%
-    String user = (String) session.getAttribute("userId");
-    System.out.println("my"+user);
-    	int userId = Integer.parseInt(user);
-    	System.out.println("my1	"+userId);
-    	OrderPojo orderPojo=new OrderPojo(userId);
-    	OrderImpl order=new OrderImpl();
-    	ResultSet rs=order.viewAllOrders(orderPojo);
-    	ResultSet rs1=order.viewAllOrders(orderPojo);
-    %>
-    <%
-    if(rs1.next() ){%>
-    	
-   <div class="searchPro"">
-	<form action="ViewOrder1.jsp">
-	<input type="date" name="OrderDate" requried>
-	<button  type="submit">Search</button>
-	</form>
-	</div><br><br><br>
-    	
-    <table style="width: 80%;margin-left: 100px;">
-    <tr>
-     <th>Order Id</th>
-    <th>Order Status</th>
-    <th>Price</th>
-    <th>Order Date</th>
-    <th>Delivery Address</th>
-    <th>Cancel Order</th>
-    </tr>
-    
-  
-    
- 
-    <%while(rs.next()){%>
-    <tr>
-    <td><%=rs.getInt(1) %></td>
-    <td><%=rs.getString(2) %></td>
-    <td><%=rs.getDouble(3) %></td>
-    <td><%=rs.getString(4) %></td>
-    <td><%=rs.getString(5) %></td>
-    <td>
-    <form action="cancelOrder" method="post" >
-    Order Id :<input type="text" name="cancelId" value="<%=rs.getInt(1) %>" readonly ><br><br>
-    
-    <button type="submit" class="btn_add">Cancel</button>
-    </form>
-    </td>
-    </tr>
-  
-    	<% }%>	
-    		
-    	
-   
-    </table>
+	</div>
+	<br>
+	<br>
 
- <% }
-   else{%>
-    	<h1 style="color: red ;margin-left: 500px;margin-top: 150px">Order is not placed yet</h1>
-   <% }%>
-<!--  <h3 style="color: red;margin-left: 300px">No Order Placed</h3> -->
+	<%
+	String user = (String) session.getAttribute("userId");
+	System.out.println("my" + user);
+	int userId = Integer.parseInt(user);
+	System.out.println("my1	" + userId);
+	OrderPojo orderPojo = new OrderPojo(userId);
+	OrderImpl order = new OrderImpl();
+	ResultSet rs = order.viewAllOrders(orderPojo);
+	ResultSet rs1 = order.viewAllOrders(orderPojo);
+	%>
+	<%
+	if (rs1.next()) {
+	%>
+
+
+	<div class="searchPro"">
+		<form action="ViewOrder1.jsp">
+			<input type="date" id="search" name="OrderDate" 
+				 requried>
+			<button type="submit">Search</button>
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<script type="text/javascript">
+		let today = new Date().toISOString().slice(0, 10);
+	
+		console.log(today);
+		document.getElementById("search").max =today;
+		
+	</script>
+
+	<table style="width: 80%; margin-left: 100px;">
+		<tr style="background-color:cornflowerblue ">
+			<th>Order Id</th>
+			<th>Order Status</th>
+			<th>Price</th>
+			<th>Order Date</th>
+			<th>Delivery Address</th>
+			<th>Cancel Order</th>
+		</tr>
+
+
+
+
+		<%
+		while (rs.next()) {
+		%>
+		<tr>
+			<td><%=rs.getInt(1)%></td>
+			<td><%=rs.getString(2)%></td>
+			<td><%=rs.getDouble(3)%></td>
+			<td><%=rs.getString(4)%></td>
+			<td><%=rs.getString(5)%></td>
+			<td>
+			
+					Order Id :<input type="text" name="cancelId"
+						value="<%=rs.getInt(1)%>" readonly><br>
+					<br>
+
+					<button type="submit" onclick="Cancel('<%=rs.getString(2)%>','<%=rs.getInt(1)%>')" class="btn_add">Cancel</button>
+				
+			</td>
+		</tr>
+
+		<%
+		}
+		%>
+
+
+
+	</table>
+
+	<%
+	} else {
+	%>
+	<h1 style="color: red; margin-left: 500px; margin-top: 150px">Order
+		is not placed yet</h1>
+	<%
+	}
+	%>
+	<script type="text/javascript">
+	function Cancel(status,id) {
+		console.log('on'+status);
+		var url1="cancelOrder?orderStatus="+status+"&orderId="+id;
+		if(window.XMLHttpRequest){  
+    		request=new XMLHttpRequest();  
+    		}  
+    		else if(window.ActiveXObject){  
+    		request=new ActiveXObject("Microsoft.XMLHTTP");  
+    		} 
+	
+	   	try  
+    	{  
+    	request.onreadystatechange=getInfo;  
+    	request.open("GET",url1,true);  
+    	request.send();  
+    	}  
+    	catch(e)  
+    	{  
+    	alert("Unable to connect to server");  
+    	}
+        
+      
+    } 
+    
+    function getInfo(){  
+    	if(request.readyState==4){  
+    	var val=request.responseText;
+    	 alert(val);  
+    	}
+		
+	}
+	</script>
 
 
 </body>

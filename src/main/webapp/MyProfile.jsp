@@ -185,14 +185,14 @@ left: 250px;
 	<div class="top_nav">
 
 		<ul>
-			<li><a class="active" href="MobilePage.jsp	">Home</a></li>
+			<li><a  href="MobilePage.jsp	">Home</a></li>
 			<li><a href="ViewOrders.jsp">My Orders</a></li>
 			<li><a href="ViewCart.jsp">Cart</a></li>
-			<li><a href="MyProfile.jsp">My Profile</a></li>
+			<li><a class="active" href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-			<li style="float: right;"><a href="AdminLogin.jsp">Admin</a></li>
+		
 
 		</ul>
 
@@ -212,14 +212,24 @@ left: 250px;
 		Name :<input type="text"  required class="c_user" name="userName" pattern="[A-Za-z.\s]{3,40}" value="<%= rs.getString(2)%>">	<br><br>
 		Email :<input type="text" required class="c_user" readonly name="userEmail" value="<%= rs.getString(3)%>">	<br><br>
 		Phone :<input class="c_user" required type="text" pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone" value="<%= rs.getString(4)%>">	<br><br>
-		Wallet :<input type="text" required class="c_user" name="userWallet" value="<%= rs.getString(6)%>">	<br><br>
+		Wallet :<input type="text" required class="c_user" name="userWallet" readonly value="<%= rs.getString(6)%>">	<br><br>
 		<button style="margin-left: 80px" class="button1" type="submit">Update</button>
 		</form>
 		</div>
 		
 		<%}
+	String message=(String)session.getAttribute("msg");
+	if(message!=null){%>
+	<script type="text/javascript">
+	alert('<%= message%>');
+	</script>
+		
+		<%	}
+	session.removeAttribute("msg");
 	
 	%>
+	
+	
 	
 </body>
 </html>

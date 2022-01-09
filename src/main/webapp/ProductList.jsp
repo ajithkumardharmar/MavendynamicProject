@@ -21,7 +21,7 @@ table, th, td {
 }
 
 .btn_add:hover {
-	background-color: green;
+	background-color: cornflowerblue;
 }
 
 .h2_1 {
@@ -68,8 +68,8 @@ li a:hover {
 	<div class="top_nav">
 
 		<ul>
-			<li><a href="index.jsp">Home</a></li>
-			<li style="float: right;"><a href="AdminLogin.jsp">Sign out</a></li>
+	
+			<li style="float: right;"><a href="logOut">Logout</a></li>
 			<li style="float: right;"><a class="active" href="AdminMain.jsp">Admin</a></li>
 			
 
@@ -102,7 +102,7 @@ li a:hover {
 	}
 	%>
 	<table style="width: 90%; margin-left: 70px;">
-		<tr>
+		<tr style="background-color: cornflowerblue">
 			<th>Product Id</th>
 			<th>Product Name</th>
 			<th>Description</th>

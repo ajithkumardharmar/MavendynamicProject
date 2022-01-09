@@ -32,7 +32,7 @@ table, th, td {
 }
 
 .btn_add:hover {
-	background-color: green;
+	background-color: cornflowerblue;
 }
 
 .btn_add1 {
@@ -44,7 +44,7 @@ table, th, td {
 }
 
 .btn_add1:hover {
-	background-color: green;
+	background-color: cornflowerblue;
 }
 
 .h2_1 {
@@ -91,9 +91,7 @@ li a:hover {
 	<div class="top_nav">
 
 		<ul>
-			<li><a href="MobilePage.jsp">Home</a></li>
-
-			<li style="float: right;"><a href="AdminLogin.jsp">Sign out</a></li>
+			<li style="float: right;"><a href="logOut">Logout</a></li>
 			<li style="float: right;"><a class="active" href="AdminMain.jsp">Admin</a></li>
 			
 
@@ -111,7 +109,7 @@ li a:hover {
 		ResultSet ns = userDao.userDetails();
 		%>
 		<table style="width: 80%; margin-left: 100px;">
-			<tr>
+			<tr style="background-color: cornflowerblue">
 				<th>Name</th>
 				<th>Email</th>
 				<th>Phone Number</th>

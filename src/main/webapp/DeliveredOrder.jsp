@@ -30,7 +30,7 @@ table, th, td {
 }
 
 .btn_add:hover {
-	background-color: green;
+	background-color: cornflowerblue;
 }
 
 .top_nav_in1 {
@@ -140,10 +140,8 @@ margin-top:40px;
 	<div class="top_nav">
 
 		<ul>
-			<li><a  href="index.jsp">Home</a></li>
-			
-            
-			<li style="float: right;"><a href="AdminLogin.jsp">Logout</a></li>
+
+			<li style="float: right;"><a href="logOut">Logout</a></li>
 			<li style="float: right;"><a href="AdminMain.jsp">Admin</a></li>
 
 		</ul>
@@ -167,7 +165,7 @@ margin-top:40px;
    
     	
     <table style="width: 80%;margin-left: 100px;">
-    <tr>
+    <tr style="background-color: cornflowerblue">
      <th>Order Id</th>
     <th>Order Status</th>
     <th>Price</th>
@@ -187,7 +185,7 @@ margin-top:40px;
     <td><%=rs.getString(4) %></td>
     <td><%=rs.getString(5) %></td>
     <td>
-    <form action="deliveredOrder" method="post" >
+    <form action="deliveredOrder?deliveryStatus=<%=rs.getString(2) %>" method="post" >
     Order Id :<input type="text" name="orderId" value="<%=rs.getInt(1) %>" readonly ><br><br>
     
     <button type="submit" class="btn_add ">Delivered</button>

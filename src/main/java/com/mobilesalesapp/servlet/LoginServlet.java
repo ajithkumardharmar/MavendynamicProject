@@ -46,12 +46,20 @@ public class LoginServlet extends HttpServlet {
 					String email=ns.getString(3);
 					String name=ns.getString(2);
 					double wallet=ns.getDouble(6);
+					String role=ns.getString(7);
 					session.setAttribute("userId", userId);
 					session.setAttribute("email", email);
 					session.setAttribute("name", name);
 					session.setAttribute("wallet", wallet);
+					session.setAttribute("role", role);
 					
-					res.sendRedirect("MobilePage.jsp");
+					if(role.equals("user")) {
+						res.sendRedirect("MobilePage.jsp");
+					}
+					else {
+						res.sendRedirect("AdminMain.jsp");
+					}
+					
 				}else {
 
 					

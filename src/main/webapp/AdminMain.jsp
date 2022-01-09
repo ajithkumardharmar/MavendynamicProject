@@ -60,7 +60,7 @@ li a:hover {
 }
 
 .btn_add:hover {
-	background-color: green;
+	background-color: cornflowerblue;
 }
 }
 </style>
@@ -73,12 +73,11 @@ li a:hover {
 	<div class="top_nav">
 
 		<ul>
-			<li><a href="index.jsp">Home</a></li>
+		
 
-			<li style="float: right;"><a href="AdminLogin.jsp">Sign out</a></li>
+			<li style="float: right;"><a href="logOut">Logout</a></li>
 			<li style="float: right;"><a class="active" href="AdminMain.jsp">Admin</a></li>
-			<li><a href="ContactUs.jsp">Contact us</a></li>
-			<li><a href="AboutUs.jsp">About us</a></li>
+			
 
 
 		</ul>

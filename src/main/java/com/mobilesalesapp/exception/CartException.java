@@ -4,6 +4,6 @@ public class CartException extends Exception {
 	
 	public String cartSame() {
 		
-		return "MobileInfo.jsp";
+		return "Already Item is Cart";
 	}
 }

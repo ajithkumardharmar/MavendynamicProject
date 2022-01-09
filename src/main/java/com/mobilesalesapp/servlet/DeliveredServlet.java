@@ -1,6 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import com.mobilesalesapp.impl.OrderImpl;
 import com.mobilesalesapp.model.OrderPojo;
@@ -17,7 +18,12 @@ import javax.servlet.http.HttpSession;
 public class DeliveredServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req,HttpServletResponse res) {
 		int orderId=Integer.parseInt( req.getParameter("orderId"));
-		System.out.println("delivered"+orderId);
+		String status=req.getParameter("deliveryStatus");
+		
+		System.out.println(status+"delivered"+orderId);
+		if(status.equals("Placed")) {
+			
+		
 		OrderPojo orderPojo=new OrderPojo(0,orderId);
 		OrderImpl orderImpl=new OrderImpl();
 		orderImpl.deliveredCancel(orderPojo);
@@ -26,6 +32,32 @@ public class DeliveredServlet extends HttpServlet {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		}
+		else if(status.equals("Delivered")) {
+			try {
+				PrintWriter out=res.getWriter();
+				out.println("<script type=\"text/javascript\" >");
+				out.println("alert('Already Delivered');");
+				out.println("location='ViewUser.jsp';");
+				out.println("</script>");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		else {
+			try {
+				PrintWriter out=res.getWriter();
+				out.println("<script type=\"text/javascript\" >");
+				out.println("alert('Already Cancelled');");
+				out.println("location='ViewUser.jsp';");
+				out.println("</script>");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

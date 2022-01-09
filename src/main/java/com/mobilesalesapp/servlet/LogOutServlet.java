@@ -12,7 +12,8 @@ import javax.servlet.http.HttpSession;
 public class LogOutServlet extends HttpServlet {
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		HttpSession session=req.getSession();
-		req.getSession().invalidate();
+		//req.getSession().invalidate();
+		session.invalidate();
 		try {
 			res.sendRedirect("index.jsp");
 		} catch (IOException e) {

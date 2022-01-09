@@ -89,7 +89,7 @@ public class OrderImpl implements OrderDao {
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, orderPojo.getUserId());
 			rs = pre.executeQuery();
-			System.out.println(rs);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.getMessage();

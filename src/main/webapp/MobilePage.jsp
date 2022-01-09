@@ -46,6 +46,11 @@ System.out.println(userId);
 	left: 500px;
 	padding: 8px;
 }
+bod{
+background-image: url("https://image.freepik.com/free-psd/smartphone-screen-mockup-glowing-neon-lights_53876-98580.jpg");
+background-repeat:repeat;
+background-size: 700px;
+}
 
 .top_nav_bu1 {
 	position: relative;
@@ -96,13 +101,13 @@ System.out.println(userId);
 
 .body_main1 {
 	
-	background: linear-gradient(rgba(0, 0, 0, .3) 70%, rgba(0, 0, 0, .3)
+	background: linear-gradient(rgba(0, 0, 0, .3) 60%, rgba(0, 0, 0, .3)
 		-70%),
-		url(https://cdn.pixabay.com/photo/2016/12/09/11/33/smartphone-1894723__340.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
+		url(https://image.freepik.com/free-psd/smartphone-screen-mockup-glowing-neon-lights_53876-98580.jpg);
+	background-repeat:repeat;
+background-size: 700px;
 	/* background: rgba(76, 175, 80, 0.3) */
-	height: 100%;
+	
 }
 
 ul {
@@ -185,14 +190,14 @@ padding:10px;
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-			<li style="float: right;"><a href="AdminLogin.jsp">Admin</a></li>
+		
 
 		</ul>
 
 
-	</div><br>
+	</div>
 
-	<div class="body_main">
+	<div class="body_main"><br>
 		
 		<h3 style="margin-left: 200px;"><%=name%></h3>
 		<h3 style="margin-left: 200px;"><%="Wallet Amount: " + wallet%></h3>
@@ -379,9 +384,6 @@ padding:10px;
 				%>
 			
 		</table>
-</div>
-
-
 </div>
 </body>
 

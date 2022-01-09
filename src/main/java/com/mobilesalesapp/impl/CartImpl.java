@@ -10,6 +10,24 @@ import java.sql.*;
 import javax.servlet.http.HttpSession;
 
 public class CartImpl implements CartDao {
+	
+	public ResultSet checkCart(CartPojo cart) {
+		Connection con = ConnectionUtil.connect();
+		String query = "select * from carts_table where user_id=? and product_id=?";
+		ResultSet rs=null;
+		
+		try {
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setInt(1, cart.getUserId());
+			pre.setInt(2, cart.getProductId());
+			 rs = pre.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+		
+	}
 	public void addCart(CartPojo cartPojo) {
 		System.out.println("Dao1");
 		Connection con = ConnectionUtil.connect();

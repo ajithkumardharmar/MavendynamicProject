@@ -130,9 +130,8 @@ margin-top:40px;
 	<div class="top_nav">
 
 		<ul>
-			<li><a  href="index.jsp">Home</a></li>
-			
-			<li style="float: right;"><a href="AdminLogin.jsp">Logout</a></li>
+
+			<li style="float: right;"><a href="logOut">Logout</a></li>
 			<li style="float: right;"><a href="AdminMain.jsp">Admin</a></li>
 
 		</ul>
@@ -148,7 +147,7 @@ ResultSet rs=st.executeQuery(query);
 
 
  <table style="width: 85%;margin-left: 70px;">
-    <tr>
+    <tr style="background-color: cornflowerblue">
      <th>Name</th>
     <th>Email</th>
     <th>Phone_number</th>

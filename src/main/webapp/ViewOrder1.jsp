@@ -148,7 +148,7 @@ text-decoration:none;
 }
 
 .btn_add:hover {
-	background-color: green;
+	background-color: cornflowerblue;
 }
 
 * {
@@ -165,10 +165,11 @@ text-decoration:none;
 			<li><a  href="MobilePage.jsp">Home</a></li>
 			<li><a class="active" href="ViewOrders.jsp">My Orders</a></li>
             <li><a href="ViewCart.jsp">Cart</a></li>
+            <li><a href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-			<li style="float: right;"><a href="AdminLogin.jsp">Admin</a></li>
+	
 
 		</ul>
 
@@ -195,15 +196,21 @@ text-decoration:none;
     <%
     if(rs1.next() ){%>
     	
-   	<div class="searchPro"">
+   	<div class="searchPro">
 	<form action="ViewOrder1.jsp">
-	<input type="date" name="OrderDate" requried>
+	<input id="search" type="date" name="OrderDate" requried>
 	<button  type="submit">Search</button>
 	</form>
 	</div><br><br><br>
+	<script type="text/javascript">
+		let today = new Date().toISOString().slice(0, 10);	
+		console.log(today);
+		document.getElementById("search").max =today;
+		
+	</script>
     	
     <table style="width: 80%;margin-left: 100px;">
-    <tr>
+    <tr style="background-color: cornflowerblue" >
      <th>Order Id</th>
     <th>Order Status</th>
     <th>Price</th>
@@ -223,8 +230,8 @@ text-decoration:none;
     <td><%=rs.getString(4) %></td>
     <td><%=rs.getString(5) %></td>
     <td>
-    <form action="cancelOrder" method="post" >
-    Order Id :<input type="text" name="cancelId" value="<%=rs.getInt(1) %>" readonly ><br><br>
+   
+    Order Id :<input type="text" name="cancelId" onclick="Cancel('<%=rs.getString(2)%>','<%=rs.getInt(1)%>')" value="<%=rs.getInt(1) %>" readonly ><br><br>
     
     <button type="submit" class="btn_add">Cancel</button>
     </form>
@@ -241,7 +248,40 @@ text-decoration:none;
    else{%>
     	<h1 style="color: red ;margin-left: 500px;margin-top: 150px">Order is not placed yet</h1>
    <% }%>
-<!--  <h3 style="color: red;margin-left: 300px">No Order Placed</h3> -->
+	<script type="text/javascript">
+	function Cancel(status,id) {
+		console.log('on'+status);
+		var url1="cancelOrder?orderStatus="+status+"&orderId="+id;
+		if(window.XMLHttpRequest){  
+    		request=new XMLHttpRequest();  
+    		}  
+    		else if(window.ActiveXObject){  
+    		request=new ActiveXObject("Microsoft.XMLHTTP");  
+    		} 
+	
+	   	try  
+    	{  
+    	request.onreadystatechange=getInfo;  
+    	request.open("GET",url1,true);  
+    	request.send();  
+    	}  
+    	catch(e)  
+    	{  
+    	alert("Unable to connect to server");  
+    	}
+        
+      
+    } 
+    
+    function getInfo(){  
+    	if(request.readyState==4){  
+    	var val=request.responseText;
+    	 alert(val);  
+    	}
+		
+	}
+	</script>
+	
 
 
 </body>
