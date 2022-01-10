@@ -48,8 +48,8 @@ li a:hover {
 
 .add_con {
 	position: absolute;
-	left:400px;
-	margin: 100px;
+	left:450px;
+	margin: 60px;
 }
 
 * {
@@ -98,7 +98,8 @@ background-color:cornsilk;
 		<br>
 
 		<div class="add_con">
-			<br> <a  class="btn btn-secondary btn-block" style="margin-left: 40px"
+		<div class="btn btn-block"> 
+			<br> <a  class="btn btn-secondary " style="margin-left: 40px"
 				href="AddProduct.jsp">Add Products</a><br>
 			
 		
@@ -112,8 +113,11 @@ background-color:cornsilk;
 			
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
 				href="ViewContactUs.jsp">Show ContactUs</a><br>
+				
+				<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
+				href="InActiveUsers.jsp">InActive Users</a><br>
 			<br>
-
+			</div>
 		</div>
 	</div>
 

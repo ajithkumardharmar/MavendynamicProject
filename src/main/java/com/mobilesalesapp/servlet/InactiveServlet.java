@@ -26,10 +26,7 @@ public class InactiveServlet extends HttpServlet {
 					out.println("alert('Inactive Successfully');");
 					out.println("location='ViewUser.jsp';");
 					out.println("</script>");
-					//out.println("<script type=\"text/javascript\">");
-//					out.println("alert('Already Cancel');");
-//					out.println("location='ViewOrders.jsp';");
-//					out.println("</script>");
+					
 					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

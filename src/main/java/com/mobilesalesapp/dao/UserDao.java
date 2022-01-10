@@ -13,5 +13,11 @@ public interface UserDao {
 	public ResultSet userDetails();
 	
 	public void contactUs(ContactUsPojo contactUs);
+	
+	public ResultSet inActiveUserDetails();
+	
+	public void updateProfile(RegisterPojo reg);
+	
+	public int forgotPassword(RegisterPojo login);
 
 }

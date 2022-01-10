@@ -174,6 +174,9 @@ margin:100px;
 position: absolute;
 left: 300px;
 }
+body{
+background-color:cornsilk;
+}
 
 * {
 	margin: 0;

@@ -137,6 +137,9 @@ li a:hover {
     width: 300px;
     height: 25px;
 }
+body{
+background-color:cornsilk;
+}
 
 * {
 	margin: 0;

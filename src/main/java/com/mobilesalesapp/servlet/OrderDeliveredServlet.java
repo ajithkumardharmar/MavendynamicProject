@@ -28,6 +28,11 @@ public class OrderDeliveredServlet extends HttpServlet {
 		OrderImpl orderImpl=new OrderImpl();
 		orderImpl.deliveredCancel(orderPojo);
 		try {
+			PrintWriter out=res.getWriter();
+			out.println("<script type=\"text/javascript\" >");
+			out.println("alert('Successfully Updated');");
+			out.println("location='ViewUser.jsp';");
+			out.println("</script>");
 			res.sendRedirect("ViewUser.jsp");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

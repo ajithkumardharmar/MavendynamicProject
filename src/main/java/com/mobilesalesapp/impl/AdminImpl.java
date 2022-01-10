@@ -52,6 +52,23 @@ public class AdminImpl implements AdminDao  {
 		
 		
 	}
+	public int ActivateUser(RegisterPojo reg) {
+		String query="update users_table set role='user' where pk_user_id='"+reg.getUserId()+"'";
+		Connection con=ConnectionUtil.connect();
+		int i=0;
+		System.out.println("hello");
+		try {
+			Statement st=con.createStatement();
+			i=st.executeUpdate(query);
+			System.out.println(i+" update"+reg.getUserId());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;
+		
+		
+	}
 		
 		
 		

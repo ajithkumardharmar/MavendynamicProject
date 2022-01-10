@@ -155,6 +155,9 @@ text-decoration:none;
 table{
 background-color: rgb(248, 213, 168);
 }
+body{
+background-color:cornsilk;
+}
 
 * {
 	margin: 0;
@@ -164,7 +167,7 @@ background-color: rgb(248, 213, 168);
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a  href="MobilePage.jsp">Home</a></li>

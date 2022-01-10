@@ -1,14 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-<style type="text/css">
+  <style type="text/css">  
 .fullbody {
     
    background: linear-gradient(rgba(0, 0, 0, .3)50%, rgba(0, 0, 0, .3)-50%), url(https://www.kindpng.com/picc/m/478-4787076_mobile-frame-png-full-hd-mobiles-kartik-creation.png);
@@ -26,8 +25,9 @@
 }
 .containe {
     background-color:white;
-   
-    padding: 30px;
+    left: 500px;
+    top: 70px;
+    padding: 40px;
     padding-bottom:80px;
     position: absolute;
     left: 500px;
@@ -38,9 +38,8 @@
     margin: 0;
     padding: 0;
 }
-</style>
     
-
+</style>
 
 </head>
 <script>
@@ -64,12 +63,10 @@
     <div class="fullbody">
 
         <div class="containe">
-            <form action="reg" onsubmit="return match()" method="post">
+            <form action="forgotPassword" onsubmit="return match()" method="post">
 
-                <h2 class="c_register" style="position: absolute;left: 120px;" >Register </h2><br><br><br>
-                <label for="">Name:</label><br>
-                <input autofocus  autocomplete="off" class="c_user2"  name="name1" type="text" pattern="[A-Za-z]{3,40}" 
-                title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
+                <h2 class="c_register" style="position: absolute;left: 80px;" >Forgot Password </h2><br><br><br>
+              
                 
                 <label for="">Email:</label><br>
                 <input  autocomplete="off" class="c_user2"  name="email"  
@@ -89,28 +86,14 @@
                 pattern="((?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                 title="Enter atleast one upper case and one lower case and one number ,and atleast 8 or more character" required>
                 <p id="pws" style="color:red;"></p><br>
-                  <%String regError=(String)session.getAttribute("regError"); 
-                if(regError!=null){%>
-                <h6 style="color: red;position: absolute;left:90px;"><%=regError %></h6><br><br>
-                <% }%>
-                <button style="position: absolute;left: 140px;" class="btn btn-primary	">Register</button>
+              
+                <button type="submit" style="position: absolute;left: 140px;" class="btn btn-primary	">Submit</button>
                 
             </form>
         </div>
-        <br><br>
-	<%session.removeAttribute("regError"); %>
+
 
 
     </div>
-
-
-
-
-
-
-
-</body>
-
-
-
+    </body>
 </html>

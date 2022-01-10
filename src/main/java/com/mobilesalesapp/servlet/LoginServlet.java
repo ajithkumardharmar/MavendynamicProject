@@ -56,7 +56,12 @@ public class LoginServlet extends HttpServlet {
 					if(role.equals("user")) {
 						res.sendRedirect("MobilePage.jsp");
 					}
-					else {
+					else if(role.equals("inactive")) {
+						out.println("<script type=\"text/javascript\">");
+						out.println("alert('Your account now Inactive');");
+						out.println("location='index.jsp';");
+						out.println("</script>");					}
+					else  {
 						res.sendRedirect("AdminMain.jsp");
 					}
 					

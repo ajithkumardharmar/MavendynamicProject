@@ -123,6 +123,9 @@ margin-left: 400px;
 }
 body{
 }
+body{
+background-color:cornsilk;
+}
 
 * {
 	margin: 0;

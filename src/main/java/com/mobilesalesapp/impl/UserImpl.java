@@ -39,7 +39,6 @@ public class UserImpl implements UserDao {
 	}
 
 	public ResultSet fetch(RegisterPojo login) {
-		// List<LoginPojo> loginpojo = new ArrayList();
 		Connection con = ConnectionUtil.connect();
 		String query = "select * from users_table  where email in ? and password in ?";
 		PreparedStatement pre;
@@ -77,6 +76,25 @@ public class UserImpl implements UserDao {
 		return ns;
 
 	}
+	public ResultSet inActiveUserDetails() {
+		Connection con = ConnectionUtil.connect();
+		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table where role='inactive'";
+		Statement st;
+		ResultSet ns = null;
+		try {
+			st = con.createStatement();
+			// st.executeQuery(query);
+			ns = st.executeQuery(query);
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return ns;
+
+	}
+	
 	public void contactUs(ContactUsPojo contactUs) {
 		Connection con = ConnectionUtil.connect();
 		String query = "insert into contactus values(?,?,?,?) ";
@@ -112,6 +130,30 @@ public class UserImpl implements UserDao {
 		}
 		
 		
+		
 	}
+	public int forgotPassword(RegisterPojo login) {
+		Connection con = ConnectionUtil.connect();
+		String query = "update  users_table set password=?  where email = ? and phone_number = ?";
+		PreparedStatement pre;
+		int i=0;
+		try {
+			
+			pre = con.prepareStatement(query);
+			pre.setString(1, login.getPassword());
+			pre.setString(2, login.getEmail());
+			pre.setLong(3, login.getPhone_number());
+			i = pre.executeUpdate();
+			pre.executeUpdate("commit");
+			System.out.println("updated "+i);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return i;
+
+	}
+	
 
 }
