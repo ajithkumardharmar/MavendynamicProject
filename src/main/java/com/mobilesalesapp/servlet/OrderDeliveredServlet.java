@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/deliveredOrder")
-public class DeliveredServlet extends HttpServlet {
-	public void doPost(HttpServletRequest req,HttpServletResponse res) {
+public class OrderDeliveredServlet extends HttpServlet {
+	public void service(HttpServletRequest req,HttpServletResponse res) {
 		int orderId=Integer.parseInt( req.getParameter("orderId"));
 		String status=req.getParameter("deliveryStatus");
 		

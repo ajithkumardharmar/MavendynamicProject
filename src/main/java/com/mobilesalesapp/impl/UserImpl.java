@@ -61,7 +61,7 @@ public class UserImpl implements UserDao {
 
 	public ResultSet userDetails() {
 		Connection con = ConnectionUtil.connect();
-		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table";
+		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table where role='user'";
 		Statement st;
 		ResultSet ns = null;
 		try {

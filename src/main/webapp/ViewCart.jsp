@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>ViewCartItems</title>
 </head>
 <style>
@@ -129,6 +132,9 @@ text-decoration:none;
 .but_log{
 margin-top:40px;
 }
+table{
+background-color: rgb(248, 213, 168);
+}
 
 * {
 	margin: 0;
@@ -138,7 +144,7 @@ margin-top:40px;
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div  style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a  href="MobilePage.jsp">Home</a></li>
@@ -178,7 +184,7 @@ pre.setInt(1,userId );
     <%if(rs1.next()) {%>
    
      
-    <table style="width: 90%;margin-left: 20px;">
+    <table class="table table-hover table-striped" style="width: 90%;margin-left: 20px;">
     <tr style="background-color: cornflowerblue" >
      <th>Product</th>
     <th>Product Name</th>
@@ -196,8 +202,8 @@ pre.setInt(1,userId );
     <td><%=rs.getString(4) %></td>
     <td><%=rs.getString(5) %></td>
     <td><%=rs.getDouble(6) %></td>
-    <td><a class="btn_add"  href="MobileInfo.jsp?product_id=<%=rs.getInt(3) %>">View </a></td>
-    <td><a class="btn_add" href="cartDelete?product_id=<%=rs.getInt(3) %>&userId=<%=rs.getInt(2) %>">Delete </a></td>
+    <td><a class="btn btn-secondary"  href="MobileInfo.jsp?product_id=<%=rs.getInt(3) %>">View </a></td>
+    <td><a class="btn btn-danger" href="cartDelete?product_id=<%=rs.getInt(3) %>&userId=<%=rs.getInt(2) %>">Delete </a></td>
    
     </tr>
     <%}}

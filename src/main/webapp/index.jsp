@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Login Page</title>
 <link rel="stylesheet" href="assets/css/index.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <div class="full">
@@ -21,16 +22,16 @@
                 <label class="c_lab" for="">Password</label><br>
                 <input autocomplete="off" class="c_user" pattern="(?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                 title="Enter atleast one upper case, one lowercase, specialcharacter and one number,and atleast 8 or more character"
-                 name="password" type="password" required><br><br>
-                <button class="c_sub" type="submit">Login </button><br><br><br>
-                <a class="c_reg" href="Register.jsp">Register</a><br><br>
+                 name="password" type="password" required><br><br><br>
+                <button class="btn btn-primary btn-block" type="submit">Login </button><br>
+                <a class="btn btn-primary btn-block" href="Register.jsp">Register</a><br><br>
                 
               
               <%
               String error=(String)session.getAttribute("LoginResult");
                 		if(error!=null){
                 		%>
- <h3 style="margin-left:50px;color:red;"><%=session.getAttribute("LoginResult") %></h3>
+ <h6 style="margin-left:50px;color:red;"><%=session.getAttribute("LoginResult") %></h6>
  
  <%} %>
 

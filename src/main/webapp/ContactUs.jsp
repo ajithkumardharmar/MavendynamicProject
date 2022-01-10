@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>ContactUs</title>
 </head>
 <style>
@@ -13,12 +16,9 @@
 }
 
 .container {
-	background-color: grey;
-
 	
-	padding: 40px;
+	text-align:center;
 	position: absolute;
-	left: 500px;
 	top: 120px;
 }
 
@@ -130,6 +130,13 @@ li a:hover {
 .but_log {
 	margin-top: 40px;
 }
+.c_user2 {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 300px;
+    height: 25px;
+}
 
 * {
 	margin: 0;
@@ -139,7 +146,7 @@ li a:hover {
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a class="active" href="MobilePage.jsp">Home</a></li>
@@ -158,23 +165,23 @@ li a:hover {
 	<div class="container">
 		<h1>Contact Us</h1><br>
 		<form action="contactUs" method="post" >
-		<label for="">Name:</label><br> <input class="c_user2"
+		<label for="">Name:</label><input class="c_user2"
 			name="name1" type="text" autocomplete="off" pattern="[A-Za-z]{3,40}"
-			title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
-		<br> <label for="">Email:</label><br> <input class="c_user2"
+			title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br><br>
+		<label for="">Email:</label> <input class="c_user2" 
 			name="email" autocomplete="off" pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+"
 			type="email" title="Enter valid email ex(example12@gmail.com)"
-			required><br>
-		<br> <label for="">Phone number:</label><br> <input
+			required><br><br>
+		<label for="">Phone :</label> <input
 			class="c_user2" autocomplete="off" name="phone_number" type="text"
 			pattern="[6789]{1}+[0-9]{9}" maxlength="10"
-			title="Enter only 10 digit number" required><br>
-		<br> Description : <br>
-		<input style="width: 200px; autocomplete="off" height: 50px;" name="description"
-			required pattern="[a-zA-Z0-9\s,[]]{3,40}" rows="5"
-			cols="50" type="text"><br>
-		<br>
-		   <button type="submit" class="b_reg">Submit</button>
+			title="Enter only 10 digit number" required><br><br>
+			
+	
+		<label for="">Description	:</label><input class="c_user2"
+			name="name1" type="text" autocomplete="off" pattern="[a-zA-Z0-9\s,[]]{3,40}"
+			title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br><br>
+		   <button type="submit" class="btn btn-primary">Submit</button>
 	</div>
 	</form>
 </body>

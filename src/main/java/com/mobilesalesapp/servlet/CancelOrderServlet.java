@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/cancelOrder")
-public class CancelServlet extends HttpServlet {
+public class CancelOrderServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		int orderId = Integer.parseInt(req.getParameter("orderId"));
 		System.out.println( "cancelled" + orderId);

@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>UsersList</title>
 </head>
 <style>
@@ -14,6 +17,13 @@ table, th, td {
 	padding: 10px;
 	
 }
+body{
+background-color:cornsilk;
+}
+table {
+	background-color: rgb(248, 213, 168);
+}
+
 
 .full1 {
 	background: linear-gradient(rgba(0, 0, 0, .3) 70%, rgba(0, 0, 0, .3)
@@ -79,6 +89,9 @@ li a:hover {
 .active {
 	background-color: grey;
 }
+table{
+background-color: rgb(248, 213, 168);
+}
 
 * {
 	margin: 0;
@@ -88,7 +101,7 @@ li a:hover {
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
@@ -100,15 +113,14 @@ li a:hover {
 	</div>
 	<div class="full">
 	<br>
-	<br>
-	<br>
+
 
 	
 		<%
 		UserImpl userDao = new UserImpl();
 		ResultSet ns = userDao.userDetails();
 		%>
-		<table style="width: 80%; margin-left: 100px;">
+		<table style="width: 90%; margin-left: 50px;">
 			<tr style="background-color: cornflowerblue">
 				<th>Name</th>
 				<th>Email</th>
@@ -116,6 +128,7 @@ li a:hover {
 				<th>Wallet</th>
 				<th>Action</th>
 				<th>Orders</th>
+				<th>Inactive</th>
 
 			</tr>
 			<%
@@ -135,19 +148,18 @@ li a:hover {
 							maxlength="8" required><br> <br> Wallet :<input
 							type="text" name="walletAmount" pattern="[1-9][0-9]{1,8}"
 							maxlength="8" title="Only enter positive number" required><br> <br>
-						<button type="submit" class="btn_add">Add</button>
+						<button type="submit" class="btn btn-success">Add</button>
 						<br> <br>
 					</form>
 				</td>
 				<td>
-					<form action="DeliveredOrder.jsp">
-						userId :<input name="userId" type="text"
-							value="<%=ns.getInt(1)%>"><br>
-						<br>
-						<button type="submit" class="btn_add">Search Order</button>
-					</form>
+			
+					<a class="btn btn-primary" href="DeliveredOrder.jsp?userId=<%=ns.getInt(1)%>">View Order</a>
 
-
+				</td>
+				<td>
+					<a class="btn btn-dark" href="inActive?userId=<%=ns.getInt(1)%>">InActive</a>
+					
 				</td>
 
 			</tr>

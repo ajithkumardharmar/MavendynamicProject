@@ -6,6 +6,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>ViewOrders</title>
 </head>
 <style>
@@ -132,7 +135,7 @@ li a:hover {
 
 .searchPro button {
 	float: left;
-	padding: 6px;
+	padding: 4px;
 	background: #2196F3;
 	font-size: 17px;
 	border: 1px solid grey;
@@ -151,9 +154,15 @@ li a:hover {
 	background-color: lightblue;
 	border-radius: 22px;
 }
+body{
+background-color: cornsilk;
+}
 
 .btn_add:hover {
 	background-color: cornflowerblue;
+}
+table{
+background-color: rgb(248, 213, 168);
 }
 
 * {
@@ -161,10 +170,10 @@ li a:hover {
 	padding: 0;
 }
 </style>
-<body bgcolor="cornsilk">
+<body  >
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a href="MobilePage.jsp">Home</a></li>
@@ -199,10 +208,10 @@ li a:hover {
 
 
 	<div class="searchPro"">
-		<form action="ViewOrder1.jsp">
+		<form action="SearchOrder.jsp">
 			<input type="date" id="search" name="OrderDate" 
 				 requried>
-			<button type="submit">Search</button>
+			<button class="btn btn-primary" type="submit">Search</button>
 		</form>
 	</div>
 	<br>
@@ -216,7 +225,7 @@ li a:hover {
 		
 	</script>
 
-	<table style="width: 80%; margin-left: 100px;">
+	<table class="table table-hover table-striped" style="width: 80%; margin-left: 100px;">
 		<tr style="background-color:cornflowerblue ">
 			<th>Order Id</th>
 			<th>Order Status</th>
@@ -244,7 +253,7 @@ li a:hover {
 						value="<%=rs.getInt(1)%>" readonly><br>
 					<br>
 
-					<button type="submit" onclick="Cancel('<%=rs.getString(2)%>','<%=rs.getInt(1)%>')" class="btn_add">Cancel</button>
+					<button class="btn btn-danger" type="submit" onclick="Cancel('<%=rs.getString(2)%>','<%=rs.getInt(1)%>')" class="btn_add">Cancel</button>
 				
 			</td>
 		</tr>

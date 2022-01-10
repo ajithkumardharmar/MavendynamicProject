@@ -176,7 +176,7 @@ padding:10px;
 }
 </style>
 
-<body bgcolor="cornsilk">
+<body class="" style="background-color:  cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 

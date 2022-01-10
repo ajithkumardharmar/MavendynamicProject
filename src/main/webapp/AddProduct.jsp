@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
  <title>AdminPage</title>
 
     <style>
@@ -41,10 +44,17 @@
         .active {
             background-color: grey;
         }
+        .add_inputs1{
+         border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 300px;
+    height: 25px;
+        }
         .add_con{
         position:absolute;
         left:400px;
-	margin: 100px;
+	margin: 80px;
         }
         *{
     	margin: 0;
@@ -68,7 +78,7 @@
 <body bgcolor="cornsilk">
     <h2 class="h2_1">Mobile Sales App</h2>
 
-    <div class="top_nav">
+    <div style="position: relative;top: -10px;" class="top_nav">
 
         <ul>
            
@@ -99,9 +109,9 @@
             <input type="text" name="standard_cost" id="brand_textbox" pattern="[0-9]{1,8}" maxlength="8" required class="add_inputs1"><br><br>
 
             <label class="add_label2">List Price :</label>
-            <input type="text" name="list_price" id="brand_textbox"  pattern="[0-9]{1,8}" maxlength="8" required class="add_inputs2"><br><br>
+            <input type="text" name="list_price" id="brand_textbox"  pattern="[0-9]{1,8}" maxlength="8" required class="add_inputs1"><br><br>
 
-            <button type="submit" style="margin-left: 100px" class="btn_add">Add</button><br><br>
+            <button type="submit" style="margin-left: 100px" class="btn btn-success">Add</button><br><br>
             
             <%if(session.getAttribute("product")!=null){ %>
             <h4 style="color: green"><%=session.getAttribute("product") %></h4>

@@ -19,6 +19,9 @@ System.out.println(userId);
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>Mobile_page</title>
 </head>
 <style>
@@ -167,9 +170,9 @@ padding:10px;
     margin-left: 30px;
 }
 .user_det{
-margin:130px;
+margin:100px;
 position: absolute;
-left: 250px;
+left: 300px;
 }
 
 * {
@@ -182,7 +185,7 @@ left: 250px;
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a  href="MobilePage.jsp	">Home</a></li>
@@ -213,7 +216,7 @@ left: 250px;
 		Email :<input type="text" required class="c_user" readonly name="userEmail" value="<%= rs.getString(3)%>">	<br><br>
 		Phone :<input class="c_user" required type="text" pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone" value="<%= rs.getString(4)%>">	<br><br>
 		Wallet :<input type="text" required class="c_user" name="userWallet" readonly value="<%= rs.getString(6)%>">	<br><br>
-		<button style="margin-left: 80px" class="button1" type="submit">Update</button>
+		<button style="margin-left: 100px" class="btn btn-primary" type="submit">Update</button>
 		</form>
 		</div>
 		

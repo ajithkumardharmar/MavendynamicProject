@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>AdminPage</title>
 
 <style>
@@ -61,6 +64,9 @@ li a:hover {
 	background-color: brown;
 	border-radius: 12px;
 }
+body{
+background-color:cornsilk;
+}
 
 .btn_add:hover {
 	background-color: cornflowerblue;
@@ -73,7 +79,7 @@ li a:hover {
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 		
@@ -92,19 +98,19 @@ li a:hover {
 		<br>
 
 		<div class="add_con">
-			<br> <br> <a  class="btn_add" style="margin-left: 40px"
+			<br> <a  class="btn btn-secondary btn-block" style="margin-left: 40px"
 				href="AddProduct.jsp">Add Products</a><br>
-			<br>
-			<br>
-			<br> <a class="btn_add" style="margin-left: 40px"
+			
+		
+			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
 				href="ProductList.jsp">Show All Products</a><br>
-			<br>
-			<br>
-			<br> <a class="btn_add" style="margin-left: 40px"
+		
+			
+			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
 				href="ViewUser.jsp">Show All Users</a><br>
-			<br>
-			<br>
-			<br> <a class="btn_add" style="margin-left: 40px"
+			
+			
+			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
 				href="ViewContactUs.jsp">Show ContactUs</a><br>
 			<br>
 

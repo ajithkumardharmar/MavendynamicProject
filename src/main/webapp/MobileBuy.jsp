@@ -7,6 +7,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>MobileBuyingPage</title>
 </head>
 <style>
@@ -84,7 +86,7 @@ li a:hover {
 }
 .buy_div{
 margin-left:400px;
-margin-top:50px;
+
 }
 .buy_button{
 position: relative;
@@ -94,6 +96,9 @@ position: relative;
 	border-radius: 12px;
 	
 	background-color: rgb(83, 83, 204);
+}
+body{
+background-color:cornsilk;
 }
 </style>
 <body bgcolor="cornsilk">
@@ -106,7 +111,7 @@ position: relative;
       
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a class="active" href="MobilePage.jsp">Home</a></li>
@@ -125,7 +130,7 @@ position: relative;
 	</div></body>
 	<div class="buy_div">
 	<form action="buying" method="post"><br>
-	<h4 style="margin-left: 50px;color: blue">Hello <%=name %></h4><br>
+	<h4 style="margin-left: 50px;color: blue">Hello <%=name %></h4>
 	
 	Address Line  : <input autocomplete="off" name="address1" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br>
 	City/Town    : <input autocomplete="off" name="address2" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br>
@@ -138,18 +143,18 @@ position: relative;
 	<%double total=(price-(price*.15));%>
 	Total Price :<input type="text" id="myInput3" readonly name="total1" value=<%=total%>><br><br>
 
-	<h4 style="margin-left: 20px">Discount 15%     :<%=(price*.15)%></h4><br>
+	<h5 style="margin-left: 20px">Discount 15%     :<%=(price*.15)%></h5>
 	
 	
 
-	<h1 id="timehead" style="margin-left: 60px;"></h1><br>
+	<h5 id="timehead" style="margin-left: 100px;"></h5>
 	
 	<%session.setAttribute("total",total); %>	
 	<%if(session.getAttribute("buying")!=null){ %>
-	<h4 style="color:red;margin-left: 50px"><%=session.getAttribute("buying") %></h3><br>
+	<h4 style="color:red;margin-left: 50px"><%=session.getAttribute("buying") %></h3>
 	<%} %>
 	
-	<button class="buy_button" type="submit">Buy</button><br><br>
+	<button style="margin-left: 100px" class="btn btn-success btn-lg" type="submit">Buy</button><br><br>
 	
 	</form>
 	

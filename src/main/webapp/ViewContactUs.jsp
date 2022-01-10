@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>ViewContactUs</title>
 </head>
 <style>
@@ -118,6 +121,12 @@ li a:hover {
 .but_log{
 margin-top:40px;
 }
+body{
+background-color:cornsilk;
+}
+table{
+background-color: rgb(248, 213, 168);
+}
 
 * {
 	margin: 0;
@@ -127,7 +136,7 @@ margin-top:40px;
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 

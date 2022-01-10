@@ -5,6 +5,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>Product List</title>
 </head>
 <style>
@@ -57,21 +63,30 @@ li a:hover {
 	background-color: grey;
 }
 
+table {
+	background-color: rgb(248, 213, 168);
+}
+
+
+body{
+background-color:cornsilk;
+}
+
 * {
 	margin: 0;
 	padding: 0;
 }
 </style>
-<body bgcolor="cornsilk">
+<body >
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
-	
+
 			<li style="float: right;"><a href="logOut">Logout</a></li>
 			<li style="float: right;"><a class="active" href="AdminMain.jsp">Admin</a></li>
-			
+
 
 
 		</ul>
@@ -123,7 +138,7 @@ li a:hover {
 			<td><%=rs.getString(4)%></td>
 			<td><%=rs.getString(5)%></td>
 			<td>
-				
+
 				<form action="updateProduct" method="post">
 
 					Product Id : <input type="text" name="updateId"
@@ -136,21 +151,18 @@ li a:hover {
 						type="text" name="updateListPrice" id="brand_textbox"
 						pattern="[0-9]{1,8}" maxlength="8" required class="add_inputs2"><br>
 					<br>
-					<button type="submit" class="btn_add">Update</button>
-					<br>
-					<br>
+					<button type="submit" class="btn btn-success">Update</button>
+					<br> <br>
 
 				</form>
 			</td>
 			<td>
-			<form action="deleteProduct" method="post">
+				<form action="deleteProduct" method="post">
 					Product Id : <input type="text" value=<%=rs.getInt(1)%> readonly
 						name="deleteId" id="brand_textbox" pattern="[0-9]{1,8}"
-						maxlength="8" required class="deleteId"><br>
-					<br>
-					<button type="submit" class="btn_add">Delete</button>
-					<br>
-					<br>
+						maxlength="8" required class="deleteId"><br> <br>
+					<button type="submit" class="btn btn-danger">Delete</button>
+					<br> <br>
 
 				</form>
 			</td>

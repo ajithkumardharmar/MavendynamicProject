@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>Mobile Info Page</title>
 </head>
 <style>
@@ -121,7 +124,10 @@ li a:hover {
 
 }
 .but_log{
-margin-top:40px;
+margin-top:20px;
+}
+body{
+background-color:cornsilk;
 }
 
 * {
@@ -132,7 +138,7 @@ margin-top:40px;
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a class="active" href="MobilePage.jsp">Home</a></li>
@@ -170,10 +176,10 @@ margin-top:40px;
 			<pre><%=rs.getString(3) %>
 </pre>
 
-			<div class="but_log">
-				<button type="button" onclick="addCartItem('<%=ProductId%>')">Add Cart</button>
+			<div class="but_lo">
+				<button type="button" class="btn btn-primary" onclick="addCartItem('<%=ProductId%>')">Add Cart</button>
 				
-				<a href="MobileBuy.jsp">Buy</a>
+				<a style="margin-left: 50px;" class="btn btn-success" href="MobileBuy.jsp">Buy</a>
 			</div>
 		</div>
 	</div>
