@@ -82,7 +82,7 @@ public class OrderImpl implements OrderDao {
 	public ResultSet viewAllOrders(OrderPojo orderPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,order_date,address from orders_table where fk_user_id=? ";
+		String query = "select order_id,status,price,order_date,address,fk_product_id from orders_table where fk_user_id=? ";
 		ResultSet rs = null;
 		try {
 			System.out.println(orderPojo.getUserId());
@@ -99,7 +99,7 @@ public class OrderImpl implements OrderDao {
 	public ResultSet SearchAllOrders(OrderPojo orderPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,order_date,address from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')='"+orderPojo.getDate()+"'";
+		String query = "select order_id,status,price,order_date,address,fk_product_id from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')='"+orderPojo.getDate()+"'";
 		ResultSet rs = null;
 		try {
 			System.out.println(orderPojo.getUserId());
@@ -154,6 +154,27 @@ public class OrderImpl implements OrderDao {
 		
 		
 		
+		
+	}
+
+
+	public String getUrl(int productId) {
+		Connection con=ConnectionUtil.connect();
+		String query="select * from products where pk_product_id='"+productId+"'";
+		ResultSet ns=null;
+		String url=null;
+		
+		try {
+			Statement st = con.createStatement();
+			ns = st.executeQuery(query);
+			if(ns.next()) {
+				url=ns.getString(6);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return url;
 	}
 
 }

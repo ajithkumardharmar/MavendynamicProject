@@ -217,40 +217,52 @@ background-color:cornsilk;
 		
 	</script>
     	
-    <table class="table table-hover table-striped" style="width: 80%;margin-left: 100px;">
-    <tr style="background-color: cornflowerblue" >
-     <th>Order Id</th>
-    <th>Order Status</th>
-    <th>Price</th>
-    <th>Order Date</th>
-    <th>Delivery Address</th>
-    <th>Cancel Order</th>
-    </tr>
-    
-  
-    
- 
-    <%while(rs.next()){%>
-    <tr>
-    <td><%=rs.getInt(1) %></td>
-    <td><%=rs.getString(2) %></td>
-    <td><%=rs.getDouble(3) %></td>
-    <td><%=rs.getString(4) %></td>
-    <td><%=rs.getString(5) %></td>
-    <td>
-   
-    Order Id :<input type="text" name="cancelId" onclick="Cancel('<%=rs.getString(2)%>','<%=rs.getInt(1)%>')" value="<%=rs.getInt(1) %>" readonly ><br><br>
-    
-    <button type="submit" class="btn_add">Cancel</button>
-    </form>
-    </td>
-    </tr>
-  
-    	<% }%>	
-    		
-    	
-   
-    </table>
+   <table class="table table-hover table-striped" style="width: 80%; margin-left: 100px;">
+		<tr style="background-color:cornflowerblue ">
+			
+			<th>Product</th>
+			<th>Order Status</th>
+			<th>Price</th>
+			<th>Order Date</th>
+			<th>Delivery Address</th>
+			<th>Cancel Order</th>
+		</tr>
+
+
+
+
+		<%
+		while (rs.next()) {
+			System.out.println("url id "+rs.getInt(6));
+			int productId=rs.getInt(6);
+			OrderImpl orderImpl =new OrderImpl();
+			
+			String url=orderImpl.getUrl(productId);
+			
+		%>
+		<tr>
+			
+			<td> <img width="100px" alt="null" src="<%=url%>"> </td>
+			<td><%=rs.getString(2)%></td>
+			<td><%=rs.getDouble(3)%></td>
+			<td><%=rs.getString(4)%></td>
+			<td><%=rs.getString(5)%></td>
+			<td>
+			
+					Order Id :<input type="text" name="cancelId"
+						value="<%=rs.getInt(1)%>" readonly><br>
+					<br>
+
+					<button class="btn btn-danger" type="submit" onclick="Cancel('<%=rs.getString(2)%>','<%=rs.getInt(1)%>')" class="btn_add">Cancel</button>
+				
+			</td>
+		</tr>
+
+		<%
+		}
+		%>
+
+</table>
 
  <% }
    else{%>

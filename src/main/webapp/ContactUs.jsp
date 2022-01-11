@@ -4,8 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <title>ContactUs</title>
 </head>
@@ -16,8 +19,7 @@
 }
 
 .container {
-	
-	text-align:center;
+	text-align: center;
 	position: absolute;
 	top: 120px;
 }
@@ -76,11 +78,12 @@
 	margin-top: 120px;
 	margin-left: 240px;
 }
+
 .b_reg {
-    padding: 12px;
-    margin-left: 50px;
-    background-color: rgb(83, 83, 204);
-    border-radius: 20px;
+	padding: 12px;
+	margin-left: 50px;
+	background-color: rgb(83, 83, 204);
+	border-radius: 20px;
 }
 
 ul {
@@ -130,15 +133,24 @@ li a:hover {
 .but_log {
 	margin-top: 40px;
 }
+
 .c_user2 {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    width: 300px;
-    height: 25px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	width: 300px;
+	height: 20px;
 }
-body{
-background-color:cornsilk;
+
+table td, th {
+	padding: 10px;
+}
+input{
+margin-top:10px; 
+}
+
+body {
+	background-color: cornsilk;
 }
 
 * {
@@ -149,7 +161,7 @@ background-color:cornsilk;
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div style="position: relative;top: -10px;" class="top_nav">
+	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a class="active" href="MobilePage.jsp">Home</a></li>
@@ -159,33 +171,62 @@ background-color:cornsilk;
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-		
+
 
 		</ul>
 
 
 	</div>
-	<div class="container">
-		<h1>Contact Us</h1><br>
-		<form action="contactUs" method="post" >
-		<label for="">Name:</label><input class="c_user2"
-			name="name1" type="text" autocomplete="off" pattern="[A-Za-z]{3,40}"
-			title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br><br>
-		<label for="">Email:</label> <input class="c_user2" 
-			name="email" autocomplete="off" pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+"
-			type="email" title="Enter valid email ex(example12@gmail.com)"
-			required><br><br>
-		<label for="">Phone :</label> <input
-			class="c_user2" autocomplete="off" name="phone_number" type="text"
-			pattern="[6789]{1}+[0-9]{9}" maxlength="10"
-			title="Enter only 10 digit number" required><br><br>
-			
+	<br>
+	<h1 style="margin-left: 380px;">Contact Us</h1>
+	<br>
+	<br>
+	<div style="position:relative;left:100px; margin-top: -150px;" class="container">
+
+
+
+		<table>
+			<form action="contactUs" method="post">
+				<tr>
+					<th><label for="">Name:</label></th>
+					<td><input class="c_user2" name="name1" type="text"
+						autocomplete="off" pattern="[A-Za-z]{3,40}"
+						title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
+					<br></td>
+				</tr>
+				<tr>
+
+					<th><label for="">Email:</label></th>
+					<td><input class="c_user2" name="email" autocomplete="off"
+						pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+" type="email"
+						title="Enter valid email ex(example12@gmail.com)" required><br>
+					<br></td>
+				</tr>
+				<tr>
+					<th><label for="">Phone :</label></th>
+					<td><input class="c_user2" autocomplete="off"
+						name="phone_number" type="text" pattern="[6789]{1}+[0-9]{9}"
+						maxlength="10" title="Enter only 10 digit number" required><br>
+					<br></td>
+				</tr>
+
+				<tr>
+					<th><label for="">Description :</label></th>
+					<td><input style="margin-left: 0px" class="c_user2"
+						name="name1" type="text" autocomplete="off"
+						pattern="[a-zA-Z0-9\s,[]]{3,40}"
+						title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
+					<br></td>
+				</tr>
+		</table>
+		<br>
+		
+				<button style="margin-left: -600px" type="submit"
+					class="btn btn-primary">Submit</button>
+		
 	
-		<label for="">Description	:</label><input class="c_user2"
-			name="name1" type="text" autocomplete="off" pattern="[a-zA-Z0-9\s,[]]{3,40}"
-			title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br><br>
-		   <button type="submit" class="btn btn-primary">Submit</button>
-	</div>
 	</form>
+	</div>
+
 </body>
 </html>

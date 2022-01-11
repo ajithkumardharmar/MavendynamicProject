@@ -97,6 +97,10 @@ position: relative;
 	
 	background-color: rgb(83, 83, 204);
 }
+table th{
+padding: 5px;
+padding-right: 25px;
+}
 body{
 background-color:cornsilk;
 }
@@ -130,36 +134,63 @@ background-color:cornsilk;
 	</div></body>
 	<div class="buy_div">
 	<form action="buying" method="post"><br>
-	<h4 style="margin-left: 50px;color: blue">Hello <%=name %></h4>
+	<h4 style="margin-left: 70px;color: blue">Hello <%=name %></h4>
+	<table>
+	<tr>
+	<th>Address Line  :</th>
+	<td><input autocomplete="off" name="address1" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br></td>
+	 
+	</tr>
+	<tr>
+	<th>City/Town    :</th>
+	<td> <input autocomplete="off" name="address2" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br></td>
+		</tr>
+	<tr>
+	<th>Pincode :</th>
+	<td> <input autocomplete="off" name="pincode" required="required" pattern="[0-9]{6}" maxlength="6" type="text"><br><br></td>
+	</tr>
+	<tr>
+	<th>Phone Number :</th>
+	<td><input autocomplete="off" class="c_user2" name="phone_number" type="text"
+                pattern="[6789]{1}+[0-9]{9}" maxlength="10"  title="Enter only 10 digit number" required><br><br></td>
+	</tr>
+	<tr>
+	<th> Password :</th>
+	<td> <input autocomplete="off" name="password" required="required" pattern="(?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"><br><br></td>
+	</tr>
+	<tr>
+	<th> Quantity : </th>
+	<td><input type="text" id="myInput1" onkeyup="myFunction()" maxlength="2" value=1 pattern="[1-9]{1+}" ><br><br></td>
+	</tr>
+	<tr>
+	<th> Price  : </th>
+	<td> <input type="text" id="myInput2" maxlength="2" value=<%=price%> pattern="[1-9]+{1+}" ><br><br></td>
+	</tr>
 	
-	Address Line  : <input autocomplete="off" name="address1" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br>
-	City/Town    : <input autocomplete="off" name="address2" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br>
-	Pincode : <input autocomplete="off" name="pincode" required="required" pattern="[0-9]{6}" maxlength="6" type="text"><br><br>
-	Phone Number :<input autocomplete="off" class="c_user2" name="phone_number" type="text"
-                pattern="[6789]{1}+[0-9]{9}" maxlength="10"  title="Enter only 10 digit number" required><br><br>
-	Password : <input autocomplete="off" name="password" required="required" pattern="(?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"><br><br>
-	Quantity : <input type="text" id="myInput1" onkeyup="myFunction()" maxlength="2" value=1 pattern="[1-9]{1+}" ><br><br>
-	Price  : <input type="text" id="myInput2" maxlength="2" value=<%=price%> pattern="[1-9]{1+}" ><br><br>
 	<%double total=(price-(price*.15));%>
-	Total Price :<input type="text" id="myInput3" readonly name="total1" value=<%=total%>><br><br>
-
-	<h5 style="margin-left: 20px">Discount 15%     :<%=(price*.15)%></h5>
+	<tr>
+	<th> Total Price(Discount 15%):</th>
+	<td> <input type="text" id="myInput3" readonly name="total1" value=<%=total%>><br><br></td>
+	</tr>
 	
 	
-
-	<h5 id="timehead" style="margin-left: 100px;"></h5>
+	
+	<tr>
+	<th> <h5 id="timehead" style="margin-left: 150px;"></h5></th>
+	</tr>
 	
 	<%session.setAttribute("total",total); %>	
 	<%if(session.getAttribute("buying")!=null){ %>
 	<h4 style="color:red;margin-left: 50px"><%=session.getAttribute("buying") %></h3>
 	<%} %>
-	
-	<button style="margin-left: 100px" class="btn btn-success btn-lg" type="submit">Buy</button><br><br>
-	
+	<tr>
+	<th> <button style="margin-left: 150px" class="btn btn-success btn-lg" type="submit">Buy</button><br><br></th>
+	</tr>
 	</form>
 	
 	
 	</div>
+	</table>
 	<%session.removeAttribute("buying"); %>
 	
 	

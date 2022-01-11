@@ -155,7 +155,7 @@ ResultSet rs=st.executeQuery(query);
 %>
 
 
- <table style="width: 85%;margin-left: 70px;">
+ <table class="table table-hover table-striped" style="width: 85%;margin-left: 70px;">
     <tr style="background-color: cornflowerblue">
      <th>Name</th>
     <th>Email</th>

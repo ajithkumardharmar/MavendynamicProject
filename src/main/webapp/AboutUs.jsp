@@ -151,7 +151,7 @@ background-color:cornsilk;
 
 
 	</div><br>
-	<h1 style="margin-left: 500px ;">About Us</h1>
+	<h3 style="margin-left: 500px ;">About Us</h3>
 	<br><br>
 	
 	<img style="margin-left: 330px;width: 40%" alt="company" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZ7GN8OwM8TFeCze1GaMda33q_-Ps9LBcxBz_gRrEsUstMr97K">

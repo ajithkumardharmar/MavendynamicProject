@@ -142,7 +142,7 @@ public class UserImpl implements UserDao {
 			pre = con.prepareStatement(query);
 			pre.setString(1, login.getPassword());
 			pre.setString(2, login.getEmail());
-			pre.setLong(3, login.getPhone_number());
+			pre.setLong(3, login.getPhone_number());	
 			i = pre.executeUpdate();
 			pre.executeUpdate("commit");
 			System.out.println("updated "+i);

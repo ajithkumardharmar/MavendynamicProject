@@ -25,6 +25,9 @@ System.out.println(userId);
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>Mobile_page</title>
 </head>
 <style>
@@ -169,6 +172,10 @@ padding:10px;
   border-left: none;
   cursor: pointer;
 }
+.img1{
+position: absolute;
+left: 100px;
+}
 
 * {
 	margin: 0;
@@ -180,7 +187,7 @@ padding:10px;
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 
-	<div class="top_nav">
+	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a class="active" href="MobilePage.jsp	">Home</a></li>
@@ -199,8 +206,8 @@ padding:10px;
 
 	<div class="body_main"><br>
 		
-		<h3 style="margin-left: 200px;"><%=name%></h3>
-		<h3 style="margin-left: 200px;"><%="Wallet Amount: " + wallet%></h3>
+		<h5 style="margin-left: 200px;">Welcome :<%=name%></h5>
+		<h5 style="margin-left: 200px;"><%="Wallet Amount: " + wallet%></h5>
 
 
 
@@ -230,7 +237,7 @@ padding:10px;
 
 
 
-				<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
+				<th><a  style="margin-left: 50px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 						src="<%=rs.getString(6)%>" alt=""></a></th>
 			</tr>
 
@@ -246,7 +253,7 @@ padding:10px;
 			</tr>
 			<tr>
 
-				<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
+				<td><a style="border-radius: 20px;" id="but_id" class="btn btn-primary" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">View</a>
 				</td>
 
 			</tr>
@@ -259,7 +266,7 @@ padding:10px;
 		</table>
 
 
-		<table style="margin-left: 622px; margin-top: -1050px" class="table1">
+		<table style="margin-left: 622px; margin-top: -1090px" class="table1">
 			<div class="table_right">
 				<%
 				int j = 0;
@@ -268,9 +275,10 @@ padding:10px;
 				%>
 				<tr>
 
-
-					<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
+					<div class="img1">
+					<th><a style="margin-left: 80px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 							src="<%=rs.getString(6)%>" alt=""></a></th>
+							</div>
 				</tr>
 
 				<tr>
@@ -285,7 +293,7 @@ padding:10px;
 				</tr>
 				<tr>
 
-					<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
+					<td ><a id="but_id" style="border-radius: 20px;" class="btn btn-primary" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">View</a>
 				</td>
 
 				</tr>
@@ -302,7 +310,7 @@ padding:10px;
 
 
 
-		<table style="margin-left: 622px;" class="table1">
+		<table style="margin-left: 642px;margin-top: -30px;" class="table1">
 			<div class="table_right">
 				<%
 				int k = 0;
@@ -312,7 +320,7 @@ padding:10px;
 				<tr>
 
 
-					<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
+					<th><a  style="margin-left: 60px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 							src="<%=rs.getString(6)%>" alt=""></a></th>
 				</tr>
 
@@ -328,7 +336,7 @@ padding:10px;
 				</tr>
 				<tr>
 
-					<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
+					<td><a id="but_id" style="border-radius: 20px;" class="btn btn-primary" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">View</a>
 				</td>
 
 				</tr>
@@ -344,7 +352,7 @@ padding:10px;
 		</table>
 
 
-		<table style="margin-left: 222px; margin-top: -1030px" class="table1">
+		<table style="margin-left: 212px; margin-top: -1080px" class="table1">
 			<div class="table_right">
 				<%
 				int l = 0;
@@ -354,7 +362,7 @@ padding:10px;
 				<tr>
 
 
-					<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
+					<th><a  style="margin-left: 60px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 							src="<%=rs.getString(6)%>" alt=""></a></th>
 				</tr>
 
@@ -370,7 +378,7 @@ padding:10px;
 				</tr>
 				<tr>
 
-					<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
+					<td><a id="but_id" style="border-radius: 20px;" class="btn btn-primary" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">View</a>
 				</td>
 
 				</tr>

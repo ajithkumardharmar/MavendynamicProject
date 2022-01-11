@@ -202,7 +202,7 @@ padding:10px;
 </div>	<br><br><br>
 
 
-	<table style="margin-left: 222px;" id="table2" class="table1">
+	<table class="table table-hover table-striped" style="margin-left: 222px;" id="table2" class="table1">
 			<%
 			String search=( request.getParameter("search")).toLowerCase();
 			System.out.println(search+" searches ");

@@ -204,6 +204,7 @@ background-color: rgb(248, 213, 168);
 	%>
 	<%
 	if (rs1.next()) {
+		
 	%>
 
 
@@ -225,9 +226,10 @@ background-color: rgb(248, 213, 168);
 		
 	</script>
 
-	<table class="table table-hover table-striped" style="width: 80%; margin-left: 100px;">
+	<table class="table table-hover table-striped" style="width: 90%; margin-left: 60px;">
 		<tr style="background-color:cornflowerblue ">
-			<th>Order Id</th>
+			
+			<th>Product</th>
 			<th>Order Status</th>
 			<th>Price</th>
 			<th>Order Date</th>
@@ -240,9 +242,16 @@ background-color: rgb(248, 213, 168);
 
 		<%
 		while (rs.next()) {
+			System.out.println("url id "+rs.getInt(6));
+			int productId=rs.getInt(6);
+			OrderImpl orderImpl =new OrderImpl();
+			
+			String url=orderImpl.getUrl(productId);
+			
 		%>
 		<tr>
-			<td><%=rs.getInt(1)%></td>
+			
+			<td> <img width="100px" alt="null" src="<%=url%>"> </td>
 			<td><%=rs.getString(2)%></td>
 			<td><%=rs.getDouble(3)%></td>
 			<td><%=rs.getString(4)%></td>

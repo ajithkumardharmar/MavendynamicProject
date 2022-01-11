@@ -7,6 +7,9 @@
 
 * View all Mobiles
 * Cart Mobile
+* Forgot Password
+* Inactive user
+* active user
 * Buy Mobile
 * Display cart
 * Display Order

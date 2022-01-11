@@ -135,6 +135,9 @@ margin-top:40px;
 table{
 background-color: rgb(248, 213, 168);
 }
+body{
+background-color:cornsilk;
+}
 
 * {
 	margin: 0;
@@ -184,7 +187,7 @@ pre.setInt(1,userId );
     <%if(rs1.next()) {%>
    
      
-    <table class="table table-hover table-striped" style="width: 90%;margin-left: 20px;">
+    <table class="table table-hover table-striped" style="width: 90%;margin-left: 60px;">
     <tr style="background-color: cornflowerblue" >
      <th>Product</th>
     <th>Product Name</th>

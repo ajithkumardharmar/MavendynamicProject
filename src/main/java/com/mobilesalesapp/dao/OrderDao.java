@@ -17,5 +17,7 @@ public interface OrderDao {
 	public ResultSet SearchAllOrders(OrderPojo orderPojo);
 	
 	public void deliveredCancel(OrderPojo orderPojo);
+	
+	public String getUrl(int productId);
 
 }
