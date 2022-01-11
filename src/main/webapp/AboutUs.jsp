@@ -117,11 +117,9 @@ li a:hover {
 margin-top:40px;
 }
 .aboutUs{
-margin-left: 400px;
+margin-left: 50px;
+margin-top: -80px;
 
-
-}
-body{
 }
 body{
 background-color:cornsilk;
@@ -150,16 +148,15 @@ background-color:cornsilk;
 		</ul>
 
 
-	</div><br>
-	<h3 style="margin-left: 500px ;">About Us</h3>
-	<br><br>
+	</div>
+	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 	
-	<img style="margin-left: 330px;width: 40%" alt="company" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZ7GN8OwM8TFeCze1GaMda33q_-Ps9LBcxBz_gRrEsUstMr97K">
+	<br>
+	<h3 style="margin-left: 50px ;">About Us</h3>
+	<br><br>
 	<div class="aboutUs"><br><br>
-	<h2>We are the Best for</h2>
-	<h3>Sales</h3>
-	<h3>Service </h3>
-	<h3>Providing a Quality Product Only</h3>
+	<p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+	<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
 	</div>
 </body>
 </html>

@@ -186,7 +186,6 @@ left: 100px;
 <body class="" style="background-color:  cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-
 	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
@@ -203,8 +202,10 @@ left: 100px;
 
 
 	</div>
+	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 
 	<div class="body_main"><br>
+
 		
 		<h5 style="margin-left: 200px;">Welcome :<%=name%></h5>
 		<h5 style="margin-left: 200px;"><%="Wallet Amount: " + wallet%></h5>

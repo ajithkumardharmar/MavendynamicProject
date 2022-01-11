@@ -93,7 +93,8 @@ background-color:cornsilk;
 
 
 	</div>
-
+	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
+	
 	<div class="body_main1">
 		<br>
 
@@ -104,15 +105,15 @@ background-color:cornsilk;
 			
 		
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
-				href="ProductList.jsp">Show All Products</a><br>
+				href="ProductList.jsp">Show Product</a><br>
 		
 			
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
-				href="ViewUser.jsp">Show All Users</a><br>
+				href="ViewUser.jsp">Show All User</a><br>
 			
 			
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
-				href="ViewContactUs.jsp">Show ContactUs</a><br>
+				href="ViewContactUs.jsp">Show Contact</a><br>
 				
 				<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
 				href="InActiveUsers.jsp">InActive Users</a><br>

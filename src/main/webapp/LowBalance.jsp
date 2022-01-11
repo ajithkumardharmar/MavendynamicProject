@@ -138,6 +138,7 @@ margin-top:40px;
 
 
 	</div>
+	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 	
 	<h1 style="color: green;margin-left: 470px;margin-top:200px">Low Balance in Wallet</h1>
 	<span style='font-size:100px;margin-left: 550px'>&#128528;</span>

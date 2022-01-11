@@ -111,6 +111,8 @@ background-color: rgb(248, 213, 168);
 
 		</ul>
 	</div>
+	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
+	
 	<div class="full">
 	<br>
 

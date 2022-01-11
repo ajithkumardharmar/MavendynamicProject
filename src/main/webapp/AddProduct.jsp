@@ -53,23 +53,24 @@
         }
         .add_con{
         position:absolute;
-        left:400px;
+        left:300px;
 	margin: 80px;
         }
         *{
     	margin: 0;
     	padding: 0;
 		}
-		.btn_add{
-		color:white;
-		text-decoration:none;
-		padding: 12px;
-		background-color: brown;
-		border-radius: 12px;
-		}
+	
 		.btn_add:hover {
 		background-color: cornflowerblue;
 	}
+	form  { display: table;      }
+p     { display: table-row;  }
+label { display: table-cell;  }
+input { display: table-cell;position: absolute;left: 120px; }
+	body{
+background-color:cornsilk;
+}
 }
     </style>
 
@@ -92,25 +93,31 @@
 
 
     </div>
-
+	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
+	
     <div class="body_main1">
         <br>
         
 <div class="add_con">
         <form action="addproduct" method="post"><br>
+       
 			<h2 style="margin-left : 70px;">Add product</h2><br>
-            <label class="add_label1">Product Name :</label>
+			<p>
+            <label class="lable">Product Name :</label>
             <input type="text" name="product_name"  pattern="[a-zA-Z0-9\s,[]]{3,40}" id="brand_textbox" required class="add_inputs1"><br><br>
-
+			</p>
+			<p>
             <label class="add_label1">Description :</label>
             <input type="text" name="description" id="brand_textbox" pattern="[a-zA-Z\s]{3,60}" required class="add_inputs1"><br><br>
-            
+            </p>
+            <p>
             <label class="add_label1">Standard_cost :</label>
             <input type="text" name="standard_cost" id="brand_textbox" pattern="[0-9]{1,8}" maxlength="8" required class="add_inputs1"><br><br>
-
+			</p>
+			<p>
             <label class="add_label2">List Price :</label>
             <input type="text" name="list_price" id="brand_textbox"  pattern="[0-9]{1,8}" maxlength="8" required class="add_inputs1"><br><br>
-
+			</p>
             <button type="submit" style="margin-left: 100px" class="btn btn-success">Add</button><br><br>
             
             <%if(session.getAttribute("product")!=null){ %>

@@ -138,6 +138,8 @@ margin-top:40px;
 
 
 	</div>
+	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
+	
 	
 	<h1 style="color: green;margin-left: 300px;margin-top:200px">Successfully Placed Thank You for Purchasing</h1>
 	<span style='font-size:100px;margin-left: 550px'>&#128522;</span>

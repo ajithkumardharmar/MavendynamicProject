@@ -154,6 +154,8 @@ background-color:cornsilk;
 
 
 	</div>
+	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
+	
 	<%int ProductId=Integer.parseInt( request.getParameter("product_id"));
 	
 	session.setAttribute("productId",ProductId);

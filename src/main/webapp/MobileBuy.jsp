@@ -101,6 +101,10 @@ table th{
 padding: 5px;
 padding-right: 25px;
 }
+	form  { display: table;      }
+p     { display: table-row;  }
+label { display: table-cell;  }
+input { display: table-cell;position: absolute;left: 620px; }
 body{
 background-color:cornsilk;
 }
@@ -131,67 +135,68 @@ background-color:cornsilk;
 
 	<%double price=(double)session.getAttribute("price"); %>
 
-	</div></body>
+	</div>
+	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
+	
 	<div class="buy_div">
 	<form action="buying" method="post"><br>
 	<h4 style="margin-left: 70px;color: blue">Hello <%=name %></h4>
-	<table>
-	<tr>
-	<th>Address Line  :</th>
-	<td><input autocomplete="off" name="address1" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br></td>
+	<p>
+	<label>Address Line  :</label> 
+	<input autocomplete="off" name="address1" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br></td>
 	 
-	</tr>
-	<tr>
-	<th>City/Town    :</th>
-	<td> <input autocomplete="off" name="address2" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br></td>
-		</tr>
-	<tr>
-	<th>Pincode :</th>
-	<td> <input autocomplete="off" name="pincode" required="required" pattern="[0-9]{6}" maxlength="6" type="text"><br><br></td>
-	</tr>
-	<tr>
-	<th>Phone Number :</th>
-	<td><input autocomplete="off" class="c_user2" name="phone_number" type="text"
-                pattern="[6789]{1}+[0-9]{9}" maxlength="10"  title="Enter only 10 digit number" required><br><br></td>
-	</tr>
-	<tr>
-	<th> Password :</th>
-	<td> <input autocomplete="off" name="password" required="required" pattern="(?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"><br><br></td>
-	</tr>
-	<tr>
-	<th> Quantity : </th>
-	<td><input type="text" id="myInput1" onkeyup="myFunction()" maxlength="2" value=1 pattern="[1-9]{1+}" ><br><br></td>
-	</tr>
-	<tr>
-	<th> Price  : </th>
-	<td> <input type="text" id="myInput2" maxlength="2" value=<%=price%> pattern="[1-9]+{1+}" ><br><br></td>
-	</tr>
+	</p>
+	<p>
+	<label> City/Town    : </label>
+	<input autocomplete="off" name="address2" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br>
+		</p>
+<p>
+		<label> Pincode :</label>
+	
+	 <input autocomplete="off" name="pincode" required="required" pattern="[0-9]{6}" maxlength="6" type="text"><br><br>
+	</p>
+	<p>
+	<label> Phone Number :  </label>
+	<input autocomplete="off" class="c_user2" name="phone_number" type="text"
+                pattern="[6789]{1}+[0-9]{9}" maxlength="10"  title="Enter only 10 digit number" required><br><br>
+	</p>
+	<p>
+	<label>Password : </label> 
+	<input autocomplete="off" name="password" required="required" pattern="(?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"><br><br>
+	</p>
+	<p>
+	<label>Quantity :</label>  
+	<input type="text" id="myInput1" onkeyup="myFunction()" maxlength="2" value=1 pattern="[1-9]{1+}" ><br><br>
+	</p>
+	<p>
+	<label> Price  :</label> 
+	 <input type="text" id="myInput2" maxlength="2" value=<%=price%> pattern="[1-9]+{1+}" ><br><br>
+	</p>
 	
 	<%double total=(price-(price*.15));%>
-	<tr>
-	<th> Total Price(Discount 15%):</th>
-	<td> <input type="text" id="myInput3" readonly name="total1" value=<%=total%>><br><br></td>
-	</tr>
+	<p>
+	<label> Total Price(Discount 15%): </label>
+	<input type="text" id="myInput3" readonly name="total1" value=<%=total%>><br><br>
+	</p>
 	
 	
 	
-	<tr>
+	<p>
 	<th> <h5 id="timehead" style="margin-left: 150px;"></h5></th>
-	</tr>
+	</p>
 	
 	<%session.setAttribute("total",total); %>	
 	<%if(session.getAttribute("buying")!=null){ %>
 	<h4 style="color:red;margin-left: 50px"><%=session.getAttribute("buying") %></h3>
 	<%} %>
-	<tr>
-	<th> <button style="margin-left: 150px" class="btn btn-success btn-lg" type="submit">Buy</button><br><br></th>
-	</tr>
+	<p>
+	 <button style="margin-left: 150px" class="btn btn-success btn-lg" type="submit">Buy</button><br><br>
+	</p>
 	</form>
 	
 	
 	</div>
-	</table>
-	<%session.removeAttribute("buying"); %>
+		<%session.removeAttribute("buying"); %>
 	
 	
 	<script type="text/javascript">

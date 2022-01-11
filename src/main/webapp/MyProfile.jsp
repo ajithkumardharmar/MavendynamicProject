@@ -177,6 +177,10 @@ left: 300px;
 body{
 background-color:cornsilk;
 }
+	form  { display: table;      }
+p     { display: table-row;  }
+label { display: table-cell;position: absolute;right: 90px;  }
+input { display: table-cell;position: absolute;left: 100px; }
 
 * {
 	margin: 0;
@@ -203,7 +207,10 @@ background-color:cornsilk;
 		</ul>
 
 
-	</div><br>
+	</div>
+	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
+	
+	<br>
 	<%
 	String query="select * from users_table where pk_user_id='"+userId+"'";
 	Connection con =ConnectionUtil.connect();
@@ -213,13 +220,30 @@ background-color:cornsilk;
 		%>
 		
 		<div class="user_det">
+		
 		<form action="updateUser" method="post">
-		<h1 style="position: absolute;left: 80px;">My Profile</h1><br><br><br>
-		Name :<input type="text"  required class="c_user" name="userName" pattern="[A-Za-z.\s]{3,40}" value="<%= rs.getString(2)%>">	<br><br>
-		Email :<input type="text" required class="c_user" readonly name="userEmail" value="<%= rs.getString(3)%>">	<br><br>
-		Phone :<input class="c_user" required type="text" pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone" value="<%= rs.getString(4)%>">	<br><br>
-		Wallet :<input type="text" required class="c_user" name="userWallet" readonly value="<%= rs.getString(6)%>">	<br><br>
+		<p>
+		<h2 style="position: absolute;left: 80px;">MyProfile</h2><br><br><br>
+		</p>
+		<p>
+		<label>Name : </label>
+		 <input type="text"  required class="c_user" name="userName" pattern="[A-Za-z.\s]{3,40}" value="<%= rs.getString(2)%>">	<br><br>
+		</p>
+		<p>
+	    <label>Email :</label>
+	     <input type="text" required class="c_user" readonly name="userEmail" value="<%= rs.getString(3)%>">	<br><br>
+		</p>
+		<p>
+		<label>Phone :</label>
+		<input class="c_user" required type="text" pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone" value="<%= rs.getString(4)%>">	<br><br>
+		</p>
+		<p>
+		<label>Wallet :</label>
+		<input type="text" required class="c_user" name="userWallet" readonly value="<%= rs.getString(6)%>">	<br><br>
+		</p>
+		<p>
 		<button style="margin-left: 100px" class="btn btn-primary" type="submit">Update</button>
+		</p>
 		</form>
 		</div>
 		
