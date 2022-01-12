@@ -41,6 +41,10 @@ Password   :Pass1234@
 
 7.Admin Can Update User Wallet
 
+8.admin can do iactive user
+
+9.admin can do inactive user
+
 
 ## User
 
