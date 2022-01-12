@@ -196,9 +196,9 @@ background-color: rgb(248, 213, 168);
 
 	<%
 	String user = (String) session.getAttribute("userId");
-	System.out.println("my" + user);
+	//System.out.println("my" + user);
 	int userId = Integer.parseInt(user);
-	System.out.println("my1	" + userId);
+//	System.out.println("my1	" + userId);
 	OrderPojo orderPojo = new OrderPojo(userId);
 	OrderImpl order = new OrderImpl();
 	ResultSet rs = order.viewAllOrders(orderPojo);

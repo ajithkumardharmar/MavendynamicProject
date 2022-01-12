@@ -26,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 		String email=req.getParameter("email");
 		Long phone_number=Long.parseLong(req.getParameter("phone_number"));
 		String password=req.getParameter("password");
-		 System.out.println(name+ email+ phone_number+ password);
+//		 System.out.println(name+ email+ phone_number+ password);
 		
 			
 		RegisterPojo p=new RegisterPojo(name, email, phone_number, password);
@@ -53,7 +53,7 @@ public class RegisterServlet extends HttpServlet {
 			try {
 				HttpSession session =req.getSession();
 				session.setAttribute("regError", "Email Must be Unique");
-				System.out.println("Email Must be Unique");
+//				System.out.println("Email Must be Unique");
 				throw new EmailException();
 				//res.sendRedirect("Register.jsp");
 			} catch (EmailException e) {

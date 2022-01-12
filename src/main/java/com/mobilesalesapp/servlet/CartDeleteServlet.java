@@ -16,12 +16,12 @@ import com.mobilesalesapp.model.CartPojo;
 public class CartDeleteServlet extends HttpServlet {
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		
-		System.out.println("cart1");
+		//System.out.println("cart1");
 		int productId=Integer.parseInt( req.getParameter("product_id"));
-		System.out.println("aji "+productId);
+		//System.out.println("aji "+productId);
 		HttpSession session =req.getSession();
 		int UserId=Integer.parseInt (req.getParameter("userId"));
-		System.out.println("aji12 "+UserId);
+//		System.out.println("aji12 "+UserId);
 		
 		CartPojo cartPojo=new CartPojo(UserId,productId);
 		

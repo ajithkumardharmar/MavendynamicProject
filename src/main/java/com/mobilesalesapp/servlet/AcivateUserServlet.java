@@ -15,7 +15,7 @@ import com.mobilesalesapp.model.RegisterPojo;
 public class AcivateUserServlet extends HttpServlet {
 	public void service(HttpServletRequest request,HttpServletResponse response) {
 		int userId=Integer.parseInt(request.getParameter("userId"));
-		System.out.println(userId);
+		//System.out.println(userId);
 		RegisterPojo regPojo=new RegisterPojo();
 		regPojo.setUserId(userId);
 		AdminImpl adminImpl=new AdminImpl();
@@ -36,7 +36,7 @@ public class AcivateUserServlet extends HttpServlet {
 			
 		}
 		else {
-			System.out.println("not inactive");
+			//System.out.println("not inactive");
 		}
 	}
 }

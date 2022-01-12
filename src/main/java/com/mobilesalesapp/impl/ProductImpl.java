@@ -20,7 +20,7 @@ public class ProductImpl implements ProductDao {
 			pre.setDouble(3, obj.getStandard_cost());
 			pre.setDouble(4, obj.getList_cost());
 			int i = pre.executeUpdate();
-			System.out.println(i + "row inserted");
+			//System.out.println(i + "row inserted");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -37,7 +37,7 @@ public class ProductImpl implements ProductDao {
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, obj1.getId());
 			 i = pre.executeUpdate();
-			System.out.println(i);
+			//System.out.println(i);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -56,7 +56,7 @@ public class ProductImpl implements ProductDao {
 			pre.setDouble(2, obj1.getList_cost());
 			pre.setInt(3, obj1.getId());
 			int i = pre.executeUpdate();
-			System.out.println(i);
+			//System.out.println(i);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -19,11 +19,11 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/addCart")
 public class CartServlet extends HttpServlet {
 	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException {
-		System.out.println("addCart1");
+//		System.out.println("addCart1");
 		HttpSession session=req.getSession();
 		int productId=Integer.parseInt(req.getParameter("productId"));
 
-		System.out.println("checkCart "+productId);
+//		System.out.println("checkCart "+productId);
 		String userId1=(String)session.getAttribute("userId");
 
 		int userId=Integer.parseInt(userId1);

@@ -24,7 +24,7 @@ public class AdminImpl implements AdminDao  {
 				pre1.setInt(1, wallet.getUserId());
 				pre1.setDouble(2, wallet.getWallet());
 				pre1.setInt(3, wallet.getUserId());
-				System.out.println(wallet.getWallet()+" add "+wallet.getUserId());
+				//System.out.println(wallet.getWallet()+" add "+wallet.getUserId());
 				j=pre1.executeUpdate();
 				System.out.println(j);
 			} catch (SQLException e) {
@@ -39,11 +39,11 @@ public class AdminImpl implements AdminDao  {
 		String query="update users_table set role='inactive' where pk_user_id='"+reg.getUserId()+"'";
 		Connection con=ConnectionUtil.connect();
 		int i=0;
-		System.out.println("hello");
+		//System.out.println("hello");
 		try {
 			Statement st=con.createStatement();
 			i=st.executeUpdate(query);
-			System.out.println(i+" update"+reg.getUserId());
+			//System.out.println(i+" update"+reg.getUserId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,11 +56,11 @@ public class AdminImpl implements AdminDao  {
 		String query="update users_table set role='user' where pk_user_id='"+reg.getUserId()+"'";
 		Connection con=ConnectionUtil.connect();
 		int i=0;
-		System.out.println("hello");
+		//System.out.println("hello");
 		try {
 			Statement st=con.createStatement();
 			i=st.executeUpdate(query);
-			System.out.println(i+" update"+reg.getUserId());
+		//	System.out.println(i+" update"+reg.getUserId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

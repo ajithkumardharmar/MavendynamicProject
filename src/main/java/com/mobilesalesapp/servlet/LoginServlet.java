@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 
 					
 					session.setAttribute("LoginResult", "invalid Email or password");
-					System.out.println(session.getAttribute("LoginResult"));
+					//System.out.println(session.getAttribute("LoginResult"));
 					//res.sendRedirect("index.jsp");
 					throw new InvalidUserException();
 				}

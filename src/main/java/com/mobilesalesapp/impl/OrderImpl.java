@@ -14,7 +14,7 @@ public class OrderImpl implements OrderDao {
 		int i = 0;
 		Connection con = ConnectionUtil.connect();
 		String query1 = "commit";
-		System.out.println("wallet decrease");
+		//System.out.println("wallet decrease");
 		String query2="select wallet from users_table where pk_user_id='"+obj1.getUserId()+"'";
 
 		String query = "update users_table set wallet = wallet-? where pk_user_id=? and password=?";
@@ -37,9 +37,9 @@ public class OrderImpl implements OrderDao {
 			pre.setDouble(1, obj1.getPrice());
 			pre.setInt(2, obj1.getUserId());
 			pre.setString(3, obj1.getPassword());
-			System.out.println("1");
+			//System.out.println("1");
 			i = pre.executeUpdate();
-			System.out.println("2");
+		//	System.out.println("2");
 			}
 			else {
 				i=5;
@@ -82,10 +82,10 @@ public class OrderImpl implements OrderDao {
 	public ResultSet viewAllOrders(OrderPojo orderPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,order_date,address,fk_product_id from orders_table where fk_user_id=? ";
+		String query = "select order_id,status,price,order_date,address,fk_product_id from orders_table where fk_user_id=? order by order_date desc ";
 		ResultSet rs = null;
 		try {
-			System.out.println(orderPojo.getUserId());
+			//System.out.println(orderPojo.getUserId());
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, orderPojo.getUserId());
 			rs = pre.executeQuery();
@@ -99,14 +99,14 @@ public class OrderImpl implements OrderDao {
 	public ResultSet SearchAllOrders(OrderPojo orderPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,order_date,address,fk_product_id from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')='"+orderPojo.getDate()+"'";
+		String query = "select order_id,status,price,order_date,address,fk_product_id from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')='"+orderPojo.getDate()+"' order by order_date desc";
 		ResultSet rs = null;
 		try {
-			System.out.println(orderPojo.getUserId());
+		//	System.out.println(orderPojo.getUserId());
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, orderPojo.getUserId());
 			rs = pre.executeQuery();
-			System.out.println(rs);
+			//System.out.println(rs);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
@@ -118,13 +118,13 @@ public class OrderImpl implements OrderDao {
 		String query="commit";
 		String query2="update orders_table set status='Cancelled' where order_id=? ";
 		try {
-			System.out.println(orderPojo.getOrerId());
+			//System.out.println(orderPojo.getOrerId());
 			PreparedStatement pre1=con.prepareStatement(query);
 			pre1.executeUpdate();
 			PreparedStatement pre=con.prepareStatement(query2);
 			pre.setInt(1, orderPojo.getOrerId());
 			int i=pre.executeUpdate();
-			System.out.println(i);
+			//System.out.println(i);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -139,13 +139,13 @@ public class OrderImpl implements OrderDao {
 		String query="commit";
 		String query2="update orders_table set status='Delivered' where order_id=? ";
 		try {
-			System.out.println(orderPojo.getOrerId());
+			//System.out.println(orderPojo.getOrerId());
 			PreparedStatement pre1=con.prepareStatement(query);
 			pre1.executeUpdate();
 			PreparedStatement pre=con.prepareStatement(query2);
 			pre.setInt(1, orderPojo.getOrerId());
 			int i=pre.executeUpdate();
-			System.out.println(i);
+			//System.out.println(i);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

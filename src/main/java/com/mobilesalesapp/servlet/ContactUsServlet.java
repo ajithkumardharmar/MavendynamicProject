@@ -19,7 +19,7 @@ public class ContactUsServlet extends HttpServlet {
 		String email=req.getParameter("email");
 		long number=Long.parseLong( req.getParameter("phone_number"));
 		String description=req.getParameter("description");
-		System.out.println(name+email+number+description);
+//		System.out.println(name+email+number+description);
 		
 		ContactUsPojo contactUsPojo=new ContactUsPojo(name,email,number,description);
 		

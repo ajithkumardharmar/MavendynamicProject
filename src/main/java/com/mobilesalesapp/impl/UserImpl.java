@@ -28,7 +28,7 @@ public class UserImpl implements UserDao {
 			 i=pre.executeUpdate();
 			
 			pre.executeUpdate(query2);
-			System.out.println("print1");
+			//System.out.println("print1");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -105,7 +105,7 @@ public class UserImpl implements UserDao {
 			pre.setLong(3, contactUs.getPhoneNumber());
 			pre.setString(4, contactUs.getDescription());
 			int i=pre.executeUpdate();
-			System.out.println(i);
+//			System.out.println(i);
 			
 			
 		} catch (SQLException e) {
@@ -123,7 +123,7 @@ public class UserImpl implements UserDao {
 			pre.setLong(2, reg.getPhone_number());
 			pre.setString(3, reg.getEmail());
 			int i=pre.executeUpdate();
-			System.out.println("updateProfile "+i);
+//			System.out.println("updateProfile "+i);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -145,7 +145,7 @@ public class UserImpl implements UserDao {
 			pre.setLong(3, login.getPhone_number());	
 			i = pre.executeUpdate();
 			pre.executeUpdate("commit");
-			System.out.println("updated "+i);
+			//System.out.println("updated "+i);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

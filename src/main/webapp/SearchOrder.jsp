@@ -188,7 +188,7 @@ background-color:cornsilk;
 	<br><br>
     <%
     String dateOrder=request.getParameter("OrderDate");
-    System.out.println(dateOrder);
+   // System.out.println(dateOrder);
     DateTimeFormatter formater=DateTimeFormatter.ofPattern("dd-mm-yyyy");
     String dateOrder1=dateOrder.formatted(formater);
     LocalDate OrderDate=LocalDate.parse(dateOrder1);
@@ -196,9 +196,9 @@ background-color:cornsilk;
     
     
     String user = (String) session.getAttribute("userId");
-    System.out.println("my"+user+OrderDate);
+//    System.out.println("my"+user+OrderDate);
     	int userId = Integer.parseInt(user);
-    	System.out.println("my1	"+userId+"date "+OrderDate);
+    	//System.out.println("my1	"+userId+"date "+OrderDate);
     	OrderPojo orderPojo=new OrderPojo(userId,OrderDate);
     	OrderImpl order=new OrderImpl();
     	ResultSet rs=order.SearchAllOrders(orderPojo);

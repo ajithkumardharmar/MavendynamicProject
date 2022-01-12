@@ -5,8 +5,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>LowBalance</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <style>
+body{
+background-color:cornsilk;
+}
 .h2_1 {
 	text-align: center;
 	background-color: bisque;
@@ -122,7 +128,7 @@ margin-top:40px;
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a class="active" href="MobilePage.jsp">Home</a></li>

@@ -16,10 +16,10 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/addWallet")
 public class AddWalletServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req,HttpServletResponse res) {
-		System.out.println("add");
+		//System.out.println("add");
 		int userId=Integer.parseInt(req.getParameter("walletUserId"));
 		double addAmount=Double.parseDouble(req.getParameter("walletAmount"));
-		System.out.println(userId+"add"+addAmount);
+		//System.out.println(userId+"add"+addAmount);
 	
 		RegisterPojo wallet=new RegisterPojo(userId,addAmount);
 		AdminImpl adminAddAmount=new AdminImpl();
@@ -27,12 +27,12 @@ public class AddWalletServlet extends HttpServlet {
 		
 			try {
 				if(i>0) {
-					System.out.println("success");
+					//System.out.println("success");
 					res.sendRedirect("ViewUser.jsp");
 				}
 				
 				else {
-					System.out.println("not success");
+					//System.out.println("not success");
 					res.sendRedirect("ViewUser.jsp");
 				}
 				

@@ -21,8 +21,8 @@ public class DeleteProductServlet extends HttpServlet {
 		int productId=Integer.parseInt(req.getParameter("deleteId"));
 		//String productId1=req.getParameter("deleteProductId");
 		//int productId=Integer.parseInt(productId1);
-		System.out.println(productId);
-		System.out.println("pro");
+//		System.out.println(productId);
+//		System.out.println("pro");
 		ProductPojo obj1=new ProductPojo(productId);
 		ProductImpl obj2=new ProductImpl();
 		

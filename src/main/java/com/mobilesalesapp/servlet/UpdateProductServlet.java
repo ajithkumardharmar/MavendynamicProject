@@ -16,12 +16,12 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/updateProduct")
 public class UpdateProductServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req,HttpServletResponse res) {
-		System.out.println("update");
+//		System.out.println("update");
 		int productId =Integer.parseInt(req.getParameter("updateId"));
-		System.out.println(productId);
+//		System.out.println(productId);
 		double standardPrice =Double.parseDouble(req.getParameter("updateStandardPrice"));
 		double listPrice =Double.parseDouble(req.getParameter("updateListPrice"));
-		System.out.println(standardPrice+" "+listPrice);
+//		System.out.println(standardPrice+" "+listPrice);
 		
 		ProductPojo obj1=new ProductPojo(productId,standardPrice,listPrice);
 		ProductImpl obj2=new ProductImpl();

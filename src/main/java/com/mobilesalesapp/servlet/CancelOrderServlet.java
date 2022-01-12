@@ -17,9 +17,9 @@ import javax.servlet.http.HttpSession;
 public class CancelOrderServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		int orderId = Integer.parseInt(req.getParameter("orderId"));
-		System.out.println( "cancelled" + orderId);
+		//System.out.println( "cancelled" + orderId);
 		String status = req.getParameter("orderStatus");
-		System.out.println(status + "cancelled" + orderId);
+//		System.out.println(status + "cancelled" + orderId);
 
 		if (status.equals("Placed")) {
 			OrderPojo orderPojo = new OrderPojo(0, orderId);
@@ -30,7 +30,7 @@ public class CancelOrderServlet extends HttpServlet {
 		} else if (status.equals("Delivered")) {
 
 			try {
-				System.out.println("not");
+				//System.out.println("not");
 				PrintWriter out = res.getWriter();
 //				out.println("<script type=\"text/javascript\">");
 //				out.println("alert('Already Delivered');");
@@ -45,7 +45,7 @@ public class CancelOrderServlet extends HttpServlet {
 		} else {
 
 			try {
-				System.out.println("not");
+			//	System.out.println("not");
 				PrintWriter out = res.getWriter();
 //				out.println("<script type=\"text/javascript\">");
 //				out.println("alert('Already Cancel');");

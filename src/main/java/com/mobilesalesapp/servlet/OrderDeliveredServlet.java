@@ -20,7 +20,7 @@ public class OrderDeliveredServlet extends HttpServlet {
 		int orderId=Integer.parseInt( req.getParameter("orderId"));
 		String status=req.getParameter("deliveryStatus");
 		
-		System.out.println(status+"delivered"+orderId);
+//		System.out.println(status+"delivered"+orderId);
 		if(status.equals("Placed")) {
 			
 		

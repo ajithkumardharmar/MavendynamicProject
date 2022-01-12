@@ -89,6 +89,9 @@ li a:hover {
 .active {
 	background-color: grey;
 }
+body{
+background-color:cornsilk;
+}
 table{
 background-color: rgb(248, 213, 168);
 }

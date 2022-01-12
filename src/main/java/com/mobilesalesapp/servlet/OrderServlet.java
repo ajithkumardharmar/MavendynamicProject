@@ -40,15 +40,15 @@ public class OrderServlet extends HttpServlet {
 		try {
 
 			if (i == 1) {
-				System.out.println("updatedWallet");
+//				System.out.println("updatedWallet");
 				OrderPojo obj2 = new OrderPojo(userId, productId, price, fullAddress);
 				int j = orderDao.insertOrder(obj2);
 				if (j > 0) {
-					System.out.println("success");
+//					System.out.println("success");
 					res.sendRedirect("OrderPlaced.jsp");
 				} else {
 
-					System.out.println("invalid data");
+//					System.out.println("invalid data");
 				}
 			}else if(i==5) {
 				try {

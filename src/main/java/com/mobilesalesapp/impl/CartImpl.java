@@ -40,7 +40,7 @@ public class CartImpl implements CartDao {
 		double price = 0;
 
 		try {
-			System.out.println("cartProduct"+cartPojo.getProductId());
+//			System.out.println("cartProduct"+cartPojo.getProductId());
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, cartPojo.getProductId());
 			ResultSet rs = pre.executeQuery();
@@ -55,10 +55,10 @@ public class CartImpl implements CartDao {
 			}
 			
 			String query3 = "insert into carts_table(user_id,product_id,product_name,description,price,url) values(?,?,?,?,?,?)";
-			System.out.println(cartPojo.getProductId() + productName + description + price + cartPojo.getUserId());
+//			System.out.println(cartPojo.getProductId() + productName + description + price + cartPojo.getUserId());
 			
 			PreparedStatement pre2 = con.prepareStatement(query3);
-			System.out.println("Dao2");
+//			System.out.println("Dao2");
 			pre2.setInt(1, cartPojo.getUserId());
 			pre2.setInt(2, cartPojo.getProductId());
 			pre2.setString(3, productName);
@@ -66,16 +66,16 @@ public class CartImpl implements CartDao {
 			pre2.setDouble(5, price);
 			pre2.setString(6, url);
 			int i=pre2.executeUpdate();
-			System.out.println("Dao4 "+i );
-			System.out.println("Dao3 "+url);
+//			System.out.println("Dao4 "+i );
+		
 			
 			//rs = pre2.executeQuery();
 			if(i>0){
 			
-			System.out.println(cartPojo.getProductId() + productName + description + price + cartPojo.getUserId());
+//			System.out.println(cartPojo.getProductId() + productName + description + price + cartPojo.getUserId());
 			PreparedStatement pre1 = con.prepareStatement(query4);
 			pre1.executeUpdate();
-			System.out.println("cartInsert");
+//			System.out.println("cartInsert");
 			}
 
 		} catch (SQLException e) {
@@ -93,7 +93,7 @@ public class CartImpl implements CartDao {
 		try {
 			Statement st=con.createStatement();
 			int i=st.executeUpdate(query);
-			System.out.println("deleteCart "+i);
+//			System.out.println("deleteCart "+i);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
