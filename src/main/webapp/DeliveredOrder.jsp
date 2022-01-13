@@ -165,7 +165,7 @@ background-color: rgb(248, 213, 168);
   //  System.out.println("my"+user);
   
     	int userId = Integer.parseInt(request.getParameter("userId"));
-    	System.out.println("my1	"+userId);
+    //	System.out.println("my1	"+userId);
     	OrderPojo orderPojo=new OrderPojo(userId);
     	OrderImpl order=new OrderImpl();
     	ResultSet rs=order.viewAllOrders(orderPojo);

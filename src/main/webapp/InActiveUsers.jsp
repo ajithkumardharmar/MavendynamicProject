@@ -130,7 +130,7 @@ background-color: rgb(248, 213, 168);
 				<th>Name</th>
 				<th>Email</th>
 				<th>Phone Number</th>
-				<th>Wallet</th>
+				<th>Request</th>
 				
 				<th>Action</th>
 
@@ -144,7 +144,7 @@ background-color: rgb(248, 213, 168);
 				<td><%=ns.getString(2)%></td>
 				<td><%=ns.getString(3)%></td>
 				<td><%=ns.getLong(4)%></td>
-				<td><%=ns.getDouble(5)%></td>
+				<td><%=ns.getString(5)%></td>
 		
 				<td>
 					<a class="btn btn-dark" href="activeUser?userId=<%=ns.getInt(1)%>">Active</a>

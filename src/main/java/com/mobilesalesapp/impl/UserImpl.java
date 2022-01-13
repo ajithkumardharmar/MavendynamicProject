@@ -78,7 +78,7 @@ public class UserImpl implements UserDao {
 	}
 	public ResultSet inActiveUserDetails() {
 		Connection con = ConnectionUtil.connect();
-		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table where role='inactive'";
+		String query = "select pk_user_id,first_name,email,phone_number,request from users_table where role='inactive'";
 		Statement st;
 		ResultSet ns = null;
 		try {
@@ -153,6 +153,23 @@ public class UserImpl implements UserDao {
 
 		return i;
 
+	}
+	public int request(RegisterPojo user) {
+		String query="update users_table set request=? where email=?";
+		Connection con =ConnectionUtil.connect();
+		int  i=0;
+		try {
+			PreparedStatement pre=con.prepareStatement(query);
+			pre.setString(1, user.getReason());
+			pre.setString(2, user.getEmail());
+			i=pre.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return i;
 	}
 	
 

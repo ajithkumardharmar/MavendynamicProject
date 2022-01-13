@@ -22,7 +22,7 @@ public class OrderServlet extends HttpServlet {
 		String user = (String) session.getAttribute("userId");
 		int userId1 = Integer.parseInt(user);
 		int userId = userId1;
-		int productId = (int) session.getAttribute("productId");
+		int productId =Integer.parseInt( session.getAttribute("productId").toString());
 		String address1 = req.getParameter("address1");
 		String address2 = req.getParameter("address2");
 		String pincode = "Pincode-"+req.getParameter("pincode");

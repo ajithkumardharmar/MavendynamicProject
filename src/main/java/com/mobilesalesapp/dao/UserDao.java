@@ -19,5 +19,7 @@ public interface UserDao {
 	public void updateProfile(RegisterPojo reg);
 	
 	public int forgotPassword(RegisterPojo login);
+	
+	public int request(RegisterPojo user);
 
 }

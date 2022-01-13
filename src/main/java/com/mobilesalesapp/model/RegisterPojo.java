@@ -8,8 +8,17 @@ public class RegisterPojo {
 	private Long phone_number;
 	private String password;
 	private double wallet;
+	private String reason;
 	
 	
+	
+	
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
 	public RegisterPojo(int userId, double wallet) {
 		super();
 		this.userId = userId;

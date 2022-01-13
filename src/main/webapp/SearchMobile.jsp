@@ -208,7 +208,7 @@ padding:10px;
 	<table class="table table-hover table-striped" style="margin-left: 222px;" id="table2" class="table1">
 			<%
 			String search=( request.getParameter("search")).toLowerCase();
-			System.out.println(search+" searches ");
+			//System.out.println(search+" searches ");
 			String query = "select * from products where lower(product_name) like '"+search+"%'";
 				Connection con = ConnectionUtil.connect();
 				Statement st = con.createStatement();
