@@ -170,9 +170,9 @@ padding:10px;
     margin-left: 30px;
 }
 .user_det{
-margin:100px;
+margin:60px;
 position: absolute;
-left: 300px;
+left: 250px;
 }
 body{
 background-color:cornsilk;

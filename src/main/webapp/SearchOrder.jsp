@@ -236,7 +236,7 @@ background-color:cornsilk;
 
 		<%
 		while (rs.next()) {
-			System.out.println("url id "+rs.getInt(6));
+			//System.out.println("url id "+rs.getInt(6));
 			int productId=rs.getInt(6);
 			OrderImpl orderImpl =new OrderImpl();
 			

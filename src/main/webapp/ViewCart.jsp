@@ -182,7 +182,7 @@ pre.setInt(1,userId );
 	
 	
   
-    System.out.println("rsnext");
+  //  System.out.println("rsnext");
 %>
    
     
