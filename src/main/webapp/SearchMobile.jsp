@@ -387,6 +387,14 @@ background-color:cornsilk;
 				<h2 style="color: red; margin:100px;position:absolute; left: 350px">Product Not Found</h2>
 				<%} %>
 		</table>
+		<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+		
 </div>
 
 

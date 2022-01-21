@@ -1,75 +1,46 @@
-# MobileSalesApp
+### Module 1 (User)
 
-#### objective
-*Purchase*   Mobile
-
-### Features
-
-* View all Mobiles
-* Cart Mobile
-* Forgot Password
-* Inactive user
-* active user
-* Buy Mobile
-* Display cart
-* Display Order
-* Search Product
-* Filter Order
-* Cancel Order
-* Order Delivered status
-* Update Mobile price
-* Add New Mobiles
-* ContactUs
+1)User Registration
+2)User login
+3)Admin login
+4)Admin can view all user
+5)User can forgot password
+6)Inactive user can give a request to activate account
 
 
-## Admin
+### Module 2 (Products)
+	      
+1)User can view products
+2)User can search a products
+3)Admin can list all products
+4)Admin can delete a products
+5)Admin can update product price
+6)Admin can add products
 
-AdminEmail :ajith123@gmail.com
-Password   :Pass1234@
+### Module 3 (Orders)
 
-1.Admin Can Add Products
+1)User can buy a products
+2)User view orders
+3)User search order by date
+4)User can able to cancel order
+5)Admin can list all orders
+6)Admin can update delivered status
 
-2.Admin Can Update Products cost
+### Module 4 (Cart)
 
-3.Admin Can Delete Products
+1)User can add product in cart list
+2)User can delete cart
+3)User can buy product using cart list
 
-4.Admin Can View All User
+### Module 5 (Wallet)
 
-5.Admin Can View All User Orders
+1)User can check wallet balance 
+2)User can buy product using wallet amount
+3)User can recharge wallet amount
 
-6.Admin Can Update User delivery status 
+### Module 6 (Admin)
 
-7.Admin Can Update User Wallet
-
-8.admin can do Active user
-
-9.admin can do Inactive user
-
-
-## User
-
-UserEmail :dharmar123@gmail.com
-Password  :Welcome@1
-
-UserEmail :ajith4321@gmail.com
-Password  :Welcome@1
-
-1.User Can Resgiter Details
-
-2.User Can View All Product
-
-3.User Can add Cart
-
-4.User Can View Wallet ballance
-
-5.User Can Buy a Mobile
-
-6.User Can view Order
-
-7.User Can View Cart
-
-8.User Can update Cancel Order
-
-9.User can search Mobile
-
-10.User can Filter Order
+1)Admin can inactive users
+2)Admin can view inactive users
+3)Admin can activate users
+4)Admin can view contact

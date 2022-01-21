@@ -90,7 +90,7 @@ body {
 		<div class="cont">
 
 
-			<form action="add1" method="post">
+			<form action="add1" method="post" class="was-validated">
 				<h3 class="c_login">Login</h3>
 				<label class="c_lab" for="">Email</label><br> <input
 					autocomplete="off" autofocus class="c_user"
@@ -125,6 +125,9 @@ body {
 			<%
 			session.removeAttribute("LoginResult");
 			%>
+	
+
+			
 		</div>
 	</div>
 
