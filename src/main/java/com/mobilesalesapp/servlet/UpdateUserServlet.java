@@ -1,6 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,9 +24,12 @@ public class UpdateUserServlet extends HttpServlet {
 		userImpl.updateProfile(registerPojo);
 		
 		try {
-			HttpSession session=request.getSession();
-			session.setAttribute("msg", "Updated Successfully");
-			response.sendRedirect("MyProfile.jsp");
+			PrintWriter out=response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('updated successful');");
+			out.println("location='MyProfile.jsp';");
+			out.println("</script>");	
+			//response.sendRedirect("MyProfile.jsp");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,22 +1,14 @@
+<%@page import="com.mobilesalesapp.impl.ProductImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.sql.*"
 	import ="com.mobilesalesapp.util.*" %>
 <%
-if (session.getAttribute("name") == (null)) {
-	response.sendRedirect("index.jsp");
-}
+
 String name = (String) session.getAttribute("name");
 int userId = Integer.parseInt(session.getAttribute("userId").toString());
-
-String query1="select * from users_table where pk_user_id='"+userId+"'";
-Connection con1 =ConnectionUtil.connect();
-Statement st1=con1.createStatement();
-ResultSet rs1= st1.executeQuery(query1);
-double wallet=0;
-if(rs1.next()){
-	wallet=rs1.getDouble(6);
-}
-
+double wallet =Double.parseDouble(session.getAttribute("wallet").toString());
+ProductImpl productImpl=new ProductImpl();
+ResultSet rs=productImpl.showAllProduct();
 %>
 
 
@@ -225,10 +217,7 @@ left: 100px;
 
 	<table style="margin-left: 222px;" id="table2" class="table1">
 			<%
-			String query = "select * from products ";
-				Connection con = ConnectionUtil.connect();
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(query);
+			
 				int i = 0;
 				while (i <= 1) {
 					if (rs.next()) {
@@ -393,12 +382,6 @@ left: 100px;
 				%>
 			
 		</table>
-		<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
 		
 </div>

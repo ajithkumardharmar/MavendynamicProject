@@ -21,7 +21,7 @@ import com.mobilesalesapp.model.RegisterPojo;
 @WebServlet("/reg")
 
 public class RegisterServlet extends HttpServlet {
-	public void doPost(HttpServletRequest req,HttpServletResponse res)  {
+	public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException  {
 		String name=req.getParameter("name1");
 		String email=req.getParameter("email");
 		Long phone_number=Long.parseLong(req.getParameter("phone_number"));
@@ -31,6 +31,7 @@ public class RegisterServlet extends HttpServlet {
 			
 		RegisterPojo p=new RegisterPojo(name, email, phone_number, password);
 		UserImpl userDao=new UserImpl();
+		PrintWriter out=res.getWriter();
 		
 		int i=userDao.register(p);
 		
@@ -51,20 +52,16 @@ public class RegisterServlet extends HttpServlet {
 		else {
 			
 			try {
-				HttpSession session =req.getSession();
-				session.setAttribute("regError", "Email Must be Unique");
-//				System.out.println("Email Must be Unique");
+
 				throw new EmailException();
 				//res.sendRedirect("Register.jsp");
 			} catch (EmailException e) {
 				// TODO Auto-generated catch block
-				String page=e.sameEmail();
-				try {
-					res.sendRedirect(page);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				//String page=e.sameEmail();
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Thish Email Already Used');");
+				out.println("location='Register.jsp';");
+				out.println("</script>");
 				
 			}
 		}

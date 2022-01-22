@@ -1,3 +1,4 @@
+<%@page import="com.mobilesalesapp.impl.AdminImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import ="com.mobilesalesapp.util.*" import ="java.sql.*" %>
 <!DOCTYPE html>
@@ -151,10 +152,8 @@ background-color: rgb(248, 213, 168);
 	
 	<br><br>
 	<%
-String query="select * from contactus";
-Connection con=ConnectionUtil.connect();
-Statement st=con.createStatement();
-ResultSet rs=st.executeQuery(query);
+AdminImpl adminImpl=new AdminImpl();
+ResultSet rs=adminImpl.viewContactUs();
 %>
 
 
@@ -180,12 +179,6 @@ ResultSet rs=st.executeQuery(query);
    
     </tr>
     <%}%>
-    <%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
     
 

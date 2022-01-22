@@ -248,43 +248,28 @@ input { display: table-cell;position: absolute;left: 80px; }
 		</p>
 		</form>
 			<div >
-		<details style="position:absolute;left: 500px ;top: 50px;">
-		<summary >Recharge</summary>
-		<form action="addWallet" method="post">
-					<p>
-						<label style=" display: table-cell;position: absolute;right:  10px;" >User_id:</label>
-						<input style=" display: table-cell;position: absolute;left: 80px;" type="text" name="walletUserId"
+		<details style="position:absolute;left: 450px ;top: 210px;padding: 4px;">
+		<summary style=" padding: 4px;" class="btn btn-secondary" >Recharge</summary>
+		<p><form action="addWallet" method="post">
+					<p ><br>
+						
+						<input hidden="" style=" display: table-cell;position: absolute;left: 80px;" type="text" name="walletUserId"
 							value="<%= rs.getString(1)%>" readonly pattern="[0-9]{1,8}"
-							maxlength="8" required><br> <br></p>
+							maxlength="8" required></p>
 							<p>
-							<label style=" display: table-cell;position: absolute;right:  10px;">Wallet:</label>
-							 <input style=" display: table-cell;position: absolute;left: 80px;" type="text" name="walletAmount" pattern="[1-9][0-9]{1,8}"
+							<label style=" display: table-cell;position: absolute;right:  20px;">Wallet:</label>
+							 <input style=" display: table-cell;position: absolute;left: 70px;" type="text" name="walletAmount" pattern="[1-9][0-9]{1,8}"
 							maxlength="8" title="Only enter positive number" required><br> <br>
-						<button style=" display: table-cell;position: absolute;left:  10px;" type="submit" class="btn btn-success">Add</button>
+						<button style=" display: table-cell;position: absolute;left:  20px;" type="submit" class="btn btn-success">Add</button>
 						<br> <br></p>
-					</form>
+					</form></p>
 		</details>	</div>
 		</div>
 		
 		<%}
-	String message=(String)session.getAttribute("msg");
-	if(message!=null){%>
-	<script type="text/javascript">
-	alert('<%= message%>');
-	</script>
-		
-		<%	}
-	session.removeAttribute("msg");
-	
-	%>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
+
 	%>
 
-	
 	
 	
 	

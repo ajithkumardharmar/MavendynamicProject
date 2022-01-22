@@ -64,4 +64,20 @@ public class ProductImpl implements ProductDao {
 		}
 
 	}
+	public ResultSet showAllProduct() {
+		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products ";
+		Connection con = ConnectionUtil.connect();
+		Statement st;
+		ResultSet rs=null;
+		try {
+			st = con.createStatement();
+			rs = st.executeQuery(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return rs;
+	}
 }

@@ -231,7 +231,7 @@ background-color:cornsilk;
 
 
 
-				<th><a style="margin-left: 50px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
+				<th><a style="margin-left: 80px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 						src="<%=rs.getString(6)%>" alt=""></a></th>
 			</tr>
 
@@ -270,7 +270,7 @@ background-color:cornsilk;
 				<tr>
 
 
-					<th><a style="margin-left: 50px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
+					<th><a style="margin-left: 80px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 							src="<%=rs.getString(6)%>" alt=""></a></th>
 				</tr>
 
@@ -303,7 +303,7 @@ background-color:cornsilk;
 
 
 
-		<table style="margin-left: 50px;" style="margin-left: 622px;" class="table1">
+		<table style="margin-left: 80px;" style="margin-left: 622px;" class="table1">
 			<div class="table_right">
 				<%
 				int k = 0;
@@ -345,7 +345,7 @@ background-color:cornsilk;
 		</table>
 
 
-		<table style="margin-left: 50px;" style="margin-left: 222px; margin-top: -1030px" class="table1">
+		<table style="margin-left: 80px;" style="margin-left: 222px; margin-top: -1030px" class="table1">
 			<div class="table_right">
 				<%
 				int l = 0;
@@ -387,12 +387,6 @@ background-color:cornsilk;
 				<h2 style="color: red; margin:100px;position:absolute; left: 350px">Product Not Found</h2>
 				<%} %>
 		</table>
-		<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
 		
 </div>

@@ -21,9 +21,8 @@ public class AddProductServlet extends HttpServlet {
     	   String description=req.getParameter("description");
     	   String standard_cost=req.getParameter("standard_cost");
     	   String list_price=req.getParameter("list_price");
-    	  //System.out.println(product_name);
-//    	   PrintWriter out=res.getWriter();
-//    	   out.println(product_name);
+    	
+
     	   
     	   ProductPojo obj=new ProductPojo(product_name,description,
     			   Double.parseDouble(standard_cost),Double.parseDouble(list_price));
@@ -31,8 +30,7 @@ public class AddProductServlet extends HttpServlet {
     	   ProductImpl obj2=new ProductImpl();
     	   
 			obj2.add(obj);
-			HttpSession session=req.getSession();
-			session.setAttribute("product","Product succesfully added");
+			
 			res.sendRedirect("ProductList.jsp");
 		
     	   

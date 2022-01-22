@@ -101,23 +101,9 @@ background-color:cornsilk;
 	<%
 	ListAllProductImpl listAllProductDao = new ListAllProductImpl();
 	ResultSet rs = listAllProductDao.viewProduct();
+	
 	%>
-	<%
-	if (session.getAttribute("deleteInfo") != null) {
-	%>
-	<h3 style="color: green; margin-left: 500px"><%=session.getAttribute("deleteInfo")%></h3>
-	<br>
-	<%
-	}
-	%>
-	<%
-	if (session.getAttribute("updateInfo") != null) {
-	%>
-	<h3 style="color: green; margin-left: 500px"><%=session.getAttribute("updateInfo")%></h3>
-	<br>
-	<%
-	}
-	%>
+
 	<table class="table table-hover table-striped" style="width: 90%; margin-left: 70px;">
 		<tr style="background-color: cornflowerblue">
 			<th>Product Id</th>
@@ -174,18 +160,6 @@ background-color:cornsilk;
 		%>
 	</table>
 
-	<%
-	session.removeAttribute("deleteInfo");
-	%>
-	<%
-	session.removeAttribute("updateInfo");
-	%>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
 	
 </body>

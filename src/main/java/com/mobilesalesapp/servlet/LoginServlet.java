@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 
 import com.mobilesalesapp.exception.EmailException;
 import com.mobilesalesapp.exception.InvalidUserException;
+import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 
@@ -54,6 +55,9 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("role", role);
 					
 					if(role.equals("user")) {
+//						ProductImpl productImpl=new ProductImpl();
+//						ResultSet rs=productImpl.showAllProduct();
+					//	session.setAttribute("productList",rs);
 						res.sendRedirect("MobilePage.jsp");
 					}
 					else if(role.equals("inactive")) {
@@ -69,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 				}else {
 
 					
-					session.setAttribute("LoginResult", "invalid Email or password");
+					//session.setAttribute("LoginResult", "invalid Email or password");
 					//System.out.println(session.getAttribute("LoginResult"));
 					//res.sendRedirect("index.jsp");
 					throw new InvalidUserException();
@@ -77,8 +81,12 @@ public class LoginServlet extends HttpServlet {
 			}
 			catch (InvalidUserException e) {
 				// TODO Auto-generated catch block
-			String page=e.invalidUser();
-			res.sendRedirect(page);
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Invalid Email or password');");
+				out.println("location='index.jsp';");
+				out.println("</script>");
+			//String page=e.invalidUser();
+			//res.sendRedirect(page);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

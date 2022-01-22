@@ -69,6 +69,20 @@ public class AdminImpl implements AdminDao  {
 		
 		
 	}
+	public ResultSet viewContactUs() {
+		String query="select name,email,phone_number,description from contactus";
+		Connection con=ConnectionUtil.connect();
+		Statement st;
+		ResultSet rs=null;
+		try {
+			st = con.createStatement();
+			 rs=st.executeQuery(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
 		
 		
 		

@@ -1,3 +1,4 @@
+<%@page import="com.mobilesalesapp.impl.ProductImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import ="java.sql.*" import ="com.mobilesalesapp.util.*" %>
 <!DOCTYPE html>
@@ -160,13 +161,9 @@ background-color:cornsilk;
 	
 	session.setAttribute("productId",ProductId);
 		 
-		 // int productId=(int)session.getAttribute("productId");
 		  
-		  String query="select * from products where pk_product_id= ?";
-		  Connection con=ConnectionUtil.connect();
-		  PreparedStatement pre=con.prepareStatement(query);
-		  pre.setInt(1, ProductId);
-		  ResultSet rs=pre.executeQuery();
+		  ProductImpl productImpl=new ProductImpl();
+          ResultSet rs=productImpl.showAllProduct();
 		  if(rs.next()){
 	%>
 	<div class="body_main">
@@ -223,12 +220,7 @@ background-color:cornsilk;
 double price= rs.getDouble(5);
 session.setAttribute("price",price);
 } %>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 
 
 </body>

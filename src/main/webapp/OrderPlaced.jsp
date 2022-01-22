@@ -149,12 +149,6 @@ margin-top:40px;
 	
 	<h1 style="color: green;margin-left: 250px;margin-top:160px">Successfully Placed Thank You for Purchasing</h1>
 	<span style='font-size:100px;margin-left: 550px'>&#128522;</span>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
 	
 </body>

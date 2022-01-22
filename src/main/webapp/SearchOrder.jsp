@@ -196,9 +196,9 @@ background-color:cornsilk;
     
     
     String user = (String) session.getAttribute("userId");
-//    System.out.println("my"+user+OrderDate);
+;
     	int userId = Integer.parseInt(user);
-    	//System.out.println("my1	"+userId+"date "+OrderDate);
+    
     	OrderPojo orderPojo=new OrderPojo(userId,OrderDate);
     	OrderImpl order=new OrderImpl();
     	ResultSet rs=order.SearchAllOrders(orderPojo);
@@ -305,12 +305,6 @@ background-color:cornsilk;
 	}
 	</script>
 	
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
 
 

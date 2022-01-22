@@ -157,12 +157,7 @@ background-color: rgb(248, 213, 168);
 			%>
 		</table>
 	</div>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 
 	
 
