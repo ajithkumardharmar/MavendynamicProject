@@ -1,37 +1,47 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.model.ProductPojo;
 
-import javax.servlet.ServletException;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 @WebServlet("/addproduct")
 public class AddProductServlet extends HttpServlet {
-       public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException {
-    	   String product_name=req.getParameter("product_name");
-    	   String description=req.getParameter("description");
-    	   String standard_cost=req.getParameter("standard_cost");
-    	   String list_price=req.getParameter("list_price");
-    	
+ 
+	private static final long serialVersionUID = 1L;
 
-    	   
-    	   ProductPojo obj=new ProductPojo(product_name,description,
-    			   Double.parseDouble(standard_cost),Double.parseDouble(list_price));
-    	   
+	@Override
+       public void doPost(HttpServletRequest req,HttpServletResponse res) {
+    	   String productName=req.getParameter("product_name");
+    	   String description=req.getParameter("description");
+    	  
+    	   try {
+    	   double standardCost=Double.parseDouble( req.getParameter("standard_cost"));
+    	   double listPrice=Double.parseDouble(req.getParameter("list_price"));
+    	   ProductPojo obj=new ProductPojo(productName,description,
+    			   standardCost,(listPrice));
     	   ProductImpl obj2=new ProductImpl();
     	   
 			obj2.add(obj);
+    	   }catch (NumberFormatException uhex) {
+    		   uhex.printStackTrace();
+    		  }
+
+			 try {
+				res.sendRedirect("ProductList.jsp");
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+    	   
+
 			
-			res.sendRedirect("ProductList.jsp");
 		
     	   
        } 

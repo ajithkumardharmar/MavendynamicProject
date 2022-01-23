@@ -8,22 +8,20 @@ import com.mobilesalesapp.util.ConnectionUtil;
 
 public class ProductImpl implements ProductDao {
 	public void add(ProductPojo obj) {
-		try {
+		
 
 			Connection con = ConnectionUtil.connect();
 
 			String query = "insert into products (product_name,description,standard_price,list_price) values(?,?,?,?)";
-
+			try {
 			PreparedStatement pre = con.prepareStatement(query);
-			pre.setString(1, obj.getProduct_name());
+			pre.setString(1, obj.getProductName());
 			pre.setString(2, obj.getDescription());
-			pre.setDouble(3, obj.getStandard_cost());
-			pre.setDouble(4, obj.getList_cost());
-			int i = pre.executeUpdate();
-			//System.out.println(i + "row inserted");
+			pre.setDouble(3, obj.getStandardCost());
+			pre.setDouble(4, obj.getListCost());
+			pre.executeUpdate();
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -37,10 +35,8 @@ public class ProductImpl implements ProductDao {
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, obj1.getId());
 			 i = pre.executeUpdate();
-			//System.out.println(i);
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return i;
@@ -52,14 +48,12 @@ public class ProductImpl implements ProductDao {
 		Connection con = ConnectionUtil.connect();
 		try {
 			PreparedStatement pre = con.prepareStatement(query);
-			pre.setDouble(1, obj1.getStandard_cost());
-			pre.setDouble(2, obj1.getList_cost());
+			pre.setDouble(1, obj1.getStandardCost());
+			pre.setDouble(2, obj1.getListCost());
 			pre.setInt(3, obj1.getId());
-			int i = pre.executeUpdate();
-			//System.out.println(i);
+			pre.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -67,17 +61,29 @@ public class ProductImpl implements ProductDao {
 	public ResultSet showAllProduct() {
 		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products ";
 		Connection con = ConnectionUtil.connect();
-		Statement st;
+		
 		ResultSet rs=null;
-		try {
-			st = con.createStatement();
+		try 
+		{
+			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return rs;
+	}
+	public ResultSet selectProduct(int productId) {
+		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where pk_product_id= '"+productId+"'";
+		Connection con = ConnectionUtil.connect();
 		
-		
+		ResultSet rs=null;
+		try 
+		{
+			Statement st = con.createStatement();
+			rs = st.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return rs;
 	}
 }

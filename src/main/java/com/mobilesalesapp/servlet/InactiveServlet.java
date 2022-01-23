@@ -12,9 +12,12 @@ import com.mobilesalesapp.impl.AdminImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 @WebServlet("/inActive")
 public class InactiveServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+		@Override
 		public void service(HttpServletRequest request,HttpServletResponse response) {
 			int userId=Integer.parseInt(request.getParameter("userId"));
-//			System.out.println(userId);
 			RegisterPojo regPojo=new RegisterPojo();
 			regPojo.setUserId(userId);
 			AdminImpl adminImpl=new AdminImpl();
@@ -29,13 +32,10 @@ public class InactiveServlet extends HttpServlet {
 					
 					
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
 			}
-			else {
-//				System.out.println("not inactive");
-			}
+
 		}
 }

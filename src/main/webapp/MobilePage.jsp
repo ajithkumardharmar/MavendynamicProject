@@ -262,6 +262,7 @@ left: 100px;
 				int j = 0;
 				while (j <= 1) {
 					if (rs.next()) {
+						System.out.println(rs.getInt(1));
 				%>
 				<tr>
 

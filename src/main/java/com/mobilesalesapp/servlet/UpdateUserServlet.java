@@ -7,16 +7,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 
 @WebServlet("/updateUser")
 public class UpdateUserServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	public void doPost(HttpServletRequest request,HttpServletResponse response) {
 		String name=request.getParameter("userName");
-		Long userPhone=Long.parseLong( request.getParameter("userPhone"));
+		long userPhone=0;
+		try {
+			userPhone=Long.parseLong( request.getParameter("userPhone"));
+		}catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
 		String email=request.getParameter("userEmail");
 		RegisterPojo registerPojo=new RegisterPojo(name,email,userPhone,null);
 		
@@ -29,9 +38,9 @@ public class UpdateUserServlet extends HttpServlet {
 			out.println("alert('updated successful');");
 			out.println("location='MyProfile.jsp';");
 			out.println("</script>");	
-			//response.sendRedirect("MyProfile.jsp");
+			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		

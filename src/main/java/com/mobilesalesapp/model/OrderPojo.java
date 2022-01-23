@@ -94,7 +94,6 @@ public class OrderPojo {
 
 	public OrderPojo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

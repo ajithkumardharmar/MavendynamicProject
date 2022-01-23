@@ -21,5 +21,7 @@ public interface UserDao {
 	public int forgotPassword(RegisterPojo login);
 	
 	public int request(RegisterPojo user);
+	
+	public ResultSet myDetails(int userId) ;
 
 }

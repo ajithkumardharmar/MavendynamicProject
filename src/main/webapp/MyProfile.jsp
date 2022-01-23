@@ -1,3 +1,4 @@
+<%@page import="com.mobilesalesapp.impl.UserImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.sql.*"
 	import ="com.mobilesalesapp.util.*" %>
@@ -212,10 +213,8 @@ input { display: table-cell;position: absolute;left: 80px; }
 	
 	<br>
 	<%
-	String query="select * from users_table where pk_user_id='"+userId+"'";
-	Connection con =ConnectionUtil.connect();
-	Statement st=con.createStatement();
-	ResultSet rs= st.executeQuery(query);
+	UserImpl userImpl=new UserImpl();
+	ResultSet rs=userImpl.myDetails(userId);
 	if(rs.next()){
 		%>
 		

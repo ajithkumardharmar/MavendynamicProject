@@ -99,9 +99,8 @@ background-color:cornsilk;
 	<br>
 	<br>
 	<%
-	ListAllProductImpl listAllProductDao = new ListAllProductImpl();
-	ResultSet rs = listAllProductDao.viewProduct();
-	
+	ProductImpl product=new ProductImpl();
+	ResultSet rs =product.showAllProduct();
 	%>
 
 	<table class="table table-hover table-striped" style="width: 90%; margin-left: 70px;">

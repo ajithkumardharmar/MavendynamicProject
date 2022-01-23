@@ -116,7 +116,7 @@ width: 200px;
 			
 			
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
-				href="ViewContactUs.jsp">View ContactUs</a><br>
+				href="ViewContactUs1">View ContactUs</a><br>
 				
 				<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
 				href="InActiveUsers.jsp">InActive Users</a><br>
