@@ -29,32 +29,29 @@ public class OrderDeliveredServlet extends HttpServlet {
 			PrintWriter out=res.getWriter();
 			out.println("<script type=\"text/javascript\" >");
 			out.println("alert('Successfully Updated');");
-			out.println("location='ViewUser.jsp';");
+			out.println("location='AdminMain.jsp';");
 			out.println("</script>");
-			res.sendRedirect("ViewUser.jsp");
-		} catch (IOException e) {
+			} catch (IOException e) {
 
 			e.printStackTrace();
 		}
-		}
-		else if(status.equals("Delivered")) {
+		} else if(status.equals("Delivered")) {
 			try {
 				PrintWriter out=res.getWriter();
 				out.println("<script type=\"text/javascript\" >");
 				out.println("alert('Already Delivered');");
-				out.println("location='ViewUser.jsp';");
+				out.println("location='AdminMain.jsp';");
 				out.println("</script>");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
-		}
-		else {
+		} else {
 			try {
 				PrintWriter out=res.getWriter();
 				out.println("<script type=\"text/javascript\" >");
 				out.println("alert('Already Cancelled');");
-				out.println("location='ViewUser.jsp';");
+				out.println("location='AdminMain.jsp';");
 				out.println("</script>");
 			} catch (IOException e) {
 

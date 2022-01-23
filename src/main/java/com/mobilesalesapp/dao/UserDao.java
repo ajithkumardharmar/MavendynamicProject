@@ -1,6 +1,7 @@
 package com.mobilesalesapp.dao;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 import com.mobilesalesapp.model.ContactUsPojo;
 import com.mobilesalesapp.model.RegisterPojo;
@@ -10,11 +11,11 @@ public interface UserDao {
 
 	public ResultSet fetch(RegisterPojo Login);
 
-	public ResultSet userDetails();
+	public List<RegisterPojo> userDetails();
 	
 	public void contactUs(ContactUsPojo contactUs);
 	
-	public ResultSet inActiveUserDetails();
+	public List<RegisterPojo> inActiveUserDetails();
 	
 	public void updateProfile(RegisterPojo reg);
 	

@@ -201,8 +201,8 @@ background-color:cornsilk;
     
     	OrderPojo orderPojo=new OrderPojo(userId,OrderDate);
     	OrderImpl order=new OrderImpl();
-    	ResultSet rs=order.SearchAllOrders(orderPojo);
-    	ResultSet rs1=order.SearchAllOrders(orderPojo);
+    	ResultSet rs=order.searchAllOrders(orderPojo);
+    	ResultSet rs1=order.searchAllOrders(orderPojo);
     %>
     <%
     if(rs1.next() ){%>

@@ -1,7 +1,8 @@
 package com.mobilesalesapp.impl;
 
 import java.sql.*;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.model.ContactUsPojo;
@@ -51,36 +52,44 @@ public class UserImpl implements UserDao {
 
 	}
 
-	public ResultSet userDetails() {
+	public List<RegisterPojo> userDetails() {
 		Connection con = ConnectionUtil.connect();
 		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table where role='user'";
-		
-		ResultSet ns = null;
+		List<RegisterPojo> userList=new ArrayList<RegisterPojo>();
+		ResultSet rs = null;
 		try {
 			Statement st = con.createStatement();
-			ns = st.executeQuery(query);
+			rs = st.executeQuery(query);
+			while(rs.next()) {
+				RegisterPojo registerPojo=new RegisterPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getDouble(5));
+				userList.add(registerPojo);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return ns;
+		return userList;
 
 	}
-	public ResultSet inActiveUserDetails() {
+	public List<RegisterPojo> inActiveUserDetails() {
 		Connection con = ConnectionUtil.connect();
 		String query = "select pk_user_id,first_name,email,phone_number,request from users_table where role='inactive'";
-		
+		List<RegisterPojo> userList=new ArrayList<RegisterPojo>();
 		ResultSet ns = null;
 		try {
 			Statement st = con.createStatement();
 			ns = st.executeQuery(query);
+			while(ns.next()) {
+				RegisterPojo registerPojo=new RegisterPojo(ns.getInt(1),ns.getString(2),ns.getString(3),ns.getLong(4),ns.getString(5));
+				userList.add(registerPojo);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return ns;
+		return userList;
 
 	}
 	

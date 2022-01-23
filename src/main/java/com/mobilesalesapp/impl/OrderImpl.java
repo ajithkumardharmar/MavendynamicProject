@@ -6,6 +6,9 @@ import com.mobilesalesapp.model.UpdateWalletPojo;
 import com.mobilesalesapp.util.ConnectionUtil;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderImpl implements OrderDao {
 	private static final String COMMIT="commit";
@@ -70,23 +73,33 @@ public class OrderImpl implements OrderDao {
 
 	}
 
-	public ResultSet viewAllOrders(OrderPojo orderPojo) {
-
+	public List<OrderPojo> viewAllOrders(OrderPojo orderPojo) {
+		
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,order_date,address,fk_product_id,fk_user_id from orders_table where fk_user_id=? order by order_date desc ";
+		String query = "select order_id,status,price,trunc(order_date)d,address,fk_product_id,fk_user_id from orders_table where fk_user_id=? order by order_date desc ";
 		ResultSet rs = null;
+		List<OrderPojo> orderList1=new ArrayList<OrderPojo>();
 		try {
 			
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, orderPojo.getUserId());
 			rs = pre.executeQuery();
+			while(rs.next()) {
+				System.out.println("hl"+rs.getDouble(3));
+				
+				
+				OrderPojo orders=new OrderPojo(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getString(5));
+				System.out.println("non");
+				orderList1.add(orders);
+			}
 			
 		} catch (Exception e) {
-			e.getMessage();
+			e.printStackTrace();;
 		}
-		return rs;
+		System.out.println("heloooo"+orderList1);
+		return orderList1;
 	}
-	public ResultSet SearchAllOrders(OrderPojo orderPojo) {
+	public ResultSet searchAllOrders(OrderPojo orderPojo) {
 
 		Connection con = ConnectionUtil.connect();
 		String query = "select order_id,status,price,order_date,address,fk_product_id from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')='"+orderPojo.getDate()+"' order by order_date desc";
@@ -119,7 +132,7 @@ public class OrderImpl implements OrderDao {
 		}
 		try{
 			PreparedStatement pre=con.prepareStatement(query2);
-			pre.setInt(1, orderPojo.getOrerId());
+			pre.setInt(1, orderPojo.getOrderId());
 			pre.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -141,7 +154,7 @@ public class OrderImpl implements OrderDao {
 		}
 		try{
 			PreparedStatement pre=con.prepareStatement(query2);
-			pre.setInt(1, orderPojo.getOrerId());
+			pre.setInt(1, orderPojo.getOrderId());
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

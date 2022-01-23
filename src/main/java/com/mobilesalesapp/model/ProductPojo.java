@@ -58,6 +58,14 @@ public class ProductPojo {
 		return "ProductPojo [id=" + id + ", productName=" + productName + ", description=" + description
 				+ ", standardCost=" + standardCost + ", listCost=" + listCost + "]";
 	}
+	public ProductPojo(int id, String productName, String description, double standardCost, double listCost) {
+		super();
+		this.id = id;
+		this.productName = productName;
+		this.description = description;
+		this.standardCost = standardCost;
+		this.listCost = listCost;
+	}
 	
 	
 	

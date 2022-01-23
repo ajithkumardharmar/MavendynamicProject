@@ -1,10 +1,13 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.model.ProductPojo;
 
-
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,11 +37,15 @@ public class AddProductServlet extends HttpServlet {
     		  }
 
 			 try {
-				res.sendRedirect("ProductList.jsp");
-			} catch (IOException e) {
+				 ProductImpl product=new ProductImpl();
+					List<ProductPojo> viewProducts =product.showAllProduct();
+					req.setAttribute("viewProducts", viewProducts);
+					RequestDispatcher rd=req.getRequestDispatcher("ProductList.jsp");
+					rd.forward(req, res);
+			} catch (IOException | ServletException e) {
 				
 				e.printStackTrace();
-			}
+			} 
     	   
 
 			

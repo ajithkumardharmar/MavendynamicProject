@@ -108,18 +108,18 @@ width: 200px;
 			
 		
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
-				href="ProductList.jsp">View Products</a><br>
+				href="ViewProduct">View Products</a><br>
 		
 			
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
-				href="ViewUser.jsp">View All Users</a><br>
+				href="ViewUser">View All Users</a><br>
 			
 			
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
 				href="ViewContactUs1">View ContactUs</a><br>
 				
 				<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
-				href="InActiveUsers.jsp">InActive Users</a><br>
+				href="InActiveUsers">InActive Users</a><br>
 			<br>
 			</div>
 		</div>

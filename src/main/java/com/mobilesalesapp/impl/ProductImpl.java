@@ -1,6 +1,8 @@
 package com.mobilesalesapp.impl;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mobilesalesapp.dao.ProductDao;
 import com.mobilesalesapp.model.ProductPojo;
@@ -58,19 +60,23 @@ public class ProductImpl implements ProductDao {
 		}
 
 	}
-	public ResultSet showAllProduct() {
-		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products ";
+	public List<ProductPojo> showAllProduct() {
+		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products order by pk_product_id ";
 		Connection con = ConnectionUtil.connect();
-		
+		List<ProductPojo> productList=new ArrayList<ProductPojo>();
 		ResultSet rs=null;
 		try 
 		{
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
+			while(rs.next()) {
+				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5));
+				productList.add(productPojo);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return rs;
+		return productList;
 	}
 	public ResultSet selectProduct(int productId) {
 		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where pk_product_id= '"+productId+"'";

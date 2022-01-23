@@ -2,6 +2,7 @@ package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,7 @@ public class AcivateUserServlet extends HttpServlet {
 				PrintWriter out=response.getWriter();
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Inactive Successfully');");
-				out.println("location='InActiveUsers.jsp';");
+				out.println("location='AdminMain.jsp';");
 				out.println("</script>");
 				
 				

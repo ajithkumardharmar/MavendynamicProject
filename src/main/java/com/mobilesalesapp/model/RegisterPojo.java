@@ -79,6 +79,23 @@ public class RegisterPojo {
 		super();
 
 	}
+	public RegisterPojo(int userId, String name, String email, Long phoneNumber, double wallet) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.wallet = wallet;
+		
+	}
+	public RegisterPojo(int userId, String name, String email, Long phoneNumber, String reason) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.reason = reason;
+	}
 	
 	
 
