@@ -15,7 +15,7 @@ public interface OrderDao {
 	
 	public void orderCancel(OrderPojo orderPojo);
 	
-	public ResultSet searchAllOrders(OrderPojo orderPojo);
+	public List<OrderPojo> searchAllOrders(OrderPojo orderPojo);
 	
 	public void deliveredCancel(OrderPojo orderPojo);
 	

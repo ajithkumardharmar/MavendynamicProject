@@ -26,9 +26,8 @@ public class OrderServlet extends HttpServlet {
 		int i=0;
 		int j =0;
 		try {
-		String user = (String) session.getAttribute("userId");
-		int userId1 = Integer.parseInt(user);
-		int userId = userId1;
+		int userId = Integer.parseInt( session.getAttribute("userId").toString());
+		
 		int productId =Integer.parseInt( session.getAttribute("productId").toString());
 		String address1 = req.getParameter("address1");
 		String address2 = req.getParameter("address2");

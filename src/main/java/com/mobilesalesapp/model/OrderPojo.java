@@ -3,12 +3,19 @@ package com.mobilesalesapp.model;
 import java.time.LocalDate;
 
 public class OrderPojo {
+	public OrderPojo(int userId) {
+		super();
+		this.userId = userId;
+	}
+
+
 	private int userId;
 	private int productId;
 	private int orderId;
 	private String status;
 	private double price;
 	private String date;
+	private String address;
 	public OrderPojo(int orderId, String status, double price, String date, String address) {
 		super();
 		this.orderId = orderId;
@@ -19,13 +26,24 @@ public class OrderPojo {
 	}
 
 
-	private String address;
-	
-	
-	
-	
+	public OrderPojo(int userId, int orderId, String status, double price, String date, String address) {
+		super();
+		this.userId = userId;
+		this.orderId = orderId;
+		this.status = status;
+		this.price = price;
+		this.date = date;
+		this.address = address;
+	}
 
-	
+
+
+
+
+
+
+
+
 
 	public String getStatus() {
 		return status;

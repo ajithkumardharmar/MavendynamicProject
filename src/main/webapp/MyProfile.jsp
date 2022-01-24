@@ -7,10 +7,10 @@ if (session.getAttribute("name") == (null)) {
 	response.sendRedirect("index.jsp");
 }
 String name = (String) session.getAttribute("name");
-String userId1 = (String) session.getAttribute("userId");
+int userId =Integer.parseInt( session.getAttribute("userId").toString());
 
 double wallet = (double) session.getAttribute("wallet");
-int userId = Integer.parseInt(userId1);
+
 
 %>
 
@@ -196,8 +196,8 @@ input { display: table-cell;position: absolute;left: 80px; }
 	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a  href="MobilePage.jsp	">Home</a></li>
-			<li><a href="ViewOrders.jsp">My Orders</a></li>
+			<li><a  href="MobilePage">Home</a></li>
+			<li><a href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart.jsp">Cart</a></li>
 			<li><a class="active" href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>

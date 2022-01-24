@@ -1,6 +1,7 @@
-<%@page import="com.mobilesalesapp.impl.ProductImpl"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import ="java.sql.*" import ="com.mobilesalesapp.util.*" %>
+	pageEncoding="ISO-8859-1"  %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,8 +143,8 @@ background-color:cornsilk;
 	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a class="active" href="MobilePage.jsp">Home</a></li>
-			<li><a href="ViewOrders.jsp">My Orders</a></li>
+			<li><a class="active" href="MobilePage">Home</a></li>
+			<li><a href="ViewOrders1">My Orders</a></li>
             <li><a href="ViewCart.jsp">Cart</a></li>
             <li><a href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
@@ -157,32 +158,24 @@ background-color:cornsilk;
 	</div>
 	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 	
-	<%int ProductId=Integer.parseInt(request.getParameter("product_id"));
-	
-	
-		 
-		  
-		  ProductImpl productImpl=new ProductImpl();
-          ResultSet rs=productImpl.selectProduct(ProductId);
-          session.setAttribute("productId",ProductId);
-		  if(rs.next()){
-	%>
+	<c:forEach items="${sessionScope.selectedProduct}" var="p">
 	<div class="body_main">
 	
 		<a><img id="41"
-			src="<%=rs.getString(6) %>"
+			src="${p.url}"
 			alt=""></a>
 		<div class="phoneInfo">
-			<pre><%=rs.getString(3) %>
+			<pre>${p.description}
 </pre>
 
 			<div class="but_lo">
-				<button type="button" class="btn btn-primary" onclick="addCartItem('<%=ProductId%>')">Add Cart</button>
+				<button type="button" class="btn btn-primary" onclick="addCartItem('${p.id}')">Add Cart</button>
 				
-				<a style="margin-left: 50px;" class="btn btn-success" href="MobileBuy.jsp">Buy</a>
+				<a style="margin-left: 50px;" class="btn btn-success" href="MobileBuy?price=${p.listCost}&productId=${p.id}">Buy</a>
 			</div>
 		</div>
 	</div>
+	</c:forEach>
 	<script type="text/javascript">
 	function addCartItem(productId){     
         
@@ -217,10 +210,7 @@ background-color:cornsilk;
     	}  
     	}  
     </script>
-<% 
-double price= rs.getDouble(5);
-session.setAttribute("price",price);
-} %>
+
 
 
 

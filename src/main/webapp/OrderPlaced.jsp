@@ -131,8 +131,8 @@ margin-top:40px;
 	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a class="active" href="MobilePage.jsp">Home</a></li>
-			<li><a href="ViewOrders.jsp">My Orders</a></li>
+			<li><a class="active" href="MobilePage">Home</a></li>
+			<li><a href="ViewOrders1">My Orders</a></li>
             <li><a href="ViewCart.jsp">Cart</a></li>
             <li><a href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>

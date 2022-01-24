@@ -6,6 +6,23 @@ public class ProductPojo {
 	private String description;
 	private double standardCost;
 	private double listCost;
+	private String url;
+	public ProductPojo(int id, String productName, String description, double standardCost, double listCost,
+			String url) {
+		super();
+		this.id = id;
+		this.productName = productName;
+		this.description = description;
+		this.standardCost = standardCost;
+		this.listCost = listCost;
+		this.url = url;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	public int getId() {
 		return id;
 	}

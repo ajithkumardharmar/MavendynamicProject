@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mobilesalesapp.dao.ProductDao;
+import com.mobilesalesapp.model.OrderPojo;
 import com.mobilesalesapp.model.ProductPojo;
+
 import com.mobilesalesapp.util.ConnectionUtil;
 
 public class ProductImpl implements ProductDao {
@@ -14,7 +16,8 @@ public class ProductImpl implements ProductDao {
 
 			Connection con = ConnectionUtil.connect();
 
-			String query = "insert into products (product_name,description,standard_price,list_price) values(?,?,?,?)";
+			String query = "insert into products (product_name,description,standard_price,list_price)"
+					+ " values(?,?,?,?)";
 			try {
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setString(1, obj.getProductName());
@@ -70,7 +73,7 @@ public class ProductImpl implements ProductDao {
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 			while(rs.next()) {
-				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5));
+				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
 				productList.add(productPojo);
 			}
 		} catch (SQLException e) {
@@ -78,18 +81,41 @@ public class ProductImpl implements ProductDao {
 		}
 		return productList;
 	}
-	public ResultSet selectProduct(int productId) {
+	public List<ProductPojo> selectProduct(int productId) {
 		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where pk_product_id= '"+productId+"'";
 		Connection con = ConnectionUtil.connect();
-		
+		List<ProductPojo> productList=new ArrayList<ProductPojo>();
 		ResultSet rs=null;
 		try 
 		{
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
+			while(rs.next()) {
+				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
+				productList.add(productPojo);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return rs;
+		return productList;
+	}
+	public List<ProductPojo> searchProduct(String product) {
+		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where lower(product_name) like '"+product+"%'";
+		Connection con = ConnectionUtil.connect();
+		List<ProductPojo> productList=new ArrayList<ProductPojo>();
+		Statement st;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
+				productList.add(productPojo);
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return productList;
+		
 	}
 }
