@@ -2,11 +2,11 @@
     pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <title>ViewCartItems</title>
 </head>
@@ -139,13 +139,17 @@ background-color: rgb(248, 213, 168);
 body{
 background-color:cornsilk;
 }
+#product{
+width: 90%;
+margin-left: 60px;
+}
 
 * {
 	margin: 0;
 	padding: 0;
 }
 </style>
-<body bgcolor="cornsilk">
+<body>
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 	<div  style="position: relative;top: -10px;" class="top_nav">
@@ -155,8 +159,8 @@ background-color:cornsilk;
 			<li><a href="ViewOrders1">My Orders</a></li>
 			<li><a class="active" href="ViewCart">Cart</a></li>
 			<li><a href="MyProfile">My Profile</a></li>
-			<li><a href="ContactUs.jsp">Contact us</a></li>
-			<li><a href="AboutUs.jsp">About us</a></li>
+			<li><a href="contactUs.jsp">Contact us</a></li>
+			<li><a href="aboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
 
 		
@@ -171,7 +175,8 @@ background-color:cornsilk;
 
    
      <c:if test="${userId!=null}">
-    <table class="table table-hover table-striped" style="width: 90%;margin-left: 60px;">
+    <table id="product" class="table table-hover table-striped" >
+    
     <tr style="background-color: cornflowerblue" >
      <th>Product</th>
     <th>Product Name</th>

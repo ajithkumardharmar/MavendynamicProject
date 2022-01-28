@@ -3,11 +3,11 @@
     pageEncoding="ISO-8859-1"  %>
     	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <title>ViewOrders</title>
 </head>
@@ -138,13 +138,17 @@ background-color:cornsilk;
 table{
 background-color: rgb(248, 213, 168);
 }
+#orders{
+width: 80%;
+margin-left: 100px;
+}
 
 * {
 	margin: 0;
 	padding: 0;
 }
 </style>
-<body bgcolor="cornsilk">
+<body >
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 	<div style="position: relative;top: -10px;" class="top_nav">
@@ -152,7 +156,7 @@ background-color: rgb(248, 213, 168);
 		<ul>
 
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-			<li style="float: right;"><a href="AdminMain.jsp">Admin</a></li>
+			<li style="float: right;"><a href="adminMain.jsp">Admin</a></li>
 
 		</ul>
 
@@ -164,7 +168,7 @@ background-color: rgb(248, 213, 168);
 	
   <c:if test="${userId==null}">
     	
-    <table style="width: 80%;margin-left: 100px;">
+    <table id="orders" >
     <tr style="background-color: cornflowerblue">
      <th>Order Id</th>
     <th>Order Status</th>

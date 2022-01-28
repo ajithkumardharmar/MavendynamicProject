@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <title>OrderPlaced</title>
 </head>
@@ -130,7 +130,7 @@ background-color:cornsilk;
 	padding: 0;
 }
 </style>
-<body bgcolor="cornsilk">
+<body >
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 	<div  style="position: relative;top: -10px;" class="top_nav">
@@ -140,8 +140,8 @@ background-color:cornsilk;
 			<li><a href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart">Cart</a></li>
 			<li><a href="MyProfile">My Profile</a></li>
-			<li><a href="ContactUs.jsp">Contact us</a></li>
-			<li><a class="active" href="AboutUs.jsp">About us</a></li>
+			<li><a href="contactUs.jsp">Contact us</a></li>
+			<li><a class="active" href="aboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
 
 

@@ -4,11 +4,11 @@
 	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <title>ViewOrders</title>
 </head>
@@ -165,6 +165,10 @@ background-color: cornsilk;
 table{
 background-color: rgb(248, 213, 168);
 }
+#product{
+width: 90%;
+ margin-left: 60px;
+}
 
 * {
 	margin: 0;
@@ -181,8 +185,8 @@ background-color: rgb(248, 213, 168);
 			<li><a class="active" href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart">Cart</a></li>
 			<li><a href="MyProfile">My Profile</a></li>
-			<li><a href="ContactUs.jsp">Contact us</a></li>
-			<li><a href="AboutUs.jsp">About us</a></li>
+			<li><a href="contactUs.jsp">Contact us</a></li>
+			<li><a href="aboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
 
 
@@ -199,10 +203,10 @@ background-color: rgb(248, 213, 168);
 	
 
 
-	<div class="searchPro"">
+	<div class="searchPro">
 		<form action="SearchOrder">
 			<input type="date" id="search" name="OrderDate" 
-				 requried>
+				 required >
 			<button class="btn btn-primary" type="submit">Search</button>
 		</form>
 	</div>
@@ -217,7 +221,8 @@ background-color: rgb(248, 213, 168);
 		
 	</script>
 <c:if test="${sessionScope.userId1!=null}">
-	<table class="table table-hover table-striped" style="width: 90%; margin-left: 60px;">
+	<table id="product" class="table table-hover table-striped" >
+	
 		<tr style="background-color:cornflowerblue ">
 			
 			<th>Product</th>

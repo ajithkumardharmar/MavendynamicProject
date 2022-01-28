@@ -6,11 +6,11 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <title>Mobile_page</title>
 </head>
@@ -178,7 +178,7 @@ input { display: table-cell;position: absolute;left: 80px; }
 }
 </style>
 
-<body bgcolor="cornsilk">
+<body >
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 
@@ -189,8 +189,8 @@ input { display: table-cell;position: absolute;left: 80px; }
 			<li><a href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart">Cart</a></li>
 			<li><a class="active" href="MyProfile">My Profile</a></li>
-			<li><a href="ContactUs.jsp">Contact us</a></li>
-			<li><a href="AboutUs.jsp">About us</a></li>
+			<li><a href="contactUs.jsp">Contact us</a></li>
+			<li><a href="aboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
 
 
@@ -246,7 +246,7 @@ input { display: table-cell;position: absolute;left: 80px; }
 							maxlength="8" title="Only enter positive number" required><br> <br>
 						<button style=" display: table-cell;position: absolute;left:  20px;" type="submit" class="btn btn-success">Add</button>
 						<br> <br></p>
-					</form></p>
+					</form>
 		</details>	</div>
 		</div>
 	</c:forEach>

@@ -3,6 +3,7 @@ package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 import com.mobilesalesapp.impl.OrderImpl;
 import com.mobilesalesapp.model.OrderPojo;
 import javax.servlet.annotation.WebServlet;
@@ -12,11 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 @WebServlet("/deliveredOrder")
 public class OrderDeliveredServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+	private static final String SCRIPT= "<script type=\"text/javascript\">";
+	private static final String LOCATION="location='adminMain.jsp';";
+	private static final String SCRIPTEND="</script>";
 	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		int orderId=Integer.parseInt( req.getParameter("orderId"));
@@ -27,35 +31,34 @@ public class OrderDeliveredServlet extends HttpServlet {
 		orderImpl.deliveredCancel(orderPojo);
 		try {
 			PrintWriter out=res.getWriter();
-			out.println("<script type=\"text/javascript\" >");
+			out.println(SCRIPT);
 			out.println("alert('Successfully Updated');");
-			out.println("location='AdminMain.jsp';");
-			out.println("</script>");
+			out.println(LOCATION);
+			out.println(SCRIPTEND);
 			} catch (IOException e) {
 
-			e.printStackTrace();
+				e.getMessage();
 		}
 		} else if(status.equals("Delivered")) {
 			try {
 				PrintWriter out=res.getWriter();
-				out.println("<script type=\"text/javascript\" >");
+				out.println(SCRIPT);
 				out.println("alert('Already Delivered');");
-				out.println("location='AdminMain.jsp';");
-				out.println("</script>");
+				out.println(LOCATION);
+				out.println(SCRIPTEND);
 			} catch (IOException e) {
-				e.printStackTrace();
+				e.getMessage();
 			}
 			
 		} else {
 			try {
 				PrintWriter out=res.getWriter();
-				out.println("<script type=\"text/javascript\" >");
+				out.println(SCRIPT);
 				out.println("alert('Already Cancelled');");
-				out.println("location='AdminMain.jsp';");
-				out.println("</script>");
+				out.println(LOCATION);
+				out.println(SCRIPTEND);
 			} catch (IOException e) {
-
-				e.printStackTrace();
+				e.getMessage();
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -18,13 +19,22 @@ import com.mobilesalesapp.model.ProductPojo;
 public class HomeServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static HttpSession setSessionAttribute(final HttpSession session, 
+			final String attributeName,
+			        final Serializable attributeValue) {
+			    session.setAttribute(attributeName, attributeValue);
+			    return session;
+			  }
+	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session  = req.getSession();
 		ProductImpl  productImpl = new ProductImpl();
 		List<ProductPojo> productList= productImpl.showAllProduct();
-		session.setAttribute("productList", productList);
-		RequestDispatcher rd=req.getRequestDispatcher("MobilePage.jsp");
+		
+		setSessionAttribute(session, "productList",(Serializable) productList);
+		RequestDispatcher rd=req.getRequestDispatcher("mobilePage.jsp");
 		rd.forward(req, resp);
 	}
 

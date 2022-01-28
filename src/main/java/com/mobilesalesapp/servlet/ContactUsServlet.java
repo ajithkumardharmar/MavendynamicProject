@@ -26,15 +26,14 @@ public class ContactUsServlet extends HttpServlet {
 		
 		UserImpl userImpl=new UserImpl();
 		userImpl.contactUs(contactUsPojo);
-		}
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			res.sendRedirect("ContactUs.jsp");
+			res.sendRedirect("contactUs.jsp");
 		} catch (IOException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		

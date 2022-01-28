@@ -16,16 +16,17 @@ public class CartImpl implements CartDao {
 		Connection con = ConnectionUtil.connect();
 		String query = "select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? and product_id=?";
 		ResultSet rs=null;
-		
+		PreparedStatement pre=null;
 		try {
-			PreparedStatement pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query);
 			pre.setInt(1, cart.getUserId());
 			pre.setInt(2, cart.getProductId());
 			 rs = pre.executeQuery();
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
-		}
+			e.getErrorCode();
+
+			}
 		return rs;
 		
 	}
@@ -33,15 +34,14 @@ public class CartImpl implements CartDao {
 		
 		Connection con = ConnectionUtil.connect();
 		String query = "select product_name,description,list_price,url from products where pk_product_id=?";
-	
-	
 		String productName=null;
 		String url= null;
 		String description = null;
 		double price = 0;
-
+		PreparedStatement pre=null;
+		PreparedStatement pre2=null;
 		try {
-			PreparedStatement pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query);
 			
 			pre.setInt(1, cartPojo.getProductId());
 			ResultSet rs = pre.executeQuery();
@@ -56,10 +56,7 @@ public class CartImpl implements CartDao {
 			}
 			
 			String query3 = "insert into carts_table(user_id,product_id,product_name,description,price,url) values(?,?,?,?,?,?)";
-
-			try{
-			
-			PreparedStatement pre2 = con.prepareStatement(query3);
+			pre2 = con.prepareStatement(query3);
 			pre2.setInt(1, cartPojo.getUserId());
 			pre2.setInt(2, cartPojo.getProductId());
 			pre2.setString(3, productName);
@@ -67,54 +64,83 @@ public class CartImpl implements CartDao {
 			pre2.setDouble(5, price);
 			pre2.setString(6, url);
 			pre2.executeUpdate();
+			
 			pre2.executeUpdate("commit");
 
 			
-			}
-		 catch (SQLException e) {
 		
-			e.printStackTrace();
-		}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+		}catch (SQLException e) {
+			e.getErrorCode();
+
+		}finally {
+			try {
+				if(pre!=null && pre2!=null) {
+					pre.close();
+					pre2.close();
+					con.close();
+				}
+				
+			} catch (SQLException e) {
+				e.getErrorCode();
+			}
+	}
 
 	}
-	public void deleteCart(CartPojo pro) {
-		
-		
+	public void deleteCart(CartPojo cartPojo) {
 		Connection con=ConnectionUtil.connect();
-		String query="delete from carts_table where product_id='"+pro.getProductId()+"' and user_id='"+pro.getUserId()+"'";
-		
+		String query="delete from carts_table where product_id=? and user_id=? ";
+		PreparedStatement pre=null;
 		try {
-			Statement st=con.createStatement();
-			st.executeUpdate(query);
+			pre = con.prepareStatement(query);
+			pre.setInt(1, cartPojo.getProductId());
+			pre.setInt(2, cartPojo.getUserId());
+			pre.executeUpdate();
 
 		} catch (SQLException e) {
 	
-			e.printStackTrace();
-		}
-		
-		
+			e.getErrorCode();
+
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.getErrorCode();
+				}
+				}
 	}
 	public List<CartPojo> viewAllCart(CartPojo cartPojo) {
 		Connection con=ConnectionUtil.connect();
 		String query="select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? order by cart_id desc";
-
-		List<CartPojo> cartList=new ArrayList<CartPojo>();
+		PreparedStatement pre=null;
+		List<CartPojo> cartList=new ArrayList<>();
 		try {
-			PreparedStatement pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query);
 			pre.setInt(1,cartPojo.getUserId() );
 			ResultSet rs=pre.executeQuery();
 			while(rs.next()) {
-				System.out.println("hlo2");
+			
 				CartPojo cart=new CartPojo(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getDouble(6),rs.getString(7));
 				cartList.add(cart);
 			}
 		} catch (SQLException e) {
 	
-			e.printStackTrace();
-		}
+			e.getErrorCode();
+
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.getErrorCode();
+				}
+				}
 		return cartList;
 		
 		

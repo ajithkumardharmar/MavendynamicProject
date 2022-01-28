@@ -1,6 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,16 +16,24 @@ public class MobileBuyServlet extends HttpServlet {
 
 	
 	private static final long serialVersionUID = 1L;
+	
+	public static HttpSession setSessionAttribute(final HttpSession session, 
+			final String attributeName,
+			        final Serializable attributeValue) {
+			    session.setAttribute(attributeName, attributeValue);
+			    return session;
+			  }
+	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			HttpSession session=req.getSession();
 			double price=Double.parseDouble( req.getParameter("price"));
 			double total=price*0.85;
 			int productId=Integer.parseInt(req.getParameter("productId"));
-			session.setAttribute("price", price);
-			session.setAttribute("total", total);
-			session.setAttribute("productId", productId);
-			RequestDispatcher rd=req.getRequestDispatcher("MobileBuy.jsp");
+			setSessionAttribute(session,"price", price);
+			setSessionAttribute(session,"total", total);
+			setSessionAttribute(session,"productId", productId);
+			RequestDispatcher rd=req.getRequestDispatcher("mobileBuy.jsp");
 			rd.forward(req, resp);
 	}
 	

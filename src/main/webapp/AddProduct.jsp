@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
  <title>AdminPage</title>
 
@@ -76,7 +76,7 @@ background-color:cornsilk;
 
 </head>
 
-<body bgcolor="cornsilk">
+<body >
     <h2 class="h2_1">Mobile Sales App</h2>
 
     <div style="position: relative;top: -10px;" class="top_nav">
@@ -85,7 +85,7 @@ background-color:cornsilk;
            
            
             <li style="float: right;"><a href="logOut">Logout</a></li>
-            <li style="float: right;"><a class="active" href="AdminMain.jsp">Admin</a></li>
+            <li style="float: right;"><a class="active" href="adminMain.jsp">Admin</a></li>
           
             
 
