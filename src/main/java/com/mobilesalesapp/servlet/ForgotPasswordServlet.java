@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 @WebServlet("/forgotPassword")
@@ -20,14 +21,14 @@ public class ForgotPasswordServlet extends HttpServlet {
 		try {
 			phone=Long.parseLong(request.getParameter("phone_number"));
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		String password=request.getParameter("password");
 		RegisterPojo reg=new RegisterPojo();
 		reg.setEmail(email);
 		reg.setPhoneNumber(phone);
 		reg.setPassword(password);
-		UserImpl userImpl=new UserImpl();
+		UserDao userImpl=new UserImpl();
 		int i=userImpl.forgotPassword(reg);
 		if(i>0) {
 			

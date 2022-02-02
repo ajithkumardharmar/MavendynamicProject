@@ -21,17 +21,30 @@ public class OrderImpl implements OrderDao {
 		String query = "update users_table set wallet = wallet-? where pk_user_id=? and password=?";
 		PreparedStatement pre = null;
 		PreparedStatement pre1 = null;
+		ResultSet rs=null;
+		double wallet = 0;
 		try {
 			pre = con.prepareStatement(query2);
 			pre.setInt(1, obj1.getUserId());
-			ResultSet rs = pre.executeQuery();
-
-			// get Wallet code
-
-			double wallet = 0;
+			rs = pre.executeQuery();
 			if (rs.next()) {
 				wallet = rs.getDouble(1);
 			}
+		} catch (SQLException e) {
+
+			e.getErrorCode();
+
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+				}
+
+			} catch (SQLException e) {
+				e.getErrorCode();
+			}
+		}
+		try {
 			if (wallet > obj1.getPrice()) {
 
 				pre1 = con.prepareStatement(query);
@@ -51,8 +64,8 @@ public class OrderImpl implements OrderDao {
 
 		}finally {
 			try {
-				if (pre != null && pre1 != null) {
-					pre.close();
+				if (pre1 != null) {
+					
 					pre1.close();
 					con.close();
 				}
@@ -110,14 +123,15 @@ public class OrderImpl implements OrderDao {
 			pre.setInt(1, orderPojo.getUserId());
 			rs = pre.executeQuery();
 			while (rs.next()) {
-
-				OrderPojo orders = new OrderPojo(rs.getInt(6), rs.getInt(7), rs.getInt(1), rs.getString(2),
-						rs.getDouble(3), rs.getDate(4), rs.getString(5));
+				
+				OrderPojo orders = new OrderPojo(rs.getInt("fk_product_id"), rs.getInt("fk_user_id"), rs.getInt("order_id"), rs.getString("status"),
+						rs.getDouble("price"), rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"));
+				
 
 				orderList1.add(orders);
 			}
 
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}finally {
@@ -128,7 +142,7 @@ public class OrderImpl implements OrderDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return orderList1;
@@ -137,7 +151,7 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> searchAllOrders(OrderPojo orderPojo) {
 		List<OrderPojo> orderList1 = new ArrayList<>();
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,trunc(order_date),address,fk_product_id,fk_user_id from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')=? order by order_date desc";
+		String query = "select fk_product_id,fk_user_id,order_id,status,price,order_date,address from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')=? order by order_date desc";
 		ResultSet rs = null;
 		PreparedStatement pre=null;
 		try {
@@ -145,17 +159,15 @@ public class OrderImpl implements OrderDao {
 			pre.setInt(1, orderPojo.getUserId());
 			pre.setString(2, orderPojo.getStrDate());
 			rs = pre.executeQuery();
-
 			while (rs.next()) {
 		
-				OrderPojo orders = new OrderPojo(rs.getInt(6), rs.getInt(7), rs.getInt(1), rs.getString(2),
-						rs.getDouble(3), rs.getDate(4), rs.getString(5));
-
+				OrderPojo orders = new OrderPojo(rs.getInt("fk_product_id"), rs.getInt("fk_user_id"), rs.getInt("order_id"), rs.getString("status"),
+						rs.getDouble("price"), rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"));
 				orderList1.add(orders);
 			
 			}
 		} catch (SQLException e) {
-			e.getErrorCode();
+			e.printStackTrace();
 
 		}finally {
 			try {
@@ -163,9 +175,8 @@ public class OrderImpl implements OrderDao {
 					pre.close();
 					con.close();
 				}
-
 			} catch (SQLException e) {
-				e.getErrorCode();
+				e.printStackTrace();
 			}
 		}
 
@@ -188,11 +199,22 @@ public class OrderImpl implements OrderDao {
 		} catch (SQLException e) {
 			e.getErrorCode();
 
+		}finally {
+			try {
+				if (pre2 != null ) {
+					pre2.close();
+					
+				}
+
+			} catch (SQLException e) {
+				e.getErrorCode();
+			}
 		}
 
 		PreparedStatement pre=null;
+		Connection con1 = ConnectionUtil.connect();
 		try {
-			pre= con.prepareStatement(query2);
+			pre= con1.prepareStatement(query2);
 			pre.setInt(1, orderPojo.getOrderId());
 			pre.executeUpdate();
 			pre.executeUpdate(COMMIT);
@@ -204,7 +226,7 @@ public class OrderImpl implements OrderDao {
 			try {
 				if (pre != null ) {
 					pre.close();
-					con.close();
+					con1.close();
 				}
 
 			} catch (SQLException e) {

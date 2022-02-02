@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" 
-	%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +8,8 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <title>Product List</title>
@@ -66,15 +67,18 @@ li a:hover {
 table {
 	background-color: rgb(248, 213, 168);
 }
-#product{
-width: 90%; 
-margin-left: 70px;
 
+#product {
+	width: 90%;
+	margin-left: 70px;
 }
 
-
-body{
-background-color:cornsilk;
+body {
+	background-color: cornsilk;
+}
+.input-group{
+margin-left:1000px;
+width: 20%;
 }
 
 * {
@@ -82,7 +86,7 @@ background-color:cornsilk;
 	padding: 0;
 }
 </style>
-<body >
+<body>
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 	<div style="position: relative; top: -10px;" class="top_nav">
@@ -98,16 +102,25 @@ background-color:cornsilk;
 
 
 	</div>
-	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
-	
-	<br>
-	<br>
-	<br>
-	
+	<img
+		style="border-radius: 100px; position: absolute; top: 0px; left: 500px;"
+		width="40px" alt="" src="assets/images/mobile112.png">
 
-	<table id="product" class="table table-hover table-striped" >
+	
+	<br>
+		<div class="searchPro">
+			<form class="input-group mb-7" action="SearchProduct">
+				<input class="form-control" type="text" pattern="[A-Za-z]{1,40}" name="search">
+				<button class="btn btn-primary" type="submit">Search</button>
+			</form>
+		</div>
+		<br>
+
+
+	<table aria-describedby="Show All home places" id="product"
+		class="table table-hover table-striped">
 		<tr style="background-color: cornflowerblue">
-			<th>Product Id</th>
+			<th>Serial No</th>
 			<th>Product Name</th>
 			<th>Description</th>
 			<th>Standard Price</th>
@@ -115,49 +128,119 @@ background-color:cornsilk;
 			<th>Update</th>
 			<th>Delete</th>
 		</tr>
-		
+		<c:set var="serialNumber" value="1" scope="page"></c:set>
 		<c:forEach items="${viewProducts}" var="viewProducts">
 
-		<tr>
-			<td>${viewProducts.id}</td>
-			<td>${viewProducts.productName}</td>
-			<td>${viewProducts.description}</td>
-			<td>${viewProducts.standardCost}</td>
-			<td>${viewProducts.listCost}</td>
-			<td>
+			<tr>
+				<td>${serialNumber}</td>
+				<td>${viewProducts.productName}</td>
+				<td>${viewProducts.description}</td>
+				<td>${viewProducts.standardCost}</td>
+				<td>${viewProducts.listCost}</td>
+				<td>
 
-				<form action="updateProduct" method="post">
+					<div class="container mt-3">
 
-					Product Id : <input type="text" name="updateId"
-						value="${viewProducts.id}"  readonly id="brand_textbox"
-						pattern="[0-9]{1,8}" maxlength="8" required class="updateId"><br>
-					<br> <label class="add_label1">Standard_cost :</label> <input
-						type="text" name="updateStandardPrice" id="brand_textbox"
-						pattern="[0-9]{1,8}" maxlength="8" required class="add_inputs1"><br>
-					<br> <label class="add_label2">List Price :</label> <input
-						type="text" name="updateListPrice" id="brand_textbox"
-						pattern="[0-9]{1,8}" maxlength="8" required class="add_inputs2"><br>
-					<br>
-					<button type="submit" class="btn btn-success">Update</button>
-					<br> <br>
 
-				</form>
-			</td>
-			<td>
-				<form action="deleteProduct" method="post">
-					Product Id : <input type="text" value="${viewProducts.id}" readonly
-						name="deleteId" id="brand_textbox" pattern="[0-9]{1,8}"
-						maxlength="8" required class="deleteId"><br> <br>
-					<button type="submit" class="btn btn-danger">Delete</button>
-					<br> <br>
+						<button type="button" class="btn btn-primary"
+							data-bs-toggle="modal" data-bs-target="#myModal_${serialNumber}">Update
+						</button>
+					</div> <!-- The Modal -->
+					<div class="modal fade" id="myModal_${serialNumber}">
+						<div class="modal-dialog">
+							<div class="modal-content">
 
-				</form>
-			</td>
-		</tr>
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Update Price</h4>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+								</div>
+
+								<!-- Modal body -->
+								<div class="modal-body">
+									<form action="updateProduct" method="post">
+
+										Product Id : <input type="text" name="updateId"
+											value="${viewProducts.id}" readonly id="brand_textbox"
+											pattern="[0-9]{1,8}" maxlength="8" required class="updateId"><br>
+										<br> <label class="add_label1">Standard_cost :</label> <input
+											type="text" name="updateStandardPrice" id="brand_textbox"
+											pattern="[0-9]{1,8}" maxlength="8" required
+											class="add_inputs1"><br> <br> <label
+											class="add_label2">List Price :</label> <input type="text"
+											name="updateListPrice" id="brand_textbox"
+											pattern="[0-9]{1,8}" maxlength="8" required
+											class="add_inputs2"><br> <br>
+										<button type="submit" class="btn btn-success">Confirm</button>
+										<br> <br>
+
+									</form>
+								</div>
+
+								<!-- Modal footer -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger"
+										data-bs-dismiss="modal">Close</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+
+				</td>
+				<td>
+				
+					<div class="container mt-3">
+
+
+						<button type="button" class="btn btn-danger"
+							data-bs-toggle="modal" data-bs-target="#myModal1_${serialNumber}">Delete
+						</button>
+					</div> <!-- The Modal -->
+					<div class="modal fade" id="myModal1_${serialNumber}">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Delete Product</h4>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+								</div>
+
+								<!-- Modal body -->
+								<div class="modal-body">
+								<p>Do you want to Delete this Product(${viewProducts.productName})</p>
+									<form action="deleteProduct" method="post">
+						 <input type="hidden" value="${viewProducts.id}"
+							readonly name="deleteId" id="brand_textbox" pattern="[0-9]{1,8}"
+							maxlength="8" required class="deleteId"><br>
+						<button type="submit" class="btn btn-primary">Confirm</button>
+						<br> 
+
+					</form>
+								</div>
+
+								<!-- Modal footer -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger"
+										data-bs-dismiss="modal">Close</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					
+
+
+				</td>
+			</tr>
+			<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 		</c:forEach>
 	</table>
 
 
-	
 </body>
 </html>

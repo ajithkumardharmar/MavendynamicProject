@@ -4,8 +4,6 @@ package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.dao.ProductDao;
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.ProductPojo;
@@ -45,40 +45,41 @@ public class LoginServlet extends HttpServlet {
 		RegisterPojo login=new RegisterPojo();
 		login.setEmail(username);
 		login.setPassword(password);
-		UserImpl userDao=new UserImpl();
+		UserDao userDao=new UserImpl();
 	
 	
 			try(PrintWriter out=res.getWriter()) {
 				HttpSession session  = req.getSession();
 				
-				ResultSet ns = userDao.fetch(login);
-				if(ns.next()) {
+				RegisterPojo userDetails= userDao.fetch(login);
+				if(userDetails!=null) {
 
-					String userId=ns.getString(1);
-					String name=ns.getString(2);
-					String email=ns.getString(3);
-					double wallet=ns.getDouble(6);
-					role=ns.getString(7);
+					int userId=userDetails.getUserId();
+					String name=userDetails.getName();
+					String email=userDetails.getEmail();
+					double wallet=userDetails.getWallet();
+					role=userDetails.getReason();
 					setSessionAttribute(session,"userId", userId);
 					setSessionAttribute(session,"email", email);
 					setSessionAttribute(session,"name", name);
 					setSessionAttribute(session,"wallet", wallet);
 					
-					setSessionAttribute(session, "role", role);
+					
 					
 				}
 				
 				if(role==null) {
 					
-					session.setAttribute("loginError", "invalid User or password");
+					session.setAttribute("loginError", "Invalid User or password");
 					res.sendRedirect("index.jsp");
 
 				}else {
 					if(role.equals("user")) {
 						
-						ProductImpl  productImpl = new ProductImpl();
+						ProductDao  productImpl = new ProductImpl();
 						List<ProductPojo> productList= productImpl.showAllProduct();
 						setSessionAttribute(session,"productList", (Serializable) productList);
+						
 						RequestDispatcher rd=req.getRequestDispatcher("mobilePage.jsp");
 						rd.forward(req, res);
 						
@@ -94,7 +95,7 @@ public class LoginServlet extends HttpServlet {
 					}
 				}
 					
-				} catch (SQLException |IOException e) {
+				} catch (IOException |ServletException e) {
 			
 					e.getMessage();
 				}

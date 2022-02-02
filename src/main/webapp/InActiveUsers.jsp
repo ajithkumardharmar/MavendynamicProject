@@ -6,7 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <title>InActiveUsers</title>
 </head>
@@ -126,8 +127,9 @@ margin-left: 50px;
 
 	
 		
-		<table id="inActive" >
+		<table aria-describedby="Show All home places" id="inActive" >
 			<tr style="background-color: cornflowerblue">
+				<th>Serial No</th>
 				<th>Name</th>
 				<th>Email</th>
 				<th>Phone Number</th>
@@ -136,21 +138,60 @@ margin-left: 50px;
 				<th>Action</th>
 
 			</tr>
+			<c:set var="serialNumber" value="1" scope="page"></c:set>
 			<c:forEach items="${inactiveUserDetails}" var="inactiveUserDetails">
 
 
 			<tr>
+				<td>${serialNumber}</td>
 				<td>${inactiveUserDetails.name }</td>
 				<td>${inactiveUserDetails.email}</td>
 				<td>${inactiveUserDetails.phoneNumber}</td>
 				<td>${inactiveUserDetails.reason}</td>
 		
 				<td>
-					<a class="btn btn-dark" href="activeUser?userId=${inactiveUserDetails.userId}">Active</a>
+				
+						<div class="container mt-3">
+
+
+						<button type="button" class="btn btn-dark"
+							data-bs-toggle="modal" data-bs-target="#myModal_${serialNumber}">Activate
+						</button>
+					</div> 
+					<div class="modal fade" id="myModal_${serialNumber}">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+								<div class="modal-header">
+									<h4 class="modal-title">User Activation</h4>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+								</div>
+
+							
+								<div class="modal-body">
+									<div>
+					
+					
+					<p>Do you want to Activate this user(${inactiveUserDetails.name })</p>
+				<a class="btn btn-success" href="activeUser?userId=${inactiveUserDetails.userId}">Confirm</a>
+				</div>
+								</div>
+
+								
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger"
+										data-bs-dismiss="modal">Close</button>
+								</div> 
+
+							</div>
+						</div>
+					</div>
+					
 					
 				</td>
 
 			</tr>
+			<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 			</c:forEach>
 		</table>
 	</div>

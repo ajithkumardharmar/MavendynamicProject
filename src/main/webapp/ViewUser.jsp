@@ -7,6 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <title>UsersList</title>
@@ -96,6 +98,10 @@ background-color: rgb(248, 213, 168);
 #user{
 width: 90%; margin-left: 50px;
 }
+.input-group{
+margin-left:1000px;
+width: 20%;
+}
 
 * {
 	margin: 0;
@@ -120,11 +126,18 @@ width: 90%; margin-left: 50px;
 	<div class="full">
 	<br>
 
-
+	<div class="searchPro">
+			<form class="input-group mb-7" action="SearchUser">
+				<input class="form-control" type="text" pattern="[A-Za-z]{1,40}" name="search">
+				<button class="btn btn-primary" type="submit">Search</button>
+			</form>
+		</div>
+		<br>
 	
 		
-		<table id="user" class="table table-hover table-striped" >
+		<table aria-describedby="Show All home places" id="user" class="table table-hover table-striped" >
 			<tr style="background-color: cornflowerblue">
+				<th>Serial No</th>
 				<th>Name</th>
 				<th>Email</th>
 				<th>Phone Number</th>
@@ -134,25 +147,63 @@ width: 90%; margin-left: 50px;
 				<th>Inactive</th>
 
 			</tr>
-			<c:forEach items="${userDetails}" var="u">
+			<c:set var="serialNumber" value="1" scope="page"></c:set>
+			<c:forEach items="${userDetails}" var="userDetail">
 
 			<tr>
-				<td>${u.name}</td>
-				<td>${u.email}</td>
-				<td>${u.phoneNumber}</td>
-				<td>${u.wallet}</td>
+				<td>${serialNumber}</td>
+				<td>${userDetail.name}</td>
+				<td>${userDetail.email}</td>
+				<td>${userDetail.phoneNumber}</td>
+				<td>${userDetail.wallet}</td>
 			
 				<td>
 			
-					<a class="btn btn-primary" href="DeliveredOrder?userId=${u.userId}">View Order</a>
+					<a class="btn btn-primary" href="DeliveredOrder?userId=${userDetail.userId}">View Order</a>
 
 				</td>
 				<td>
-					<a class="btn btn-dark" href="inActive?userId=${u.userId}">InActive</a>
+					<div class="container mt-3">
+
+
+						<button type="button" class="btn btn-dark"
+							data-bs-toggle="modal" data-bs-target="#myModal">InActive
+						</button>
+					</div> 
+					<div class="modal fade" id="myModal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+								<div class="modal-header">
+									<h4 class="modal-title">User Inactivation</h4>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+								</div>
+
+							
+								<div class="modal-body">
+									<div>
+					
+					
+					<p>Do you want to InActive this user(${userDetail.name})</p>
+				<a class="btn btn-success" href="inActive?userId=${userDetail.userId}">Confirm</a>
+				</div>
+								</div>
+
+								
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger"
+										data-bs-dismiss="modal">Close</button>
+								</div> 
+
+							</div>
+						</div>
+					</div>
+					
 					
 				</td>
 
 			</tr>
+			<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 			</c:forEach>
 		</table>
 	</div>

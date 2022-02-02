@@ -2,9 +2,9 @@ package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.mobilesalesapp.dao.CartDao;
 import com.mobilesalesapp.exception.CartException;
 import com.mobilesalesapp.impl.CartImpl;
 import com.mobilesalesapp.model.CartPojo;
@@ -26,21 +26,19 @@ public class CartServlet extends HttpServlet {
 		HttpSession session=req.getSession();
 		int productId=Integer.parseInt(req.getParameter("productId"));
 
-		String userId1=(String)session.getAttribute("userId");
+		int userId=Integer.parseInt( session.getAttribute("userId").toString());
 
-		int userId=Integer.parseInt(userId1);
-		
 		CartPojo cartPojo=new CartPojo(userId,productId);
-		CartImpl  cartDao=new CartImpl();
+		CartDao  cartDao=new CartImpl();
 		
-		ResultSet rs= cartDao.checkCart(cartPojo);
+		String productName= cartDao.checkCart(cartPojo);
 		
 		
 		PrintWriter write = res.getWriter();
 	
 		
 		try {
-			if(rs.next()) {
+			if(productName!=null) {
 			
 			throw new CartException();
 
@@ -49,12 +47,13 @@ public class CartServlet extends HttpServlet {
 				write.print("Cart Successfully");
 				
 			}
-		}  catch (SQLException e) {
-			e.getMessage();
-		} catch (CartException e) {
+		}  catch (CartException e) {
 			String message=e.cartSame();
 			write.print(message);
 
+		} catch (SQLException e) {
+
+			e.printStackTrace();
 		}
 		
 	}

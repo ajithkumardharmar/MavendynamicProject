@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 
@@ -37,12 +38,12 @@ public class UpdateUserServlet extends HttpServlet {
 			userId =Integer.parseInt( session.getAttribute("userId").toString());
 			userPhone=Long.parseLong( request.getParameter("userPhone"));
 		}catch (NumberFormatException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		String email=request.getParameter("userEmail");
 		RegisterPojo registerPojo=new RegisterPojo(name,email,userPhone,null);
 		
-		UserImpl userImpl=new UserImpl();
+		UserDao userImpl=new UserImpl();
 		userImpl.updateProfile(registerPojo);
 		List<RegisterPojo> listAllDetails=userImpl.myDetails(userId);
 		setSessionAttribute(session,"listAllDetails", (Serializable) listAllDetails);
