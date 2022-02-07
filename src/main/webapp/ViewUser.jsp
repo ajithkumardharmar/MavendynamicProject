@@ -7,10 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>UsersList</title>
 </head>
 <style>
@@ -28,15 +25,6 @@ table {
 }
 
 
-.full1 {
-	background: linear-gradient(rgba(0, 0, 0, .3) 70%, rgba(0, 0, 0, .3)
-		-70%),
-		url(https://images.unsplash.com/photo-1506102383123-c8ef1e872756?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60);
-	background-repeat: no-repeat;
-	background-size: cover;
-	/* background: rgba(76, 175, 80, 0.3) */
-	height: 100%;
-}
 
 .btn_add {
 	padding: 12px;
@@ -92,8 +80,8 @@ li a:hover {
 .active {
 	background-color: grey;
 }
-table{
-background-color: rgb(248, 213, 168);
+table {
+	background-color: white;
 }
 #user{
 width: 90%; margin-left: 50px;
@@ -127,7 +115,7 @@ width: 20%;
 	<br>
 
 	<div class="searchPro">
-			<form class="input-group mb-7" action="SearchUser">
+			<form class="input-group mb-7" action="SearchUsers">
 				<input class="form-control" type="text" pattern="[A-Za-z]{1,40}" name="search">
 				<button class="btn btn-primary" type="submit">Search</button>
 			</form>
@@ -167,10 +155,10 @@ width: 20%;
 
 
 						<button type="button" class="btn btn-dark"
-							data-bs-toggle="modal" data-bs-target="#myModal">InActive
+							data-bs-toggle="modal" data-bs-target="#myModal_${serialNumber}">InActive
 						</button>
 					</div> 
-					<div class="modal fade" id="myModal">
+					<div class="modal fade" id="myModal_${serialNumber}">
 						<div class="modal-dialog">
 							<div class="modal-content">
 
@@ -184,7 +172,7 @@ width: 20%;
 									<div>
 					
 					
-					<p>Do you want to InActive this user(${userDetail.name})</p>
+					<p>Do you want to InActive this user(${userDetail.name}) ?</p>
 				<a class="btn btn-success" href="inActive?userId=${userDetail.userId}">Confirm</a>
 				</div>
 								</div>

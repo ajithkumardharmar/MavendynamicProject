@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 
-@WebServlet("/SearchUsers")
-public class SearchUserServlet extends HttpServlet {
+@WebServlet("/searchInactives")
+public class SearchInActiveUserServlet extends HttpServlet {
 
 	public static HttpSession setSessionAttribute(final HttpSession session, final String attributeName,
 			final Serializable attributeValue) {
@@ -35,9 +35,9 @@ public class SearchUserServlet extends HttpServlet {
 		RegisterPojo registerPojo = new RegisterPojo();
 		UserImpl userImpl = new UserImpl();
 		registerPojo.setName(search);
-		List<RegisterPojo> userSearchList = userImpl.searchUserDetails(registerPojo);
-		setSessionAttribute(session, "userDetails", (Serializable) userSearchList);
-		RequestDispatcher rd = request.getRequestDispatcher("viewUser.jsp");
+		List<RegisterPojo> userSearchList = userImpl.searchInActiveUserDetails(registerPojo);
+		setSessionAttribute(session, "inactiveUserDetails", (Serializable) userSearchList);
+		RequestDispatcher rd = request.getRequestDispatcher("inActiveUsers.jsp");
 		rd.forward(request, response);
 	}
 

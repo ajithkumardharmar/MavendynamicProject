@@ -24,6 +24,8 @@ public interface UserDao {
 
 	public List<RegisterPojo> myDetails(int userId);
 
-	public List<RegisterPojo> searchUserDetails();
+	public List<RegisterPojo> searchUserDetails(RegisterPojo registerPojo);
+
+	public List<RegisterPojo> searchInActiveUserDetails(RegisterPojo register);
 
 }

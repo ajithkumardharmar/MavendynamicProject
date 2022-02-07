@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mobilesalesapp.dao.UserDao;
+import com.mobilesalesapp.logger.Logger;
 import com.mobilesalesapp.model.ContactUsPojo;
 import com.mobilesalesapp.model.RegisterPojo;
 import com.mobilesalesapp.util.ConnectionUtil;
@@ -32,17 +33,10 @@ public class UserImpl implements UserDao {
 			i = pre.executeUpdate();
 			pre.executeUpdate(query2);
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 		return i;
@@ -52,7 +46,7 @@ public class UserImpl implements UserDao {
 	@Override
 	public RegisterPojo fetch(RegisterPojo login) {
 		Connection con = ConnectionUtil.connect();
-		String query = "select pk_user_id,first_name,email,phone_number,wallet,role from users_table  where email in ? and password in ?";
+		String query = "select pk_user_id,first_name,email,phone_number,wallet,role from users_table  where email = ? and password = ?";
 		RegisterPojo registerPojo = null;
 		ResultSet rs = null;
 		PreparedStatement pre = null;
@@ -69,18 +63,11 @@ public class UserImpl implements UserDao {
 						rs.getString("role"));
 			}
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 		return registerPojo;
 	}
@@ -102,17 +89,10 @@ public class UserImpl implements UserDao {
 			}
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 
 		return userList;
@@ -136,18 +116,11 @@ public class UserImpl implements UserDao {
 			}
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 		return userList;
@@ -168,18 +141,11 @@ public class UserImpl implements UserDao {
 			pre.executeUpdate();
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 	}
@@ -196,18 +162,11 @@ public class UserImpl implements UserDao {
 			pre.setString(3, reg.getEmail());
 			pre.executeUpdate();
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 	}
@@ -228,18 +187,11 @@ public class UserImpl implements UserDao {
 			pre.executeUpdate("commit");
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 		return i;
@@ -259,18 +211,11 @@ public class UserImpl implements UserDao {
 			i = pre.executeUpdate();
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 		return i;
@@ -298,32 +243,27 @@ public class UserImpl implements UserDao {
 				userList.add(registerPojo1);
 			}
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 
 		return userList;
 
 	}
 
-	public List<RegisterPojo> searchUserDetails() {
+	@Override
+	public List<RegisterPojo> searchUserDetails(RegisterPojo register) {
 		Connection con = ConnectionUtil.connect();
-		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table where role='user'";
+		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table where role='user' and lower(first_name) like ? ";
 		List<RegisterPojo> userList = new ArrayList<>();
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		try {
 			pre = con.prepareStatement(query);
+			pre.setString(1, register.getName() + "%");
 			rs = pre.executeQuery();
 			while (rs.next()) {
 				RegisterPojo registerPojo = new RegisterPojo(rs.getInt("pk_user_id"), rs.getString("first_name"),
@@ -332,17 +272,38 @@ public class UserImpl implements UserDao {
 			}
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
+			ConnectionUtil.close(rs, pre, con);
+		}
 
-			} catch (SQLException e) {
-				e.getErrorCode();
+		return userList;
+
+	}
+
+	@Override
+	public List<RegisterPojo> searchInActiveUserDetails(RegisterPojo register) {
+		Connection con = ConnectionUtil.connect();
+		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table where role='inactive' and lower(first_name) like ? ";
+		List<RegisterPojo> userList = new ArrayList<>();
+		ResultSet rs = null;
+		PreparedStatement pre = null;
+		try {
+			pre = con.prepareStatement(query);
+			pre.setString(1, register.getName() + "%");
+			rs = pre.executeQuery();
+			while (rs.next()) {
+				RegisterPojo registerPojo = new RegisterPojo(rs.getInt("pk_user_id"), rs.getString("first_name"),
+						rs.getString("email"), rs.getLong("phone_number"), rs.getDouble("wallet"));
+				userList.add(registerPojo);
 			}
+
+		} catch (SQLException e) {
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
+		} finally {
+			ConnectionUtil.close(rs, pre, con);
 		}
 
 		return userList;

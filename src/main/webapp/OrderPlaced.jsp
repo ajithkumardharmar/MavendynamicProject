@@ -12,9 +12,15 @@
 
 </head>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap');
+
 .h2_1 {
 	text-align: center;
 	background-color: bisque;
+}
+
+*{
+font-family:Heebo;
 }
 
 .top_nav {

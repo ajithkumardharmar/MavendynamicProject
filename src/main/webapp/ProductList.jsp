@@ -65,7 +65,7 @@ li a:hover {
 }
 
 table {
-	background-color: rgb(248, 213, 168);
+	background-color: white;
 }
 
 #product {
@@ -145,18 +145,18 @@ width: 20%;
 						<button type="button" class="btn btn-primary"
 							data-bs-toggle="modal" data-bs-target="#myModal_${serialNumber}">Update
 						</button>
-					</div> <!-- The Modal -->
+					</div>
 					<div class="modal fade" id="myModal_${serialNumber}">
 						<div class="modal-dialog">
 							<div class="modal-content">
 
-								<!-- Modal Header -->
+							
 								<div class="modal-header">
 									<h4 class="modal-title">Update Price</h4>
 									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 								</div>
 
-								<!-- Modal body -->
+								
 								<div class="modal-body">
 									<form action="updateProduct" method="post">
 
@@ -177,7 +177,6 @@ width: 20%;
 									</form>
 								</div>
 
-								<!-- Modal footer -->
 								<div class="modal-footer">
 									<button type="button" class="btn btn-danger"
 										data-bs-dismiss="modal">Close</button>
@@ -198,20 +197,18 @@ width: 20%;
 						<button type="button" class="btn btn-danger"
 							data-bs-toggle="modal" data-bs-target="#myModal1_${serialNumber}">Delete
 						</button>
-					</div> <!-- The Modal -->
+					</div> 
 					<div class="modal fade" id="myModal1_${serialNumber}">
 						<div class="modal-dialog">
 							<div class="modal-content">
 
-								<!-- Modal Header -->
 								<div class="modal-header">
 									<h4 class="modal-title">Delete Product</h4>
 									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 								</div>
 
-								<!-- Modal body -->
 								<div class="modal-body">
-								<p>Do you want to Delete this Product(${viewProducts.productName})</p>
+								<p>Do you want to Delete this Product(${viewProducts.productName}) ?</p>
 									<form action="deleteProduct" method="post">
 						 <input type="hidden" value="${viewProducts.id}"
 							readonly name="deleteId" id="brand_textbox" pattern="[0-9]{1,8}"
@@ -222,7 +219,6 @@ width: 20%;
 					</form>
 								</div>
 
-								<!-- Modal footer -->
 								<div class="modal-footer">
 									<button type="button" class="btn btn-danger"
 										data-bs-dismiss="modal">Close</button>

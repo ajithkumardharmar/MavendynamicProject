@@ -40,14 +40,16 @@
 	<div class="body_main1">
 		<br>
 
-		<div class="add_con">
+		<div class="add_con1">
 			<div class="btn btn-block">
 				<br> <a class="btn btn-secondary " style="margin-left: 40px"
 					href="addProduct.jsp">Add Products</a><br> <br> <a
 					class="btn btn-secondary btn-block" style="margin-left: 40px"
 					href="ViewProduct">View Products</a><br> <br> <a
 					class="btn btn-secondary btn-block" style="margin-left: 40px"
-					href="ViewUser">View All Users</a><br> <br> <a
+					href="ViewUser">View All Users</a><br> <br><a
+					class="btn btn-secondary btn-block" style="margin-left: 40px"
+					href="viewSales">View All Sales</a><br> <br> <a
 					class="btn btn-secondary btn-block" style="margin-left: 40px"
 					href="ViewContactUs1">View ContactUs</a><br> <br> <a
 					class="btn btn-secondary btn-block" style="margin-left: 40px"

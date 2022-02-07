@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" %>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1" 
+	%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+		<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<title>InActiveUsers</title>
+
+<title>UsersList</title>
 </head>
 <style>
 table, th, td {
@@ -86,24 +87,45 @@ li a {
 li a:hover {
 	background-color: goldenrod;
 }
+.searchPro {
+	position: absolute;
+	left: 420px;
+}
+
+.searchPro input[type=date] {
+	padding: 4px;
+	font-size: 16px;
+	float: left;
+}
+
+.searchPro button {
+	float: left;
+	padding: 4px;
+	background: #2196F3;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+}
+#product {
+	width: 95%;
+	margin-left: 40px;
+}
 
 .active {
 	background-color: grey;
 }
-body{
-background-color:cornsilk;
+table{
+background-color:white;
 }
-table {
-	background-color: white;
-}
-#inActive{
-width: 90%; 
-margin-left: 50px;
+#user{
+width: 90%; margin-left: 50px;
 }
 .input-group{
 margin-left:1000px;
 width: 20%;
 }
+
 * {
 	margin: 0;
 	padding: 0;
@@ -126,87 +148,70 @@ width: 20%;
 	
 	<div class="full">
 	<br>
-	<div class="searchInactives">
-			<form class="input-group mb-7" action="searchInactives">
-				<input class="form-control" type="text" pattern="[A-Za-z]{1,40}" name="search">
-				<button class="btn btn-primary" type="submit">Search</button>
-			</form>
-		</div>
-		<br> 
 
-	
-		
-		<table aria-describedby="Show All home places" id="inActive" class="table table-hover table-striped">
+
+
+
+
+	<div class="searchPro">
+		<form action="SearchSales">
+			<input type="date" id="search" name="OrderDate" required>
+			<button class="btn btn-primary" type="submit">Search</button>
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<script type="text/javascript">
+		let today = new Date().toISOString().slice(0, 10);
+
+		console.log(today);
+		document.getElementById("search").max = today;
+	</script>
+
+		<table aria-describedby="Show All home places" id="product"
+			class="table table-hover table-striped">
+
 			<tr style="background-color: cornflowerblue">
 				<th>Serial No</th>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Phone Number</th>
-				<th>Request</th>
-				
-				<th>Action</th>
-
+				<th>Product</th>
+				<th>Order Id</th>
+				<th>Order Status</th>
+				<th>Price</th>
+				<th>Order Date</th>
+				<th>Delivery Address</th>
+			
 			</tr>
+
+
+
 			<c:set var="serialNumber" value="1" scope="page"></c:set>
-			<c:forEach items="${inactiveUserDetails}" var="inactiveUserDetails">
-
-
-			<tr>
-				<td>${serialNumber}</td>
-				<td>${inactiveUserDetails.name }</td>
-				<td>${inactiveUserDetails.email}</td>
-				<td>${inactiveUserDetails.phoneNumber}</td>
-				<td>${inactiveUserDetails.reason}</td>
-		
-				<td>
+			<c:forEach items="${sessionScope.salesList}" var="orderList">
+				<tr>
+					
+					<td>${serialNumber}</td>
+				<td><img width="110px;" alt="Mobiles"
+						src="${orderList.url}"></td>
+						<td>${orderList.orderId }</td>
+					<td>${orderList.status}</td>
+					<td> &#x20b9;${orderList.price }</td>
+					<td><fmt:parseDate value="${orderList.date}"
+							pattern="yyyy-MM-dd'T'HH:mm" var="orderDate" type="both" /> <fmt:formatDate
+							pattern="dd-MM-yyyy HH:mm" value="${orderDate}" /></td>
+					<td>${orderList.address}</td>
 				
-						<div class="container mt-3">
-
-
-						<button type="button" class="btn btn-dark"
-							data-bs-toggle="modal" data-bs-target="#myModal_${serialNumber}">Activate
-						</button>
-					</div> 
-					<div class="modal fade" id="myModal_${serialNumber}">
-						<div class="modal-dialog">
-							<div class="modal-content">
-
-								<div class="modal-header">
-									<h4 class="modal-title">User Activation</h4>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-								</div>
-
-							
-								<div class="modal-body">
-									<div>
-					
-					
-					<p>Do you want to Activate this user(${inactiveUserDetails.name }) ?</p>
-				<a class="btn btn-success" href="activeUser?userId=${inactiveUserDetails.userId}">Confirm</a>
-				</div>
-								</div>
-
-								
-								<div class="modal-footer">
-									<button type="button" class="btn btn-danger"
-										data-bs-dismiss="modal">Close</button>
-								</div> 
-
-							</div>
-						</div>
-					</div>
-					
-					
-				</td>
-
-			</tr>
-			<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
+				</tr>
+				<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 			</c:forEach>
+
+
+
 		</table>
+	
 	</div>
 
 
-	
+
 
 </body>
 </html>

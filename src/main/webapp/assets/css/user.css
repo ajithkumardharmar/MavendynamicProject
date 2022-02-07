@@ -1,42 +1,256 @@
 @charset "ISO-8859-1";
-.mar1 {
-	font-size: 30px;
-	color: crimson;
-}
+@import
+	url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap')
+	;
 
+* {
+	font-family: Heebo;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
 .body_main {
 	margin-top: 120px;
 	margin-left: 240px;
 }
-
-
 
 .phoneInfo {
 	margin-left: 250px;
 	margin-top: -270px;
 	font-size: 20px;
 }
-
-.but_log a {
-	text-decoration: none;
-	color: white;
-	padding: 12px;
+.mar1 {
+	font-size: 30px;
+	color: green;
+	text-align: center;
+}
+#mobile {
+	margin-left: 105px;
 	margin-top: 20px;
-	margin-left: 100px;
-	background-color: rgb(83, 83, 204);
-	border-radius: 20px;
+	line-height: 2;
+	font-size: 20px;
 }
 
-.but_log {
-	margin-top: 40px;
+#mobile p {
+	margin-left: 40px;
+	font-weight: bold;
 }
+
+#mobile button {
+	margin-left: 50px;
+	margin-top: 5px;
+	width: 120px;
+	height: 30px;
+	background-color: rgb(16, 177, 16);
+	border-radius: 10px;
+	border: none;
+	color: white;
+	font-size: 17px;
+	font-weight: bold;
+	box-shadow: 0 0 5px black;
+}
+
+#mobile button:hover {
+	background-color: white;
+	color: black;
+}
+
+#mobile img {
+	width: 140px;
+	height: 280px;
+	border-radius: 10px;
+}
+
+.buy_div form {
+	display: table;
+}
+
+.buy_div p {
+	display: table-row;
+}
+
+.buy_div label {
+	display: table-cell;
+}
+
+.buy_div input {
+	display: table-cell;
+	position: absolute;
+	left: 620px;
+}
+.buy_div {
+	margin-left: 400px;
+}
+.buy_h4 {
+	margin-left: 70px;
+	color: blue;
+}
+.buy_h5{
+margin-left: 150px;
+}
+#buy_btn{
+margin-left: 150px;
+}
+.searchPro {
+	position: absolute;
+	left: 420px;
+}
+
+.searchPro input[type=date] {
+	padding: 4px;
+	font-size: 16px;
+	float: left;
+}
+
+.searchPro button {
+	float: left;
+	padding: 4px;
+	background: #2196F3;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+}
+#product table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 20px;
+}
+#product table {
+	background-color: white;
+}
+#product {
+	width: 90%;
+	margin-left: 60px;
+}
+
+/* userprofile css */
+
+.profile form {
+	display: table;
+}
+
+.profile p {
+	display: table-row;
+}
+
+.profile label {
+	display: table-cell;
+	position: absolute;
+	font-size: 20px;
+	right: 180px;
+}
+
+.profile input {
+	display: table-cell;
+	position: absolute;
+	left: 150px;
+}
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: green;
+	color: white;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	top: 90px;
+	font-size: 17px;
+}
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadeout {
+	from {top: 90px;
+	opacity: 1;
+	left: 40px;
+}
+
+to {
+	top: 0;
+	opacity: 0;
+}
+
+}
+@keyframes fadeout {
+	from {top: 90px;
+	opacity: 1;
+	left: 40px;
+}
+
+to {
+	top: 0;
+	opacity: 0;
+}
+}
+.profile {
+	background-color: white;
+	width: 170%;
+	height: 430px;
+	padding: 60px;
+	border-color: brown;
+	border-radius: 10px;
+	border-style: solid;
+}
+.user_det {
+	margin: 30px;
+	position: absolute;
+	left: 300px;
+}
+.c_user {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	width: 300px;
+	height: 25px;
+	margin-left: 30px;
+}
+
+/* ContactUs css */
+.container2 form {
+	display: table;
+}
+
+.container2 p {
+	display: table-row;
+}
+
+.container2 label {
+	display: table-cell;
+	position: absolute;
+	right: 450px;
+}
+
+.container2 input {
+	display: table-cell;
+	position: absolute;
+	left: 200px;
+}
+.container2 {
+	position: absolute;
+	left: 290px;
+	margin-top: 30px;
+	background-color: white;
+	width: 45%;
+	height: 360px;
+	padding: 20px;
+	border-color: brown;
+	border-radius: 10px;
+	border-style: solid;
+}
+
+/* about us */
+
 
 .aboutUs {
-	margin-left: 50px;
-	margin-top: -80px;
-}
-
-
-.aboutUs{
-padding: 20px;
+	margin-left: 10px;
+	margin-top: -160px;
+	padding: 100px;
 }
