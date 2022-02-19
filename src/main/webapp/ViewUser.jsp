@@ -7,7 +7,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+ <script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
 <title>UsersList</title>
 </head>
 <style>
@@ -113,6 +116,12 @@ width: 20%;
 	
 	<div class="full">
 	<br>
+		<c:if test="${InActivateInfo!=null}">
+		<div class="alert alert-success">
+			<h6 style="color: green; margin-left: 460px;">${InActivateInfo}</h6>
+		</div>
+	</c:if>
+	<c:remove var="InActivateInfo" scope="session" />
 
 	<div class="searchPro">
 			<form class="input-group mb-7" action="SearchUsers">

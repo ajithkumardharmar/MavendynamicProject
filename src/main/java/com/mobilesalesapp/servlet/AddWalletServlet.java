@@ -1,7 +1,6 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
@@ -47,24 +46,19 @@ public class AddWalletServlet extends HttpServlet {
 			List<RegisterPojo> listAllDetails = userImpl.myDetails(userId);
 
 			setSessionAttribute(session, "listAllDetails", (Serializable) listAllDetails);
-			PrintWriter out = res.getWriter();
+
 			if (i > 0) {
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Wallet added Successfully');");
-				out.println("location='myProfile.jsp';");
-				out.println("</script>");
+				session.setAttribute("walletInfo", "Wallet added Successfully");
+				res.sendRedirect("myProfile.jsp");
+
 			} else if (i == 0) {
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('wallet not added');");
-				out.println("location='myProfile.jsp';");
-				out.println("</script>");
+				session.setAttribute("wallet", "wallet not added");
+				res.sendRedirect("myProfile.jsp");
+
 			}
 
-		} catch (IOException | NumberFormatException e) {
+		} catch (IOException | NumberFormatException | SQLException e) {
 
-			Logger.printStackTrace(e);
-			Logger.runTimeException(e.getMessage());
-		} catch (SQLException e) {
 			Logger.printStackTrace(e);
 			Logger.runTimeException(e.getMessage());
 		}

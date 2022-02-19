@@ -18,7 +18,7 @@ public class ProductImpl implements ProductDao {
 
 		Connection con = ConnectionUtil.connect();
 
-		String query = "insert into products (product_name,description,standard_price,list_price)" + " values(?,?,?,?)";
+		String query = "insert into products (product_name,description,standard_price,list_price) values(?,?,?,?)";
 		PreparedStatement pre = null;
 		try {
 			pre = con.prepareStatement(query);
@@ -84,13 +84,16 @@ public class ProductImpl implements ProductDao {
 
 	@Override
 	public List<ProductPojo> showAllProduct() {
-		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products order by pk_product_id ";
+		StringBuilder query = new StringBuilder();
+		query.append("select pk_product_id,product_name,description,standard_price,list_price,url from ");
+		query.append("products order by pk_product_id ");
+
 		Connection con = ConnectionUtil.connect();
 		List<ProductPojo> productList = new ArrayList<>();
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 			rs = pre.executeQuery();
 			while (rs.next()) {
 				ProductPojo productPojo = new ProductPojo(rs.getInt("pk_product_id"), rs.getString("product_name"),
@@ -110,13 +113,16 @@ public class ProductImpl implements ProductDao {
 
 	@Override
 	public List<ProductPojo> selectProduct(int productId) {
-		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where pk_product_id=? ";
+		StringBuilder query = new StringBuilder();
+		query.append("select pk_product_id,product_name,description,standard_price,list_price,url from ");
+		query.append("products where pk_product_id=?");
+
 		Connection con = ConnectionUtil.connect();
 		List<ProductPojo> productList = new ArrayList<>();
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 			pre.setInt(1, productId);
 			rs = pre.executeQuery();
 			while (rs.next()) {
@@ -137,12 +143,15 @@ public class ProductImpl implements ProductDao {
 
 	@Override
 	public List<ProductPojo> searchProduct(String product) {
-		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where lower(product_name) like ? ";
+		StringBuilder query = new StringBuilder();
+		query.append("select pk_product_id,product_name,description,standard_price,list_price,url from ");
+		query.append("products where lower(product_name) like ?");
+
 		Connection con = ConnectionUtil.connect();
 		List<ProductPojo> productList = new ArrayList<>();
 		PreparedStatement pre = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 			pre.setString(1, product + "%");
 
 			ResultSet rs = pre.executeQuery();

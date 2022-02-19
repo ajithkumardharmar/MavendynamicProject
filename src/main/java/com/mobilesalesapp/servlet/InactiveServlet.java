@@ -1,15 +1,18 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mobilesalesapp.dao.AdminDao;
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.impl.AdminImpl;
+import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.logger.Logger;
 import com.mobilesalesapp.model.RegisterPojo;
 
@@ -25,13 +28,15 @@ public class InactiveServlet extends HttpServlet {
 		regPojo.setUserId(userId);
 		AdminDao adminImpl = new AdminImpl();
 		int i = adminImpl.userInActive(regPojo);
+		HttpSession session = request.getSession();
+		UserDao userDao = new UserImpl();
+		List<RegisterPojo> userDetails = userDao.userDetails();
+		session.setAttribute("userDetails", userDetails);
 		if (i > 0) {
 			try {
-				PrintWriter out = response.getWriter();
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Inactive Successfully');");
-				out.println("location='adminMain.jsp';");
-				out.println("</script>");
+
+				session.setAttribute("InActivateInfo", "Inactive Successfully");
+				response.sendRedirect("viewUser.jsp");
 
 			} catch (IOException e) {
 				Logger.printStackTrace(e);

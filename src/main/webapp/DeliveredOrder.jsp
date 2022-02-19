@@ -202,7 +202,7 @@ table {
 						href="deliveredOrder?orderId=${orderDetail.orderId }&deliveryStatus=${orderDetail.status }">Delivered</a>
 					</td>
 				</tr>
-
+	<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 			</c:forEach>
 
 

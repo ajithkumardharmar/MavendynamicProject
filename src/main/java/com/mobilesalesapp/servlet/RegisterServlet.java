@@ -1,12 +1,12 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.exception.EmailException;
@@ -24,6 +24,7 @@ public class RegisterServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String name = req.getParameter("name1");
 		String email = req.getParameter("email");
+		HttpSession session = req.getSession();
 		long phoneNumber = 0;
 		try {
 			phoneNumber = Long.parseLong(req.getParameter("phone_number"));
@@ -53,11 +54,9 @@ public class RegisterServlet extends HttpServlet {
 
 			} catch (EmailException e) {
 				try {
-					PrintWriter out = res.getWriter();
-					out.println("<script type=\"text/javascript\">");
-					out.println("alert('Thish Email Already Used');");
-					out.println("location='register.jsp';");
-					out.println("</script>");
+					session.setAttribute("registerInfo", "This Email Already Used");
+					res.sendRedirect("register.jsp");
+
 				} catch (IOException s) {
 					Logger.printStackTrace(e);
 					Logger.runTimeException(e.getMessage());

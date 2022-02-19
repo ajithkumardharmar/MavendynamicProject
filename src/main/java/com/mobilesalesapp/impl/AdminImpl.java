@@ -19,13 +19,15 @@ public class AdminImpl implements AdminDao {
 	public int addWalletAmount(RegisterPojo wallet) {
 
 		Connection con = ConnectionUtil.connect();
+		StringBuilder addWalletquery = new StringBuilder();
+		addWalletquery.append("update users_table set wallet=(select wallet from users_table ");
+		addWalletquery.append("where pk_user_id= ? )+? where pk_user_id=?");
 
-		String addWalletquery = "update users_table set wallet=(select wallet from users_table where pk_user_id= ? )+? where pk_user_id=?";
 		int j = 0;
 		PreparedStatement pre1 = null;
 
 		try {
-			pre1 = con.prepareStatement(addWalletquery);
+			pre1 = con.prepareStatement(addWalletquery.toString());
 			pre1.setInt(1, wallet.getUserId());
 			pre1.setDouble(2, wallet.getWallet());
 			pre1.setInt(3, wallet.getUserId());

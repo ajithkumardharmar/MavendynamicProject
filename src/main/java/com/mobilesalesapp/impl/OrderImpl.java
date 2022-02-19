@@ -100,12 +100,16 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> viewAllOrders(OrderPojo orderPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id,p.url from orders_table o, products p  where o.fk_user_id=? and p.pk_product_id=o.fk_product_id order by order_date desc ";
+		StringBuilder query = new StringBuilder();
+		query.append("select  o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id");
+		query.append(",o.fk_user_id,p.url from orders_table o, products p where o.fk_user_id=? and ");
+		query.append("p.pk_product_id=o.fk_product_id order by order_date desc ");
+
 		ResultSet rs = null;
 		List<OrderPojo> orderList1 = new ArrayList<>();
 		PreparedStatement pre = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 			pre.setInt(1, orderPojo.getUserId());
 			rs = pre.executeQuery();
 			while (rs.next()) {
@@ -131,14 +135,15 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> searchAllOrders(OrderPojo orderPojo) {
 		List<OrderPojo> orderList1 = new ArrayList<>();
 		Connection con = ConnectionUtil.connect();
-		String query = "select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id,"
-				+ "p.url from orders_table o, products p  where o.fk_user_id=? and "
-				+ "p.pk_product_id=o.fk_product_id  and to_char(trunc(o.order_date),'yyyy-mm-dd')=? order by"
-				+ " o.order_date desc";
+		StringBuilder query = new StringBuilder();
+		query.append("select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id,");
+		query.append("p.url from orders_table o, products p  where o.fk_user_id=? and p.pk_product_id");
+		query.append("=o.fk_product_id  and to_char(trunc(o.order_date),'yyyy-mm-dd')=? order by");
+
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 			pre.setInt(1, orderPojo.getUserId());
 			pre.setString(2, orderPojo.getStrDate());
 			rs = pre.executeQuery();
@@ -233,14 +238,16 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> viewAllSales() {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id"
-				+ ",p.url from orders_table o, products p  where p.pk_product_id=o.fk_product_id order by "
-				+ "order_date desc ";
+		StringBuilder query = new StringBuilder();
+		query.append("select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id");
+		query.append(",p.url from orders_table o, products p  where p.pk_product_id=o.fk_product_id order by ");
+		query.append("order_date desc ");
+
 		ResultSet rs = null;
 		List<OrderPojo> orderList1 = new ArrayList<>();
 		PreparedStatement pre = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 			rs = pre.executeQuery();
 			while (rs.next()) {
 
@@ -265,13 +272,15 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> searchAllSales(OrderPojo orderPojo) {
 		List<OrderPojo> orderList1 = new ArrayList<>();
 		Connection con = ConnectionUtil.connect();
-		String query = "select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id"
-				+ ",p.url from orders_table o, products p  where p.pk_product_id=o.fk_product_id and "
-				+ "to_char(trunc( o.order_date),'yyyy-mm-dd')=? order by o.order_date desc";
+		StringBuilder query = new StringBuilder();
+		query.append("select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id");
+		query.append(",p.url from orders_table o, products p  where p.pk_product_id=o.fk_product_id and ");
+		query.append("to_char(trunc( o.order_date),'yyyy-mm-dd')=? order by o.order_date desc");
+
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 			pre.setString(1, orderPojo.getStrDate());
 			rs = pre.executeQuery();
 			while (rs.next()) {

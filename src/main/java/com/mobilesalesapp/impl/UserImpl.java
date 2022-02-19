@@ -46,12 +46,15 @@ public class UserImpl implements UserDao {
 	@Override
 	public RegisterPojo fetch(RegisterPojo login) {
 		Connection con = ConnectionUtil.connect();
-		String query = "select pk_user_id,first_name,email,phone_number,wallet,role from users_table  where email = ? and password = ?";
+		StringBuilder query = new StringBuilder();
+		query.append("select pk_user_id,first_name,email,phone_number,wallet,role from users_table ");
+		query.append("where email = ? and password = ?");
+
 		RegisterPojo registerPojo = null;
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 
 			pre.setString(1, login.getEmail());
 			pre.setString(2, login.getPassword());
@@ -102,7 +105,8 @@ public class UserImpl implements UserDao {
 	@Override
 	public List<RegisterPojo> inActiveUserDetails() {
 		Connection con = ConnectionUtil.connect();
-		String query = "select pk_user_id,first_name,email,phone_number,request from users_table where role='inactive'";
+		String query = "select pk_user_id,first_name,email,phone_number,request from users_table "
+				+ "where role='inactive'";
 		List<RegisterPojo> userList = new ArrayList<>();
 		ResultSet ns = null;
 		PreparedStatement pre = null;
@@ -224,7 +228,8 @@ public class UserImpl implements UserDao {
 	@Override
 	public List<RegisterPojo> myDetails(int userId) {
 		Connection con = ConnectionUtil.connect();
-		String query = "select pk_user_id,first_name,email,phone_number,wallet,request from users_table where pk_user_id=?";
+		String query = "select pk_user_id,first_name,email,phone_number,wallet,request from users_table "
+				+ "where pk_user_id=?";
 
 		List<RegisterPojo> userList = new ArrayList<>();
 		ResultSet rs = null;
@@ -257,12 +262,15 @@ public class UserImpl implements UserDao {
 	@Override
 	public List<RegisterPojo> searchUserDetails(RegisterPojo register) {
 		Connection con = ConnectionUtil.connect();
-		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table where role='user' and lower(first_name) like ? ";
+		StringBuilder query = new StringBuilder();
+		query.append("select pk_user_id,first_name,email,phone_number,wallet from users_table ");
+		query.append("where role='user' and lower(first_name) like ? ");
+
 		List<RegisterPojo> userList = new ArrayList<>();
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 			pre.setString(1, register.getName() + "%");
 			rs = pre.executeQuery();
 			while (rs.next()) {
@@ -285,12 +293,15 @@ public class UserImpl implements UserDao {
 	@Override
 	public List<RegisterPojo> searchInActiveUserDetails(RegisterPojo register) {
 		Connection con = ConnectionUtil.connect();
-		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table where role='inactive' and lower(first_name) like ? ";
+		StringBuilder query = new StringBuilder();
+		query.append("select pk_user_id,first_name,email,phone_number,wallet from users_table ");
+		query.append("where role='inactive' and lower(first_name) like ?");
+
 		List<RegisterPojo> userList = new ArrayList<>();
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 			pre.setString(1, register.getName() + "%");
 			rs = pre.executeQuery();
 			while (rs.next()) {

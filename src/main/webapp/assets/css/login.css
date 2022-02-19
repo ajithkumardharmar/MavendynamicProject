@@ -28,10 +28,7 @@
 	
 }
 
-.c_sub hover {
-	background-color:gray;
-	color: black;
-}
+
 .containee {
 	background-color: white;
 	left: 500px;
@@ -39,8 +36,7 @@
 	padding: 40px;
 	padding-bottom: 80px;
 	position: absolute;
-	left: 500px;
-	top: 100px;
+	
 	border-radius: 40px;
 }
 
@@ -99,6 +95,3 @@
 	border-radius: 40px;
 }
 
-.btn {
-	width: 300px;
-}

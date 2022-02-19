@@ -17,13 +17,16 @@ public class CartImpl implements CartDao {
 	@Override
 	public String checkCart(CartPojo cart) {
 		Connection con = ConnectionUtil.connect();
-		String checkCartquery = "select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? and product_id=?";
+		StringBuilder checkCartquery = new StringBuilder();
+		checkCartquery.append("select cart_id,user_id,product_id,product_name,description,price,url from ");
+		checkCartquery.append("carts_table where user_id=? and product_id=?");
+
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		String productName = null;
 
 		try {
-			pre = con.prepareStatement(checkCartquery);
+			pre = con.prepareStatement(checkCartquery.toString());
 			pre.setInt(1, cart.getUserId());
 			pre.setInt(2, cart.getProductId());
 			rs = pre.executeQuery();
@@ -46,7 +49,10 @@ public class CartImpl implements CartDao {
 	public void addCart(CartPojo cartPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String addCartquery = "select product_name,description,list_price,url from products where pk_product_id=?";
+		StringBuilder addCartquery = new StringBuilder();
+		addCartquery.append("select product_name,description,list_price,url from ");
+		addCartquery.append("products where pk_product_id=?");
+
 		String productName = null;
 		String url = null;
 		String description = null;
@@ -54,7 +60,7 @@ public class CartImpl implements CartDao {
 		PreparedStatement pre2 = null;
 		PreparedStatement pre3 = null;
 		try {
-			pre2 = con.prepareStatement(addCartquery);
+			pre2 = con.prepareStatement(addCartquery.toString());
 
 			pre2.setInt(1, cartPojo.getProductId());
 			ResultSet rs = pre2.executeQuery();
@@ -74,9 +80,11 @@ public class CartImpl implements CartDao {
 			ConnectionUtil.close(null, pre2, null);
 		}
 		try {
+			StringBuilder addCartInsertquery = new StringBuilder();
+			addCartInsertquery.append("insert into carts_table(user_id,product_id,product_name,");
+			addCartInsertquery.append("description,price,url) values(?,?,?,?,?,?)");
 
-			String addCartInsertquery = "insert into carts_table(user_id,product_id,product_name,description,price,url) values(?,?,?,?,?,?)";
-			pre3 = con.prepareStatement(addCartInsertquery);
+			pre3 = con.prepareStatement(addCartInsertquery.toString());
 			pre3.setInt(1, cartPojo.getUserId());
 			pre3.setInt(2, cartPojo.getProductId());
 			pre3.setString(3, productName);
@@ -119,11 +127,14 @@ public class CartImpl implements CartDao {
 	@Override
 	public List<CartPojo> viewAllCart(CartPojo cartPojo) {
 		Connection con = ConnectionUtil.connect();
-		String query = "select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? order by cart_id desc";
+		StringBuilder query = new StringBuilder();
+		query.append("select cart_id,user_id,product_id,product_name,description,price,url from");
+		query.append(" carts_table where user_id=? order by cart_id desc");
+
 		PreparedStatement pre = null;
 		List<CartPojo> cartList = new ArrayList<>();
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(query.toString());
 			pre.setInt(1, cartPojo.getUserId());
 			ResultSet rs = pre.executeQuery();
 			while (rs.next()) {
